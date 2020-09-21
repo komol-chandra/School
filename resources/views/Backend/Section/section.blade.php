@@ -50,10 +50,10 @@
                 <div class="form-group row">
                     <label class="col-sm-3 text-right control-label col-form-label">class Name</label>
                     <div class="col-sm-9">
-                        <select class="select2 form-control custom-select" >
-                        <option data-select2-id="3" name="class_name" class="class_name" selected disabled hidden>Select</option>
+                        <select name="class_name" class="select2 form-control custom-select" >
+                        <option   id="class_name" selected disabled hidden>Select</option>
                             @foreach($class as $value)
-                                <option value="{{$value->class_id}}" data-select2-id="14">{{$value->class_name}}</option>
+                                <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -106,4 +106,6 @@
 @endsection
 @section('js')
 <script src="{{asset('Backend_assets/js/section.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\SectionRequest', '#section_form'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\SectionRequest', '#update_class_form'); !!}
 @endsection

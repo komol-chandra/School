@@ -4,6 +4,7 @@ use App\Models\SectionName;
 use App\Models\ClassName;
 use Illuminate\Http\Request; 
 use App\Http\Requests\SectionRequest;
+use JsValidator;
 class SectionNameController extends Controller
 {
     public function index()
