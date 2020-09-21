@@ -10,12 +10,12 @@ class ClassNameController extends Controller
 {
     public function index()
     {
-        return view("Backend.ClassSettings.Class.class");
+        return view("Backend.Class.class");
     }
     public function create(Request $request)
     {
-        $data = ClassName::search($request->search)->orderBy('class_id','desc')->paginate();
-        return view('Backend.ClassSettings.Class.list', ['data' => $data]);  
+        $data = ClassName::search($request->search)->orderBy('class_id','asc')->paginate(10);
+        return view('Backend.Class.list', ['data' => $data]);  
     }
     public function store(ClassNameRequest $request)
     {

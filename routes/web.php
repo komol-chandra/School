@@ -1,8 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-// Route::get('/', function () {
-//    return view('welcome');
-// });
+ 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
 // })->name('dashboard');
@@ -15,5 +13,11 @@ Route::prefix('admin')->group(function () {
 	Route::post('/class/store', 'ClassNameController@store');
     Route::get('/class/show/{id}', 'ClassNameController@show');
     Route::post('/class/update','ClassNameController@update');
+
+	Route::resource('/section', 'SectionNameController');
+	Route::get('/section/show/{id}', 'SectionNameController@show');
+	Route::post('/section/store', 'SectionNameController@store');
+
+	Route::resource('/student', 'StudentController');
     });
 });

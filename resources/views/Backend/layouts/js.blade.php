@@ -15,7 +15,7 @@
 <script src="{{asset('Backend_assets/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
 <script src="{{asset('Backend_assets/dist/js/pages/chart/chart-page-init.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
-
+<script src="{{asset('Backend_assets/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
 <script src="{{asset('Backend_assets/js/sweetalert.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('Backend_assets/js/toastr.min.js')}}"></script>
