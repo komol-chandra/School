@@ -13,7 +13,14 @@ class ClassNameRequest extends FormRequest
     public function rules()
     {
         return [
-            'class_name' => 'required',
+            'class_name' => 'required|min:1',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'class_name.required' => 'This Field is Required',
+            'class_name.min' => 'Minimum 1+ Character required',
         ];
     }
 }

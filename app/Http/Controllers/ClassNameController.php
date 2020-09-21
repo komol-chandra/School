@@ -1,33 +1,35 @@
 <?php
-  
+
 namespace App\Http\Controllers;
 
 use App\Models\ClassName;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassNameRequest;
+use JsValidator;
 
 class ClassNameController extends Controller
 {
     public function index()
     {
+
         return view("Backend.Class.class");
     }
     public function create(Request $request)
     {
-        $data = ClassName::search($request->search)->orderBy('class_id','asc')->paginate(10);
-        return view('Backend.Class.list', ['data' => $data]);  
+        $data = ClassName::search($request->search)->orderBy('class_id', 'asc')->paginate(10);
+        return view('Backend.Class.list', ['data' => $data]);
     }
     public function store(ClassNameRequest $request)
     {
         $save_modal = new ClassName();
-        $save_modal->class_name=$request->class_name;
+        $save_modal->class_name = $request->class_name;
         $save_modal->save();
         $status = 201;
-        $response=[
-            'staus'   =>$status,
-            'message' =>'Data inserted Succesfully!',
+        $response = [
+            'staus'   => $status,
+            'message' => 'Data inserted Succesfully!',
         ];
-        return response()->json($response , $status);
+        return response()->json($response, $status);
     }
     public function show($id)
     {
@@ -45,16 +47,15 @@ class ClassNameController extends Controller
     public function edit($id)
     {
         $data = ClassName::findOrFail($id);
-        return response()->json($data , 201);
+        return response()->json($data, 201);
     }
     public function update(ClassNameRequest $request)
     {
-        $class_modal=ClassName::findOrFail($request->class_id);
-        $class_modal->class_name=$request->class_name;
+        $class_modal = ClassName::findOrFail($request->class_id);
+        $class_modal->class_name = $request->class_name;
         $class_modal->save();
-        $status=201;
+        $status = 201;
         return response()->json($status);
-
     }
     public function destroy($id)
     {

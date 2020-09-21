@@ -1,8 +1,8 @@
-@extends('Backend.layouts.app') 
+@extends('Backend.layouts.app')
 @section('title', ' Class')
 @section('head', 'Class')
 @section('head_name', 'Class')
-@section('content') 
+@section('content')
 
 <button type="button" class="btn btn-info margin-5 text-white" data-toggle="modal" data-target="#add_class">Add new</button><br><br>
 <div class="card">
@@ -14,11 +14,11 @@
                     <div class="col-sm-12 col-md-6">
                         <div class="dataTables_length" id="zero_config_length">
                             <label>Show <select id="perPage" name="zero_config_length" aria-controls="zero_config" class="form-control form-control-sm">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select> entries</label>
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> entries</label>
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6">
@@ -39,62 +39,64 @@
 </div>
 {{--Add Modal--}}
 <form method="post" id="class_form">@csrf
-<div class="modal fade" id="add_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Info</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group row">
-                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="class_name" class="form-control" id="class_name" placeholder="Class Name Here">
+    <div class="modal fade" id="add_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="class_name" class="form-control" id="class_name" placeholder="Class Name Here">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="reset" id="close" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                <div class="modal-footer">
+                    <button type="reset" id="close" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 {{--Add Modal--}}
 {{--Edit Modal--}}
 <form method="post" id="update_class_form">@csrf
-<div class="modal fade" id="edit_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit Info</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" name="class_id" id="class_id">
-                <div class="form-group row">
-                    <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" name="class_name" class="form-control" id="e_class_name">
+    <div class="modal fade" id="edit_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Info</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="class_id" id="class_id">
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="class_name" class="form-control" id="e_class_name">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="reset" id="close2" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                <div class="modal-footer">
+                    <button type="reset" id="close2" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 {{--Edit Modal--}}
 @endsection
 @section('js')
 <script src="{{asset('Backend_assets/js/class.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\ClassNameRequest', '#class_form'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\ClassNameRequest', '#update_class_form'); !!}
 @endsection
