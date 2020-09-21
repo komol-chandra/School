@@ -6,17 +6,28 @@
                 <span class="hide-menu">Dashboard</span>
             </a>
         </li>
-        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Class Settings</span></a>
+        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Acdamic</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
-                <li class="sidebar-item {{ (request()->is('admin/class')) ? 'active' : '' }}}">
+                <li class="sidebar-item">
                     <a href="{{ url('/admin/class')}}" class="sidebar-link">
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Class</span>
                     </a>
                 </li>
-                <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link">
+                <li class="sidebar-item">
+                    <a href="{{url('/admin/section')}}" class="sidebar-link">
                         <i class="mdi mdi-note-plus"></i>
-                        <span class="hide-menu"> Form Wizard </span>
+                        <span class="hide-menu">Section</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Student info</span></a>
+            <ul aria-expanded="false" class="collapse  first-level">
+                <li class="sidebar-item">
+                    <a href="{{ url('/admin/student')}}" class="sidebar-link">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Student List</span>
                     </a>
                 </li>
             </ul>
