@@ -108,6 +108,7 @@
                                     <option value="HI">Spectioal</option>
                                     <option value="HI">Management</option>
                                     <option value="HI">Physically Callenged</option>
+                                    <option value="HI">Freedom Fighter</option>
                                 </select>
                             </div>
                         </div>
