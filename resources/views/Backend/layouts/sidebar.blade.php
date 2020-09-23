@@ -20,6 +20,19 @@
                         <span class="hide-menu">Section</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ (request()->is('admin/subject')) ? 'active' : '' }}}">
+                    <a href="{{ url('/admin/subject')}}" class="sidebar-link">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Subject</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ (request()->is('admin/department')) ? 'active' : '' }}}">
+                    <a href="{{ url('/admin/department')}}" class="sidebar-link">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Department</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Student info</span></a>

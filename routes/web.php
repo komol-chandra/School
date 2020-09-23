@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
- 
+
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
 // })->name('dashboard');
@@ -18,6 +18,9 @@ Route::prefix('admin')->group(function () {
 	Route::get('/section/show/{id}', 'SectionNameController@show');
 	Route::post('/section/store', 'SectionNameController@store');
 
-	Route::resource('/student', 'StudentController');
+    Route::resource('/student', 'StudentController');
+
+    Route::resource('/subject', 'SubjectModelController');
+    Route::resource('/department', 'DepartmentController');
     });
 });

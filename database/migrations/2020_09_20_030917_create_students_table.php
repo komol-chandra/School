@@ -15,8 +15,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('blood_id');
-            student_name,class_name,section_name,
-            $table->string('blood_name');
+
             $table->timestamps();
         });
     }
