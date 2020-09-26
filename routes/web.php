@@ -30,6 +30,5 @@ Route::prefix('admin')->group(function () {
     //Teacher with out ajax
     Route::resource('/teacher','TeacherController');
     Route::post('/teacher/store','TeacherController@store');
-
     });
 }); 
