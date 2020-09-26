@@ -6,4 +6,6 @@
 <link rel="stylesheet" type="text/css" href="{{asset('Backend_assets/assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('Backend_assets/assets/libs/quill/dist/quill.snow.css')}}">
 <link href="{{asset('Backend_assets/dist/css/style.min.css')}}" rel="stylesheet">
+<!-- <link href="{{asset('Backend_assets/js/toastr.css')}}" rel="stylesheet"> -->
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
