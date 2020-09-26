@@ -10,7 +10,7 @@ class CategoryNames extends Migration
      * Run the migrations.
      *
      * @return void
-     */
+     */ 
     public function up()
     {
         Schema::create('category_names', function (Blueprint $table) {

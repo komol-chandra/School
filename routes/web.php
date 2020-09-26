@@ -24,11 +24,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/student/guardian_list', 'StudentController@guardian_list');
     Route::get('/student/className/{class_id}', 'StudentController@className');
 
+    Route::resource('/subject', 'SubjectModelController');
+    Route::resource('/department', 'DepartmentController');
+
     //Teacher with out ajax
     Route::resource('/teacher','TeacherController');
     Route::post('/teacher/store','TeacherController@store');
 
-    Route::resource('/subject', 'SubjectModelController');
-    Route::resource('/department', 'DepartmentController');
     });
 }); 
