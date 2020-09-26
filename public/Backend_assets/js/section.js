@@ -56,7 +56,8 @@ datalist();
                     type:"delete",
                     dataType:"json",
                     success:function(response){
-                    	datalist();
+                        datalist();
+                        toastr.success("Data deleted successfully", "Success!");
                     }
                 })
             } else {

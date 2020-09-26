@@ -17,7 +17,11 @@
 <script src="{{asset('Backend_assets/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
+
+
 <script src="{{asset('Backend_assets/js/sweetalert.min.js')}}"></script>
+<!-- <script src="{{asset('Backend_assets/js/teacher.js')}}"></script>
+ -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 
