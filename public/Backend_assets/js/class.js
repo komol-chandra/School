@@ -83,7 +83,7 @@ $(document).ready(function() {
     $(document).on("submit", "#class_update", function(e) {
         e.preventDefault();
         var id = $("#edit_class_id").val();
-        console.log(id);
+
         let data = $(this).serializeArray();
         $.each(data, function(i, message) {
             $("#" + message.name + "_edit").html((message = ""));
