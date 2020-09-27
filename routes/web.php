@@ -22,5 +22,6 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/subject', 'SubjectModelController');
     Route::resource('/department', 'DepartmentController');
+    Route::resource('/classroom', 'ClassRoomController');
     });
 });

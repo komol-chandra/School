@@ -66,33 +66,38 @@
 </form>
 {{--Add Modal--}}
 {{--Edit Modal--}}
-<form method="post" id="update_class_form">@csrf
-    <div class="modal fade" id="edit_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Info</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+
+<div class="modal fade" id="edit_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+             <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Info</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="class_update">@csrf
                     <input type="hidden" name="class_id" id="class_id">
+
                     <div class="form-group row">
                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="class_name" class="form-control" id="e_class_name">
+                            <input type="text" name="class_name" class="form-control" id="edit_class_name">
+                            <span class="help-block" id="class_name_edit" style="color:red;"></span>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="reset" id="close2" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-outline-primary">Save changes</button>
-                </div>
+
+                    <div class="modal-footer">
+                        <button type="reset" id="close2" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+</div>
+
 {{--Edit Modal--}}
 @endsection
 @section('js')

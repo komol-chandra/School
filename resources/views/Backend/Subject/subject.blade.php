@@ -59,7 +59,6 @@
                                 <option >Select Class</option>
                                 @foreach($data as $value)
                                 <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
-                                <span class="help-block" id="class_name_error" style="color:red;"></span>
                                 @endforeach
                             </select>
                         </div>
@@ -113,6 +112,7 @@
                         <label for="fname" class="col-sm-3 text-right control-label col-form-label" >Subject Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="subject_name" class="form-control" id="edit_subject_name">
+                            <span class="help-block" id="subject_name_edit" style="color:red;"></span>
                         </div>
                     </div>
                 </div>

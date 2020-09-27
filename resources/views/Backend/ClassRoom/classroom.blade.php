@@ -1,10 +1,10 @@
 @extends('Backend.layouts.app')
-@section('title', ' Department')
-@section('head', 'Department')
-@section('head_name', 'Department')
+@section('title', 'Class Room')
+@section('head', 'Class Room')
+@section('head_name', 'Class Room')
 @section('content')
 
-<button type="button" class="btn btn-info margin-5 text-white " data-toggle="modal" data-target="#addModal">Add Department</button><br><br>
+<button type="button" class="btn btn-info margin-5 text-white " data-toggle="modal" data-target="#addModal">Add Class Room</button><br><br>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Basic Datatable Expriment
@@ -45,20 +45,20 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Department</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Class Room</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form id="department_save" method="post">
+                <form id="classroom_save" method="post">
                     @csrf
 
                     <div class="form-group row">
-                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Department Name</label>
+                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Room Name</label>
                         <div class="col-sm-9">
-                            <input type="text" name="department_name" class="form-control" id="department_name" placeholder="Department Name Here">
-                            <span class="help-block" id="department_name_error" style="color:red;"></span>
+                            <input type="text" name="classroom_name" class="form-control" id="classroom_name" placeholder="Class Room Name Here">
+                            <span class="help-block" id="classroom_name_error" style="color:red;"></span>
                         </div>
                     </div>
                 </div>
@@ -74,26 +74,26 @@
 {{--Add Modal--}}
 {{--Edit Modal--}}
 
-<form method="PUT" id="department_update">@csrf
-    <div class="modal fade" id="edit_department" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal fade" id="edit_classroom" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Department</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Class Room</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="PUT" id="department_update">
+                    <form method="PUT" id="classroom_update">
                         @csrf
-                        <input type="hidden" name="department_id" id="edit_department_id">
+                        <input type="hidden" name="classroom_id" id="edit_classroom_id">
 
                         <div class="form-group row">
-                            <label for="fname" class="col-sm-3 text-right control-label col-form-label" >Department Name</label>
+                            <label for="fname" class="col-sm-3 text-right control-label col-form-label" >Class Room Name</label>
                             <div class="col-sm-9">
-                                <input type="text" name="department_name" class="form-control" id="edit_department_name">
-                                <span class="help-block" id="department_name_edit" style="color:red;"></span>
+                                <input type="text" name="classroom_name" class="form-control" id="edit_classroom_name">
+                                <span class="help-block" id="classroom_name_edit" style="color:red;"></span>
                             </div>
                         </div>
 
@@ -110,5 +110,5 @@
 {{--Edit Modal--}}
 @endsection
 @section('js')
-<script src="{{asset('Backend_assets/js/department.js')}}"></script>
+<script src="{{asset('Backend_assets/js/classroom.js')}}"></script>
 @endsection
