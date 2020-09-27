@@ -25,7 +25,9 @@ return array(
     'App\\Http\\Controllers\\SectionNameController' => $baseDir . '/app/Http/Controllers/SectionNameController.php',
     'App\\Http\\Controllers\\StudentController' => $baseDir . '/app/Http/Controllers/StudentController.php',
     'App\\Http\\Controllers\\SubjectModelController' => $baseDir . '/app/Http/Controllers/SubjectModelController.php',
+
     'App\\Http\\Controllers\\TeacherController' => $baseDir . '/app/Http/Controllers/TeacherController.php',
+
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckAge' => $baseDir . '/app/Http/Middleware/CheckAge.php',
@@ -39,6 +41,15 @@ return array(
     'App\\Http\\Requests\\ClassNameRequest' => $baseDir . '/app/Http/Requests/ClassNameRequest.php',
     'App\\Http\\Requests\\DepartmentRequest' => $baseDir . '/app/Http/Requests/DepartmentRequest.php',
     'App\\Http\\Requests\\SectionRequest' => $baseDir . '/app/Http/Requests/SectionRequest.php',
+
+    'App\\Http\\Requests\\SubjectRequest' => $baseDir . '/app/Http/Requests/SubjectRequest.php',
+    'App\\Models\\ClassName' => $baseDir . '/app/Models/ClassName.php',
+    'App\\Models\\ClassRoom' => $baseDir . '/app/Models/ClassRoom.php',
+    'App\\Models\\Department' => $baseDir . '/app/Models/Department.php',
+    'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
+    'App\\Models\\SectionName' => $baseDir . '/app/Models/SectionName.php',
+    'App\\Models\\SubjectModel' => $baseDir . '/app/Models/SubjectModel.php',
+
     'App\\Http\\Requests\\StudentRequest' => $baseDir . '/app/Http/Requests/StudentRequest.php',
     'App\\Http\\Requests\\SubjectRequest' => $baseDir . '/app/Http/Requests/SubjectRequest.php',
     'App\\Http\\Resources\\StudentCollection' => $baseDir . '/app/Http/Resources/StudentCollection.php',
@@ -53,6 +64,7 @@ return array(
     'App\\Models\\StudentGuardian' => $baseDir . '/app/Models/StudentGuardian.php',
     'App\\Models\\SubjectModel' => $baseDir . '/app/Models/SubjectModel.php',
     'App\\Models\\Teacher' => $baseDir . '/app/Models/Teacher.php',
+
     'App\\Models\\Team' => $baseDir . '/app/Models/Team.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Policies\\TeamPolicy' => $baseDir . '/app/Policies/TeamPolicy.php',
