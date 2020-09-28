@@ -111,7 +111,6 @@ $(document).ready(function() {
 });
 function loaddata(pagelink = "/admin/subject/create") {
     var search = $(".search").val();
-    console.log(search);
 
     $.ajax({
         url: pagelink,

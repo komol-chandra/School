@@ -31,7 +31,7 @@ class SubjectModelController extends Controller
         $page = $request->input('page', 1);
         $data['sl'] = (($page - 1) * 10) + 1;
         $data['search'] = $search = $request->search;
-        $data['data'] = SubjectModel::Search($request->search)->with('className')->paginate(10);
+        $data['data'] = SubjectModel::Search($request->search)->paginate(10);
         return view('Backend.Subject.list', $data);
     }
 

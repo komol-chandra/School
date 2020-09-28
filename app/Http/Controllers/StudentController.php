@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 namespace App\Http\Controllers;
 
@@ -18,16 +18,11 @@ class StudentController extends Controller
     use FileVerifyUpload;
     public function index()
     {
-        $student=Student::all();
-        $categoryName = CategoryNameModel::all();
-        $className = ClassName::active()->get();
-        $sectionName = SectionName::active()->get();
-        return view('Backend.Student.student',[
-            "student"=>$student,
-            "className"=>$className,
-            "categoryName"=>$categoryName,
-            "sectionName"=>$sectionName,
-        ]);
+        $data['student'] = Student::all();
+        // $data['categoryName'] = CategoryNameModel::all();
+        // $data['className'] = ClassName::active()->get();
+        // $data['sectionName'] = SectionName::active()->get();
+        return view('Backend.Student.student',$data);
     }
     public function guardian_list(Request $request){
         $student=Student::all();
@@ -95,13 +90,13 @@ class StudentController extends Controller
         $student_model->student_guardian_address=$request->student_guardian_address;
         $student_model->student_guardian_image=$this->ImageVerifyUpload($request,'student_guardian_image','Backend_assets/Files/Guardian/student_guardian_image/','student_guardian_image');
         $student_model->student_guardian_idcard=$this->ImageVerifyUpload($request,'student_guardian_idcard','Backend_assets/Files/Guardian/student_guardian_idcard/','student_guardian_idcard');
-        
+
         $student_model->save();
         return redirect('/admin/student/create')->with('status', 'Profile updated!');
     }
     public function show($id)
     {
-        $stduent_show = Student::findOrFail($id);   
+        $stduent_show = Student::findOrFail($id);
         if($stduent_show->status==1){
             $stduent_show->update(["status"=>0]);
             $status=201;
@@ -109,7 +104,7 @@ class StudentController extends Controller
             $stduent_show->update(["status"=>1]);
             $status=200;
         }
-        return response()->json($stduent_show,$status);     
+        return response()->json($stduent_show,$status);
     }
     public function edit($id)
     {
@@ -161,9 +156,9 @@ class StudentController extends Controller
         $student_model->student_guardian_address=$request->student_guardian_address;
         $student_model->student_guardian_image=$this->ImageVerifyUpload($request,'student_guardian_image','Backend_assets/Files/Guardian/student_guardian_image/','student_guardian_image');
         $student_model->student_guardian_idcard=$this->ImageVerifyUpload($request,'student_guardian_idcard','Backend_assets/Files/Guardian/student_guardian_idcard/','student_guardian_idcard');
-        
-        $student_model->where("student_id",$id)->update();
-        return redirect()->route('student.index')->with('status', 'Profile updated!');   
+
+        $student_model->where("student_id",$id)->update($student_model);
+        return redirect()->route('student.index')->with('status', 'Profile updated!');
     }
     public function destroy($id)
     {
