@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Student;
 use App\Models\BloodModel;
 use App\Models\CategoryNameModel;
