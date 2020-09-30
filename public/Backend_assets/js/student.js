@@ -1,21 +1,21 @@
 $(document).ready(function(){
-    $(this).on("change","#class_name",function(){
-        var data = $(this).val();
-        $.ajax({
-            url:`/admin/school/className/${data}`,
-            type:"get",
-            dataType:"json",
-            success:function(response){
-                console.log(response);
-                var b = $();
-                $.each(response.data, function (i, item) {
-                    b = b.add("<option value=" + item.section_id + ">" + item.section_name + "</option>")
-                });
-                console.log("#section_name");
-                $("#section_name").html(b);
-            }
-        })
-    });
+    // $(this).on("change","#class_name",function(){
+    //     var data = $(this).val();
+    //     $.ajax({
+    //         url:`/admin/school/className/${data}`,
+    //         type:"get",
+    //         dataType:"json",
+    //         success:function(response){
+    //             console.log(response);
+    //             var b = $();
+    //             $.each(response.data, function (i, item) {
+    //                 b = b.add("<option value=" + item.section_id + ">" + item.section_name + "</option>")
+    //             });
+    //             console.log("#section_name");
+    //             $("#section_name").html(b);
+    //         }
+    //     })
+    // });
 
     $(this).on("click","#status",function(){
         var data = $(this).attr("data");

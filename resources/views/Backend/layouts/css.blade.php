@@ -9,3 +9,11 @@
 <!-- <link href="{{asset('Backend_assets/js/toastr.css')}}" rel="stylesheet"> -->
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+
+
+<!-- responsive dataTable -->
+<!-- cdn -->
+
+
+
+@yield('css')

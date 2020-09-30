@@ -1,5 +1,5 @@
 <?php  
-
+ 
 namespace App\Http\Controllers;
 
 use App\Models\Student;
@@ -7,7 +7,6 @@ use App\Models\BloodModel;
 use App\Models\CategoryNameModel;
 use App\Models\ClassName;
 use App\Models\SectionName;
-use App\Http\Resources\StudentCollection;
 use App\Http\Requests\StudentRequest;
 use App\Traits\FileVerifyUpload;
 
@@ -54,10 +53,12 @@ class StudentController extends Controller
             "sectionName"=>$sectionName,
         ]);
     }
-    public function className($class_id)
+    public function sectionData($id)
     {
-        $sectionName = SectionName::where('section_name', $class_id)->get();
-        return StudentCollection::collection($sectionName);
+        // $sectionName = SectionName::where('section_name', $class_id)->get();
+        // return StudentCollection::collection($sectionName);
+        $sectionData = SectionName::where('class_name',$id)->get();
+        return response()->json($sectionData,200);
     }
 
     public function store(StudentRequest $request)
@@ -116,10 +117,15 @@ class StudentController extends Controller
         $categoryName = CategoryNameModel::all();
         $className = ClassName::active()->get();
         $sectionName = SectionName::active()->get();
-        $student = Student::findOrFail($id);
+        // $student = Student::findOrFail($id)->with('className')->get()->toArray();
+        $student = Student::with('className')->findOrFail($id);
         $blood = BloodModel::all();
+        // echo "<pre>";
+        // print_r($student);
+        // exit();
         return view('Backend.Student.edit_student',[
             "student"=>$student,
+
             "className"=>$className,
             "categoryName"=>$categoryName,
             "sectionName"=>$sectionName,

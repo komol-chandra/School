@@ -61,9 +61,9 @@
                                         </td>
                                         <td>{{$value->student_name}}</td>
                                         <td>{{$value->student_roll_number}}</td>
-                                        <td>{{$value->class_name}}</td>
-                                        <td>{{$value->section_name}}</td>
-                                        <td>{{$value->category_name}}</td>
+                                        <td>{{$value->className->class_name}}</td>
+                                        <td>{{$value->sectionName->section_name}}</td>
+                                        <td>{{$value->categoryName->category_name}}</td>
                                         <td>
                                             @if($value->status==1)
                                             <span class="text-success"> Active</span>
