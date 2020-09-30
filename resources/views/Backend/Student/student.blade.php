@@ -47,7 +47,7 @@
                                         <th>Roll</th>
                                         <th>Class</th>
                                         <th>Section</th>
-                                        <th>Category</th>
+                                        <!-- <th>Category</th> -->
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -63,7 +63,7 @@
                                         <td>{{$value->student_roll_number}}</td>
                                         <td>{{$value->className->class_name}}</td>
                                         <td>{{$value->sectionName->section_name}}</td>
-                                        <td>{{$value->catagoryName->category_name}}</td>
+                                        {{--<td>{{$value->categoryName->category_name}}</td>--}}
                                         <td>
                                             @if($value->status==1)
                                             <span class="text-success"> Active</span>
@@ -85,14 +85,14 @@
                                     @endforeach
                                 </tbody>
                                 <tfoot>
-                                    <tr>
+                                    <tr>  
                                         <th>#</th>
                                         <th>Profile</th>
                                         <th>Name</th>
                                         <th>Roll</th>
                                         <th>Class</th>
                                         <th>Section</th>
-                                        <th>Category</th>
+                                        <!-- <th>Category</th> -->
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

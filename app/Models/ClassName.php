@@ -1,5 +1,4 @@
-<?php
- 
+<?php 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +10,10 @@ class ClassName extends Model
     protected $table = "class_names";
     protected $primaryKey = "class_id";
     protected $fillable = ["class_name","status"];
+
+    public function Student(){
+      return $this->hasMany('App\Models\Student','class_name');
+    }
 
     public function scopeSearch($query, $search)
   	{

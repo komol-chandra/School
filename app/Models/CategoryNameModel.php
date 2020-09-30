@@ -12,4 +12,8 @@ class CategoryNameModel extends Model
     protected $table = "category_names";
     protected $primaryKey = "category_id";
     protected $fillable = ["category_name"];
+    
+    public function Student(){
+      return $this->hasMany('App\Models\Student','category_name');
+    }
 }

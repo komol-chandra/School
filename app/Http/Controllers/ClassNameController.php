@@ -11,7 +11,7 @@ class ClassNameController extends Controller
 {
     public function index()
     {
-
+        // dd(ClassName::with('Student')->get()->toArray());
         return view("Backend.Class.class");
     }
     public function create(Request $request)

@@ -1,8 +1,8 @@
-@extends('Backend.layouts.app') 
+@extends('Backend.layouts.app')   
 @section('title', 'Edit Student')
 @section('head', 'Edit Student')
 @section('content')
-<form action="{{route('student.update',$student->student_id)}}"  method="post" enctype="multipart/form-data">@csrf
+<form action=""  method="post" enctype="multipart/form-data">@csrf
     <div class="row">
         <div class="col-md-6">
             <div class="card">
@@ -21,13 +21,14 @@
                                 <input value="{{old('student_roll_number') ? old('student_roll_number') :$student->student_roll_number}}" type="text" name="student_roll_number" class="form-control" id="student_roll_number">
                             </div>
                         </div>
+                        
                         <div class="form-group row">
                             <label for="class_name" class="col-sm-3 text-right control-label col-form-label">Class <span style="color:red;">*</span></label>
                             <div class="col-sm-9">
                                 <select name="class_name" class="select2 form-control custom-select" id="class_name">
                                     <option disabled selected hidden>Select</option>
-                                    @foreach($className as $className)
-                                    <option value="{{$className->class_id}}">{{$className->class_name}}</option>
+                                    @foreach($className as $value)
+                                    <option value="{{$value->class_id}}" {{$student->className->class_id == $value->class_id ? 'selected' : ""}}>{{$value->class_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -78,11 +79,11 @@
                             <label class="col-sm-3 text-right">Gender<span style="color:red;">*</span></label>
                             <div class="col-sm-9">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="one" {{$student->gender_name=='1' ? 'chacked' : ''}} value="1" name="gender_name" required>
+                                    <input type="radio" class="custom-control-input" id="one" {{$student->gender_name=='1' ? 'checked' : ''}} value="1" name="gender_name" required>
                                     <label class="custom-control-label" for="one">Male</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="two" {{$student->gender_name=='2' ? 'chacked' : ''}} value="2" name="gender_name" required="">
+                                    <input type="radio" class="custom-control-input" id="two" {{$student->gender_name=='2' ? 'checked' : ''}} value="2" name="gender_name" required="">
                                     <label class="custom-control-label" for="two">Female</label>
                                 </div>
                                 <div class="custom-control custom-radio">
