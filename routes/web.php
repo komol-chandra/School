@@ -1,4 +1,5 @@
 <?php  
+
 use Illuminate\Support\Facades\Route;
  
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
@@ -27,7 +28,9 @@ Route::prefix('admin')->group(function () {
     Route::resource('/subject', 'SubjectModelController');
     Route::resource('/department', 'DepartmentController');
 
+    Route::resource('/classroom', 'ClassRoomController');
+
     //Teacher with out ajax
     Route::resource('/teacher','TeacherController');
     });
-}); 
+});

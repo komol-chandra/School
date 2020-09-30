@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubjectModel;
-use App\Models\ClassName;
+use App\Models\ClassRoom;
 use Illuminate\Http\Request;
-use App\Http\Requests\SubjectRequest;
-
-class SubjectModelController extends Controller
+use App\Http\Requests\ClassRoomRequest;
+class ClassRoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class SubjectModelController extends Controller
      */
     public function index()
     {
-        $class['data'] = ClassName::get();
-        return view("Backend.Subject.subject",$class);
+        return view("Backend.ClassRoom.classroom");
     }
 
     /**
@@ -27,12 +24,8 @@ class SubjectModelController extends Controller
      */
     public function create(Request $request)
     {
-
-        $page = $request->input('page', 1);
-        $data['sl'] = (($page - 1) * 10) + 1;
-        $data['search'] = $search = $request->search;
-        $data['data'] = SubjectModel::Search($request->search)->paginate(10);
-        return view('Backend.Subject.list', $data);
+        $data = ClassRoom::search($request->search)->orderBy('classroom_id','asc')->paginate(10);
+        return view('Backend.ClassRoom.list',['data' => $data]);
     }
 
     /**
@@ -41,13 +34,14 @@ class SubjectModelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SubjectRequest $request)
+    public function store(ClassRoomRequest $request)
     {
-        $subject_model = new SubjectModel;
-        $subject_model->fill($request->all())->save();
+
+        $classroom_model = new ClassRoom;
+        $classroom_model->fill($request->all())->save();
         $response = [
             "status" => 200,
-            "data" => $subject_model
+            "data" => $classroom_model
         ];
         return response()->json($response, 200);
     }
@@ -55,10 +49,10 @@ class SubjectModelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
-    public function show(SubjectModel $subjectModel)
+    public function show(ClassRoom $classRoom)
     {
         //
     }
@@ -66,30 +60,29 @@ class SubjectModelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $class['data'] = ClassName::get();
-        $subject_edit = SubjectModel::findOrFail($id);
-        return response()->json($subject_edit, 201);
+        $classroom_edit = ClassRoom::findOrFail($id);
+        return response()->json($classroom_edit, 201);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
-    public function update(SubjectRequest $request, $id)
+    public function update(ClassRoomRequest $request, $id)
     {
-        $subject_model = SubjectModel::findOrFail($id);
-        $subject_model->fill($request->all())->save();
+        $classroom_model = ClassRoom::findOrFail($id);
+        $classroom_model->fill($request->all())->save();
         $response = [
             "status" => 200,
-            "data" => $subject_model
+            "data" => $classroom_model
         ];
         return response()->json($response, 200);
     }
@@ -97,12 +90,12 @@ class SubjectModelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        SubjectModel::findOrFail($id)->delete();
+        ClassRoom::findOrFail($id)->delete();
         return response()->json(null, 200);
     }
 }

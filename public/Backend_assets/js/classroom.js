@@ -1,24 +1,23 @@
 $(document).ready(function() {
-    $(document).on("submit", "#subject_save", function(e) {
+    $(document).on("submit", "#classroom_save", function(e) {
         e.preventDefault();
         let data = $(this).serializeArray();
         $.each(data, function(i, message) {
             $("#" + message.name + "_error").html((message = ""));
         });
         $.ajax({
-            url: "/admin/subject/",
+            url: "/admin/classroom/",
             data: data,
             type: "POST",
             dataType: "json",
             success: function(response) {
                 console.log(response);
-                toastr.success("Subject added successfully", "Success!");
+                toastr.success("Class Room added successfully", "Success!");
                 $("#addModal").modal("hide");
                 loaddata();
-                $("#subject_save").trigger("reset");
+                $("#classroom_save").trigger("reset");
             },
             error: function(error) {
-                toastr.warning("Validation Required", "Warning!");
                 $.each(error.responseJSON.errors, function(i, message) {
                     $("#" + i + "_error").html(message[0]);
                 });
@@ -30,38 +29,36 @@ $(document).ready(function() {
         var data = $(this).attr("data");
 
         $.ajax({
-            url: "/admin/subject" + "/" + data + "/edit",
+            url: "/admin/classroom" + "/" + data + "/edit",
             type: "get",
             dataType: "json",
             success: function(response) {
-                $("#edit_class_name").val(response.class_name);
-                $("#edit_subject_name").val(response.subject_name);
-                $("#edit_subject_id").val(response.subject_id);
+                $("#edit_classroom_name").val(response.classroom_name);
+                $("#edit_classroom_id").val(response.classroom_id);
             }
         });
     });
 
-    $(document).on("submit", "#subject_update", function(e) {
+    $(document).on("submit", "#classroom_update", function(e) {
         e.preventDefault();
-        var id = $("#edit_subject_id").val();
+        var id = $("#edit_classroom_id").val();
         console.log(id);
         let data = $(this).serializeArray();
         $.each(data, function(i, message) {
             $("#" + message.name + "_edit").html((message = ""));
         });
         $.ajax({
-            url: "/admin/subject/" + id,
+            url: "/admin/classroom/" + id,
             data: data,
             type: "PUT",
             dataType: "json",
             success: function(response) {
                 console.log(response);
                 toastr.success("Subject Updated successfully", "Success!");
-                $("#edit_subject").modal("hide");
+                $("#edit_classroom").modal("hide");
                 loaddata();
             },
             error: function(error) {
-                toastr.warning("Validation Required", "Warning!");
                 $.each(error.responseJSON.errors, function(i, message) {
                     $("#" + i + "_edit").html(message[0]);
                 });
@@ -82,7 +79,7 @@ $(document).ready(function() {
         }).then(willDelete => {
             if (willDelete) {
                 $.ajax({
-                    url: `/admin/subject/${data}`,
+                    url: `/admin/classroom/${data}`,
                     type: "delete",
                     data: { _token: csrf },
                     dataType: "json",
@@ -109,8 +106,9 @@ $(document).ready(function() {
 
     loaddata();
 });
-function loaddata(pagelink = "/admin/subject/create") {
+function loaddata(pagelink = "/admin/classroom/create") {
     var search = $(".search").val();
+    console.log(search);
 
     $.ajax({
         url: pagelink,
