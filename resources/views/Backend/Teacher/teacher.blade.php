@@ -2,6 +2,7 @@
 @section('title', ' Teacher')
 @section('head', 'Teacher')
 @section('head_name', 'Teacher')
+
 @section('content')
 <div class="row">
     <a class="btn btn-default mb-3" href="{{url('/admin/teacher/create')}}">add new</a>
@@ -32,34 +33,46 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div id="data_lists">
-                            <table class="table table-striped table-bordered no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
-                                <thead>
-                                    <tr> 
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
+                            <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+                <th>Extn.</th>
+                <th>E-mail</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger</td>
+                <td>Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+                <td>5421</td>
+                <td>t.nixon@datatables.net</td>
+            </tr>
+            <tr>
+                <td>Garrett</td>
+                <td>Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+                <td>8422</td>
+                <td>g.winters@datatables.net</td>
+            </tr>
+            
+        </tbody>
+    </table>
                         </div>
                     </div>
                 </div>
@@ -67,6 +80,7 @@
         </div>
     </div>
 </div>
+
 @endsection
 @section('js')
 <script src="{{asset('Backend_assets/js/teacher.js')}}"></script>

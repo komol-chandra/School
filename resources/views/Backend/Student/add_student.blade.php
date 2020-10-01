@@ -24,7 +24,7 @@
                         <div class="form-group row">
                             <label for="class_name" class="col-sm-3 text-right control-label col-form-label">Class <span style="color:red;">*</span></label>
                             <div class="col-md-9">
-                                <select name="class_name" class="select2 form-control custom-select" id="class_name">
+                                <select name="class_name" class="select2 form-control custom-select" id="class_name" onchange="getSection()" >
                                     <option disabled selected hidden>Select</option>
                                     @foreach($className as $className)
                                     <option value="{{$className->class_id}}">{{$className->class_name}}</option>
@@ -38,9 +38,7 @@
                             <div class="col-md-9">
                                 <select name="section_name" id="section_name" class="select2 form-control custom-select">
                                     <option value="" selected disabled hidden>Select</option>
-                                    @foreach($sectionName as $sectionName)
-                                    <option value="{{$sectionName->section_id}}">{{$sectionName->section_name}}</option>
-                                    @endforeach
+
                                 </select>
                             </div>
                         </div>
@@ -93,7 +91,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="blood_name" class="col-sm-3 text-right control-label col-form-label">Blood Group</label>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <select name="blood_name" id="blood_name" class="select2 form-control custom-select">
                                     <option selected disabled hidden>Select</option>
                                     @foreach($blood as $blood)
@@ -104,7 +102,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="category_name" class="col-sm-3 text-right control-label col-form-label">Category</label>
-                            <div class="col-md-9">
+                            <div class="col-sm-9">
                                 <select name="category_name" id="category_name" class="select2 form-control custom-select">
                                     <option selected disabled hidden>Select</option>
                                     @foreach($categoryName as $categoryName)
@@ -279,6 +277,7 @@
 @endsection
 @section('js')
 <script type="text/javascript">
+
     $("#email").click(function() {
         $("#email").prop("readonly", true);
     });
@@ -307,6 +306,24 @@
             };
             reader.readAsDataURL(input.files[0]);
         }
+    }
+    function getSection(){
+        let data = $('#class_name').val();
+        $.ajax({
+            url:`/admin/student/sectionData/${data}`,
+            type:`get`,
+            dataType:`json`,
+            success:function(response){
+                $('.sectionOpt').remove();
+                response.forEach(function(value,index){
+                    
+                    $('#section_name').append(`
+                        <option class="sectionOpt"  value="${value.section_id}" >${value.section_name}</option>
+                        `);
+                })
+            },
+
+        })
     }
 </script>
 <script src="{{asset('Backend_assets/js/student.js')}}"></script>

@@ -1,4 +1,4 @@
-@extends('Backend.layouts.app')
+@extends('Backend.layouts.app')  
 @section('title', ' Teacher')
 @section('head', 'Teacher')
 @section('content')

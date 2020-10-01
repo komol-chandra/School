@@ -12,6 +12,10 @@ class SectionName extends Model
     protected $primaryKey = "section_id";
     protected $fillable = ["class_name","section_name","status"];
 
+    public function Student(){
+      return $this->hasMany('App\Models\Student','section_name');
+    }
+
     public function scopeSearch($query, $search)
   	{
       	return $query->where('section_name', 'LIKE', '%' . $search . '%');
