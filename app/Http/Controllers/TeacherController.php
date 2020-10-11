@@ -112,7 +112,7 @@ class TeacherController extends Controller
             $teacher->teacher_image=$this->ImageVerifyUpload($request,'teacher_image','Backend_assets/Files/Teacher','teacher_image');
         }
         
-        $teacher->save();
+        $teacher->save();  
         return redirect()->route('teacher.edit',$id)->with('msg','Data Successfully Updated');
     }
     public function destroy($id)
