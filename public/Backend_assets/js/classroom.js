@@ -39,6 +39,30 @@ $(document).ready(function() {
         });
     });
 
+    $("#data_lists").on("click", "#classroom_status", function() {
+        var data = $(this).attr("data");
+        console.log(data);
+        $.ajax({
+            url: "/admin/classroom/" + data,
+            type: "get",
+            dataType: "json",
+            success: function(response) {
+                loaddata();
+                if (response.classroom_status == 0) {
+                    toastr.success(
+                        "Class Room Status Change into Inactive",
+                        "Success!"
+                    );
+                } else {
+                    toastr.success(
+                        "Class Room Status Change into Active",
+                        "Success!"
+                    );
+                }
+            }
+        });
+    });
+
     $(document).on("submit", "#classroom_update", function(e) {
         e.preventDefault();
         var id = $("#edit_classroom_id").val();

@@ -20,6 +20,12 @@ class DatabaseSeeder extends Seeder
             BloodSeeder::class,
             CategorySeeder::class,
             TeacherDesignationSeeder::class,
+            ClassRoomSeeder::class,
+            DaysSeeder::class,
+            StartingHourSeeder::class,
+            StartingMinuteSeeder::class,
+            EndingHourSeeder::class,
+            EndingMinuteSeeder::class,
         ]);
     }
 }

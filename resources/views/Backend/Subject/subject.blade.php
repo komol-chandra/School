@@ -10,7 +10,7 @@
         <h5 class="card-title">Basic Datatable</h5>
         <div class="table-responsive">
             <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <div class="dataTables_length" id="zero_config_length">
                             <label>Show <select id="perPage" name="zero_config_length" aria-controls="zero_config" class="form-control form-control-sm">
@@ -27,12 +27,42 @@
                             </label>
                         </div>
                     </div>
+                </div> --}}
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="row mt-3">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-4">
+                                    <select name="class_id" id="filter_class" class="form-control select2" data-toggle = "select2" required onchange="loaddata()">
+                                        <option value >Select Class</option>
+                                        @foreach($data as $value)
+                                            <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- <div class="col-md-2">
+                                    <button class="btn btn-block btn-secondary" onclick="loaddata()" >Filter</button>
+                                </div> --}}
+                            </div>
+                            <div class="card-body subject_content">
+                                  <div class="empty_box">
+                                    <img class="mb-1-center" width="120px" src="http://ekattor-school-erp.com/demo/v7/assets/backend/images/empty_box.png" />
+                                    <br>
+                                    <span class="">No Data Found</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-12">
                         <div id="data_lists"></div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -123,7 +153,7 @@
             </div>
         </div>
     </div>
-    </form>
+</form>
 {{--Edit Modal--}}
 @endsection
 @section('js')

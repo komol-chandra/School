@@ -1,12 +1,11 @@
 $(document).ready(function() {
-    $(document).on("submit", "#subject_save", function(e) {
+    $(document).on("submit", "#class_routine_save", function(e) {
         e.preventDefault();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_error").html((message = ""));
-        });
+        console.log(data);
+
         $.ajax({
-            url: "/admin/subject/",
+            url: "/admin/class_routine/",
             data: data,
             type: "POST",
             dataType: "json",
@@ -15,13 +14,10 @@ $(document).ready(function() {
                 toastr.success("Subject added successfully", "Success!");
                 $("#addModal").modal("hide");
                 loaddata();
-                $("#subject_save").trigger("reset");
+                $("#class_routine_save").trigger("reset");
             },
             error: function(error) {
-                toastr.warning("Validation Required", "Warning!");
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_error").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
@@ -30,41 +26,44 @@ $(document).ready(function() {
         var data = $(this).attr("data");
 
         $.ajax({
-            url: "/admin/subject" + "/" + data + "/edit",
+            url: "/admin/class_routine" + "/" + data + "/edit",
             type: "get",
             dataType: "json",
             success: function(response) {
+                console.log(response);
                 $("#edit_class_name").val(response.class_name);
+                $("#edit_section_name").val(response.section_name);
                 $("#edit_subject_name").val(response.subject_name);
-                $("#edit_subject_id").val(response.subject_id);
+                $("#edit_teacher_name").val(response.teacher_name);
+                $("#edit_class_room").val(response.classroom_name);
+                $("#edit_day_name").val(response.day_name);
+                $("#edit_start_hour").val(response.sh_hour);
+                $("#edit_start_minute").val(response.sm_minute);
+                $("#edit_end_hour").val(response.en_hour);
+                $("#edit_end_minute").val(response.em_minute);
+                $("#edit_routine_id").val(response.routine_id);
             }
         });
     });
 
-    $(document).on("submit", "#subject_update", function(e) {
+    $(document).on("submit", "#class_routine_update", function(e) {
         e.preventDefault();
-        var id = $("#edit_subject_id").val();
-        console.log(id);
+        var id = $("#edit_routine_id").val();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_edit").html((message = ""));
-        });
+        console.log(data);
         $.ajax({
-            url: "/admin/subject/" + id,
+            url: "/admin/class_routine/" + id,
             data: data,
             type: "PUT",
             dataType: "json",
             success: function(response) {
                 console.log(response);
                 toastr.success("Subject Updated successfully", "Success!");
-                $("#edit_subject").modal("hide");
+                $("#edit_class_routine").modal("hide");
                 loaddata();
             },
             error: function(error) {
-                toastr.warning("Validation Required", "Warning!");
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_edit").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
@@ -82,7 +81,7 @@ $(document).ready(function() {
         }).then(willDelete => {
             if (willDelete) {
                 $.ajax({
-                    url: `/admin/subject/${data}`,
+                    url: `/admin/class_routine/${data}`,
                     type: "delete",
                     data: { _token: csrf },
                     dataType: "json",
@@ -99,14 +98,14 @@ $(document).ready(function() {
 
     loaddata();
 });
-
 function loaddata() {
-    let filterClass = $("#filter_class").val();
+    let className = $("#filter_class").val();
+    let sectionName = $("#filter_section").val();
 
-    let page_link = `/student/create?filterClass=${
-        filterClass ? filterClass : ""
-    }`;
-    console.log("pageLink", page_link);
+    let page_link = `/admin/class_routine/create?className=${
+        className ? className : ""
+    }&sectionName=${sectionName ? sectionName : ""}`;
+
     $.ajax({
         url: page_link,
         type: "get",

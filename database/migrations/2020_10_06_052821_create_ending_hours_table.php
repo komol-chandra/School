@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassRoomsTable extends Migration
+class CreateEndingHoursTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateClassRoomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_room', function (Blueprint $table) {
-            $table->bigIncrements('classroom_id');
-            $table->string('classroom_name');
-            $table->boolean('classroom_status')->default(1);
+        Schema::create('ending_hours', function (Blueprint $table) {
+            $table->bigIncrements('en_id');
+            $table->string('en_hour');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('updated_by')->nullable();
@@ -32,6 +31,6 @@ class CreateClassRoomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('class_room');
+        Schema::dropIfExists('ending_hours');
     }
 }
