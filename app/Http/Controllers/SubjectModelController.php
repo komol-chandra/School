@@ -27,14 +27,14 @@ class SubjectModelController extends Controller
      */
     public function create(Request $request)
     {
-
-        $page = $request->input('page', 1);
-        $data['sl'] = (($page - 1) * 10) + 1;
-        $data['search'] = $search = $request->search;
-        $data['data'] = SubjectModel::Search($request->search)->paginate(10);
-        return view('Backend.Subject.list', $data);
+        $data['data'] = SubjectModel::where(function($query) use($request){
+            if ($request->class) {
+                $query->where('class_name', $request->class);
+            }
+        })->get();
+        $data['className'] =ClassName::get();
+        return view('Backend.Subject.list',$data);
     }
-
     /**
      * Store a newly created resource in storage.
      *
