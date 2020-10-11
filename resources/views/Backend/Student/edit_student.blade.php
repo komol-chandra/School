@@ -2,7 +2,16 @@
 @section('title', 'Edit Student')
 @section('head', 'Edit Student')
 @section('content')
-<form action=""  method="post" enctype="multipart/form-data">@csrf
+<form action="{{route('student.update',$student->student_id)}}"  method="post" enctype="multipart/form-data">@csrf
+    @method("PUT")
+    @if(session('msg'))
+    <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
+        {{(session('msg'))}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>   
+    @endif
     <div class="row">
         <div class="col-md-6">
             <div class="card">
@@ -92,13 +101,15 @@
                                 </div>
                             </div>
                         </div>
+                        
+
                         <div class="form-group row">
                             <label for="blood_name" class="col-sm-3 text-right control-label col-form-label">Blood Group</label>
                             <div class="col-sm-9">
                                 <select name="blood_name" id="blood_name" class="select2 form-control custom-select">
                                     <option selected disabled hidden>Select</option>
-                                    @foreach($blood as $blood)
-                                    <option value="{{$blood->blood_id}}">{{$blood->blood_name}}</option>
+                                    @foreach($blood as $value)
+                                    <option value="{{$value->blood_id}}" {{$student->bloodName->blood_id == $value->blood_id ? 'selected' : ""}}>{{$value->blood_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -108,8 +119,8 @@
                             <div class="col-sm-9">
                                 <select name="category_name" id="category_name" class="select2 form-control custom-select">
                                     <option selected disabled hidden>Select</option>
-                                    @foreach($categoryName as $categoryName)
-                                    <option value="{{$categoryName->category_id}}">{{$categoryName->category_name}}</option>
+                                    @foreach($categoryName as $value)
+                                    <option value="{{$value->category_id}}" {{$student->catagoryName->category_id == $value->category_id ? 'selected' : ''}}>{{$value->category_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -147,13 +158,13 @@
                         <div class="form-group row">
                             <label for="student_current_address" class="col-sm-3 text-right control-label col-form-label">Current Address</label>
                             <div class="col-sm-9">
-                                <textarea value="{{old('student_current_address') ? old('student_current_address') : $student->student_current_address}}" class="form-control" name="student_current_address" id="student_current_address " rows="5" name="address" placeholder="address"></textarea>
+                                <textarea value="{{old('student_current_address') ? old('student_current_address') : $student->student_current_address}}" class="form-control" name="student_current_address" id="student_current_address " rows="5" name="address"></textarea>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="student_permanent_address" class="col-sm-3 text-right control-label col-form-label">Permanent Address</label>
                             <div class="col-sm-9">
-                                <textarea value="{{old('student_permanent_address') ? old('student_permanent_address') : $student->student_permanent_address}}" class="form-control" name="student_permanent_address" id="student_permanent_address " rows="5" name="address" placeholder="address"></textarea>
+                                <textarea value="{{old('student_permanent_address') ? old('student_permanent_address') : $student->student_permanent_address}}" class="form-control" name="student_permanent_address" id="student_permanent_address " rows="5" name="address" ></textarea>
                             </div>
                         </div>
                     </div>
@@ -213,8 +224,7 @@
                         <label for="student_guardian_idcard" class="col-sm-3 text-right control-label col-form-label">Id Card or Birth Certificate</label>
                         <div class="col-sm-9">
                             <br>
-                            <input type='file' id="student_guardian_idcard" name="student_guardian_idcard" onchange="readURL(this);" />
-                            <span class="text-danger" id="image"></span>
+                            <input type='file' id="student_guardian_idcard" name="student_guardian_idcard"  />                        
                         </div>
                     </div>
 

@@ -20,6 +20,10 @@ class Student extends Model
     {
         return $this->belongsTo("App\Models\SectionName", "section_name");
     }
+    public function bloodName()
+    {
+        return $this->belongsTo("App\Models\BloodModel", "blood_name");
+    }
     public function catagoryName()
     {
         return $this->belongsTo("App\Models\CategoryNameModel", "category_name");

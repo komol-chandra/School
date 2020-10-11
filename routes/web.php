@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
 // })->name('dashboard');
+
 Route::get('/admin', 'MainController@index');
 Route::get('/', 'MainController@index');
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
-	//Class
+	//Class 
 	Route::resource('/class', 'ClassNameController');
 	Route::post('/class/store', 'ClassNameController@store');
     Route::get('/class/show/{id}', 'ClassNameController@show');
@@ -21,7 +22,6 @@ Route::prefix('admin')->group(function () {
     //Student Without ajax
     Route::resource('/student', 'StudentController');
     Route::get('/student/show/{id}', 'StudentController@show');
-    Route::post('/student/{id}', 'StudentController@update');
     Route::get('/student/guardian_list', 'StudentController@guardian_list');
     Route::get('/student/sectionData/{id}', 'StudentController@sectionData');
 
@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('/classroom', 'ClassRoomController');
 
     //Teacher with out ajax
-    Route::resource('/teacher','TeacherController');
+    Route::resource('teacher','TeacherController');
+    Route::get('/teacher/show/{id}','TeacherController@show');    
     });
 });

@@ -3,6 +3,14 @@
 @section('head', 'Teacher')
 @section('content')
 <form action="{{route('teacher.store')}}" id="teacher_form"  method="post" enctype="multipart/form-data">@csrf
+    @if(session('msg'))
+    <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
+        {{(session('msg'))}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>   
+    @endif
     <div class="row">
         <div class="col-md-12">
             <div class="card">

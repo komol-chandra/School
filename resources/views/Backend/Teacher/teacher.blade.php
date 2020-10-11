@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="row">
-    <a class="btn btn-default mb-3" href="{{url('/admin/teacher/create')}}">add new</a>
+    <a class="btn btn-default mb-3" href="{{route('teacher.create')}}">add new</a>
 </div>
 <div class="card">
     <div class="card-body">
@@ -33,46 +33,62 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div id="data_lists">
-                            <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-        <thead>
-            <tr>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
-                <th>Extn.</th>
-                <th>E-mail</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger</td>
-                <td>Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
-                <td>5421</td>
-                <td>t.nixon@datatables.net</td>
-            </tr>
-            <tr>
-                <td>Garrett</td>
-                <td>Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-                <td>8422</td>
-                <td>g.winters@datatables.net</td>
-            </tr>
-            
-        </tbody>
-    </table>
+                            <table id="example" class="table table-striped table-bordered dt-responsive nowrap text-sm" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Designation</th>
+                                        <th>Department</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($teacher as $key => $value)
+                                    <tr>
+                                        <td>{{$key+1}}</td>
+                                        <td>
+                                            <img src="/Backend_assets/Files/Teacher//{{$value->teacher_image}}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
+                                        </td>
+                                        <td>{{$value->teacher_name}}</td>
+                                        <td>{{$value->teacher_email}}</td>
+                                        <td>{{$value->Designation->teacher_designation_name}}</td>
+                                        <td>{{$value->Department->department_name}}</td>
+                                        <td>
+                                            @if($value->status==1)
+                                            <span class="text text-success">Active</span>
+                                            @else
+                                            <span class="text text-danger">Inactive</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($value->status==1)
+                                            <button class="btn btn-outline-success btn-sm status" id="status" data="{{$value->teacher_id}}"><i class="fas fa-sync"></i></button>
+                                            @else
+                                            <button class="btn btn-outline-info btn-sm status" id="status" data="{{$value->teacher_id}}"><i class="fas fa-sync"></i></button>
+                                            @endif
+                                            <button class="btn btn-outline-danger btn-sm" id="delete" data-csrf="{{csrf_token()}}" data="{{$value->teacher_id}}"><i class="fas fa-trash"></i></button>
+                                            <a type="button" href="{{route('teacher.edit',$value->teacher_id)}}" class="btn btn-outline-info btn-sm edit"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Designation</th>
+                                        <th>Department</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
                         </div>
                     </div>
                 </div>
