@@ -10,7 +10,7 @@ class ClassRoom extends Model
     use HasFactory;
     protected $table = "class_room";
     protected $primaryKey = "classroom_id";
-    protected $fillable = ["classroom_name"];
+    protected $fillable = ["classroom_name","classroom_status"];
 
     public static function boot()
     {
@@ -28,5 +28,10 @@ class ClassRoom extends Model
     public function scopeSearch($query, $search)
     {
         return $query->where('classroom_name', 'LIKE', '%' . $search . '%');
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('classroom_status', 1);
     }
 }

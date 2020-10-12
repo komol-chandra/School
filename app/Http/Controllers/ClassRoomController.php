@@ -52,9 +52,17 @@ class ClassRoomController extends Controller
      * @param  \App\Models\ClassRoom  $classRoom
      * @return \Illuminate\Http\Response
      */
-    public function show(ClassRoom $classRoom)
+    public function show($id)
     {
-        //
+        $class_room_status = ClassRoom::findOrFail($id);
+        if ($class_room_status->classroom_status == 1) {
+            $class_room_status->update(["classroom_status" => 0]);
+            $status = 201;
+        } else {
+            $class_room_status->update(["classroom_status" => 1]);
+            $status = 200;
+        }
+        return response()->json($class_room_status, $status);
     }
 
     /**
