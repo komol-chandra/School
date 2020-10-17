@@ -112,5 +112,29 @@
                 </li>
             </ul>
         </li>
+        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Office</span></a>
+            <ul aria-expanded="false" class="collapse  first-level">
+                <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Library</span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item">
+                            <a href="{{ url('/admin/library')}}" class="sidebar-link {{ (request()->is('admin/library')) ? 'active' : '' }}">
+                                <i class="mdi mdi-note-outline"></i>
+                                <span class="hide-menu">Book List</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Settings</span></a>
+            <ul aria-expanded="false" class="collapse  first-level">
+                <li class="sidebar-item">
+                    <a href="{{ url('/admin/settings')}}" class="sidebar-link {{ (request()->is('admin/settings')) ? 'active' : '' }}">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">System Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>

@@ -1,16 +1,17 @@
 @extends('Backend.layouts.app')
-@section('title', ' Subject')
-@section('head', 'Subject')
-@section('head_name', 'Subject')
+@section('title', 'Library')
+@section('head', 'Library')
+@section('head_name', 'Library')
 @section('content')
-
-<button type="button" class="btn btn-info margin-5 text-white" data-toggle="modal" data-target="#addModal">Add Subject     </button><br><br>
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Basic Datatable</h5>
+        <button type="button" class="btn btn-info margin-5 text-white"  style="float:right" data-toggle="modal" data-target="#addModal">Add Books</button>
+        <h5 class="card-title"  >Basic Datatable</h5>
+        <br>
         <div class="table-responsive">
             <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                {{-- <div class="row">
+
+                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <div class="dataTables_length" id="zero_config_length">
                             <label>Show <select id="perPage" name="zero_config_length" aria-controls="zero_config" class="form-control form-control-sm">
@@ -27,26 +28,34 @@
                             </label>
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="row mt-3">
-                                <div class="col-md-3"></div>
+                                <div class="col-md-1"></div>
                                 <div class="col-md-4">
                                     <select name="class_id" id="filter_class" class="form-control select2" data-toggle = "select2" required onchange="loaddata()">
-                                        <option value = "" >Select Class</option>
-                                        @foreach($data as $value)
+                                        <option value="" >Select Class</option>
+                                        @foreach($class as $value)
                                             <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- <div class="col-md-2">
+                                <div class="col-md-4">
+                                    <select name="section_id" id="filter_section" class="form-control select2" data-toggle = "select2" required onchange="loaddata()">
+                                        <option value="" >Select Class</option>
+                                        @foreach($section as $value)
+                                            <option value="{{$value->section_id}}" >{{$value->section_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
                                     <button class="btn btn-block btn-secondary" onclick="loaddata()" >Filter</button>
-                                </div> --}}
+                                </div>
                             </div>
-                            <div class="card-body subject_content">
+                            <div class="card-body data_lists">
                                   <div class="empty_box">
                                     <img class="mb-1-center" width="120px" src="http://ekattor-school-erp.com/demo/v7/assets/backend/images/empty_box.png" />
                                     <br>
@@ -55,7 +64,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="row">
                     <div class="col-sm-12">
@@ -73,76 +82,73 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add Info</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Class Routine</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-
-                <form id="subject_save" method="post">
+                <form id="library_save" method="post">
                     @csrf
                     <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Select Class</label>
+                        <label class="col-sm-3 text-right control-label col-form-label">Book Name</label>
                         <div class="col-md-9">
-                            <select name="class_name" id="class_name" class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                <option >Select Class</option>
-                                @foreach($data as $value)
-                                <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" name="book_name" value=""  class="form-control" id="book_name">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Subject Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="subject_name" class="form-control" id="subject_name" placeholder="Subject Name Here">
-                            <span class="help-block" id="subject_name_error" style="color:red;"></span>
+                        <label class="col-sm-3 text-right control-label col-form-label">Author</label>
+                        <div class="col-md-9">
+                            <input type="text" name="author_name" value=""  class="form-control" id="author_name">
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="reset" id="close" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-outline-primary">Save changes</button>
-                </div>
-            </form>
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Number Of Copy</label>
+                        <div class="col-md-9">
+                            <input type="text" name="copy_number" value=""  class="form-control" id="copy_number">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="reset" id="close" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-outline-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
 {{--Add Modal--}}
 {{--Edit Modal--}}
-
-<form method="PUT" id="subject_update">@csrf
-    <div class="modal fade" id="edit_subject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form method="PUT" id="library_update">@csrf
+    <div class="modal fade" id="edit_library" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Info</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Routine</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" name="subject_id" id="edit_subject_id">
+                    <input type="hidden" name="library_id" id="edit_library_id">
 
                     <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">Select Class</label>
+                        <label class="col-sm-3 text-right control-label col-form-label">Book Name</label>
                         <div class="col-md-9">
-                            <select name="class_name" id="edit_class_name" class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                <option >Select Class</option>
-                                @foreach($data as $value)
-                                <option value="{{$value->class_id}}">{{$value->class_name}}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" value="" name="book_name" class="form-control" id="edit_book_name">
                         </div>
                     </div>
-
                     <div class="form-group row">
-                        <label for="fname" class="col-sm-3 text-right control-label col-form-label" >Subject Name</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="subject_name" class="form-control" id="edit_subject_name">
-                            <span class="help-block" id="subject_name_edit" style="color:red;"></span>
+                        <label class="col-sm-3 text-right control-label col-form-label">Author</label>
+                        <div class="col-md-9">
+                            <input type="text" value="" name="author_name" class="form-control" id="edit_author_name">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 text-right control-label col-form-label">Number Of Copy</label>
+                        <div class="col-md-9">
+                            <input type="text" value="" name="copy_number" class="form-control" id="edit_copy_number">
                         </div>
                     </div>
                 </div>
@@ -157,5 +163,8 @@
 {{--Edit Modal--}}
 @endsection
 @section('js')
-<script src="{{asset('Backend_assets/js/subject.js')}}"></script>
+<script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+<script src="{{asset('Backend_assets/js/library.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\LibraryRequest', '#library_save'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\LibraryRequest', '#library_update'); !!}
 @endsection

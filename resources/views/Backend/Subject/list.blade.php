@@ -9,8 +9,8 @@
 
         </tr>
     </thead>
-    <tbody id="loaddata">
-        @foreach($data as $key => $value)
+    <tbody>
+        @foreach($subject as $key => $value)
         <tr>
             <td>{{$key+1}}</td>
             <td>{{$value->className->class_name}}</td>
@@ -35,6 +35,4 @@
         </tr>
     </tfoot>
 </table>
-<div class="row">
-    <div class="pagination dataTables_paginate  paging_simple_numbers" id=" zero_config_paginate">{{$data->links()}}</div>
-</div>
+

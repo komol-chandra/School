@@ -1,27 +1,23 @@
 $(document).ready(function() {
-    $(document).on("submit", "#subject_save", function(e) {
+    $(document).on("submit", "#library_save", function(e) {
         e.preventDefault();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_error").html((message = ""));
-        });
+        console.log(data);
+
         $.ajax({
-            url: "/admin/subject/",
+            url: "/admin/library/",
             data: data,
             type: "POST",
             dataType: "json",
             success: function(response) {
                 console.log(response);
-                toastr.success("Subject added successfully", "Success!");
+                toastr.success("Book added successfully", "Success!");
                 $("#addModal").modal("hide");
                 loaddata();
-                $("#subject_save").trigger("reset");
+                $("#library_save").trigger("reset");
             },
             error: function(error) {
-                toastr.warning("Validation Required", "Warning!");
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_error").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
@@ -30,41 +26,35 @@ $(document).ready(function() {
         var data = $(this).attr("data");
 
         $.ajax({
-            url: "/admin/subject" + "/" + data + "/edit",
+            url: "/admin/library" + "/" + data + "/edit",
             type: "get",
             dataType: "json",
             success: function(response) {
-                $("#edit_class_name").val(response.class_name);
-                $("#edit_subject_name").val(response.subject_name);
-                $("#edit_subject_id").val(response.subject_id);
+                $("#edit_book_name").val(response.book_name);
+                $("#edit_author_name").val(response.book_name);
+                $("#edit_copy_number").val(response.copy_number);
+                $("#edit_library_id").val(response.library_id);
             }
         });
     });
 
-    $(document).on("submit", "#subject_update", function(e) {
+    $(document).on("submit", "#library_update", function(e) {
         e.preventDefault();
-        var id = $("#edit_subject_id").val();
-        console.log(id);
+        var id = $("#edit_library_id").val();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_edit").html((message = ""));
-        });
         $.ajax({
-            url: "/admin/subject/" + id,
+            url: "/admin/library/" + id,
             data: data,
             type: "PUT",
             dataType: "json",
             success: function(response) {
                 console.log(response);
-                toastr.success("Subject Updated successfully", "Success!");
-                $("#edit_subject").modal("hide");
+                toastr.success("Book Updated successfully", "Success!");
+                $("#edit_library").modal("hide");
                 loaddata();
             },
             error: function(error) {
-                toastr.warning("Validation Required", "Warning!");
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_edit").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
@@ -82,7 +72,7 @@ $(document).ready(function() {
         }).then(willDelete => {
             if (willDelete) {
                 $.ajax({
-                    url: `/admin/subject/${data}`,
+                    url: `/admin/library/${data}`,
                     type: "delete",
                     data: { _token: csrf },
                     dataType: "json",
@@ -99,20 +89,16 @@ $(document).ready(function() {
 
     loaddata();
 });
-
-function loaddata() {
-    let filterClass = $("#filter_class").val();
-
-    let page_link = `/student/create?filterClass=${
-        filterClass ? filterClass : ""
-    }`;
+function loaddata(pagelink = "/admin/library/create") {
+    var search = $(".search").val();
 
     $.ajax({
-        url: page_link,
+        url: pagelink,
+        data: { search: search },
         type: "get",
-        datatype: "html",
-        success: function(response) {
-            $("#data_lists").html(response);
+        dataType: "html",
+        success: function(data) {
+            $("#data_lists").html(data);
         }
     });
 }
