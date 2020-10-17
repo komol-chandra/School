@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SubjectModel;
-use App\Models\ClassName;
+use App\Models\LibraryModel;
 use Illuminate\Http\Request;
-use App\Http\Requests\SubjectRequest;
+use App\Http\Requests\LibraryRequest;
 
-class SubjectModelController extends Controller
+class LibraryModelController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class SubjectModelController extends Controller
      */
     public function index()
     {
-        $class['data'] = ClassName::get();
-        return view("Backend.Subject.subject",$class);
+        return view('Backend.Library.library');
     }
 
     /**
@@ -27,26 +25,23 @@ class SubjectModelController extends Controller
      */
     public function create(Request $request)
     {
-        $data['subject'] = SubjectModel::where(function($query) use($request){
-            if ($request->class) {
-                $query->where('class_name', $request->class);
-            }
-        })->get();
-        return view('Backend.Subject.list',$data);
+        $data['library'] = LibraryModel::orderBy('library_id','asc')->paginate(10);
+        return view('Backend.Library.list',$data);
     }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SubjectRequest $request)
+    public function store(LibraryRequest $request)
     {
-        $subject_model = new SubjectModel;
-        $subject_model->fill($request->all())->save();
+        $library_model = new LibraryModel;
+        $library_model->fill($request->all())->save();
         $response = [
             "status" => 200,
-            "data" => $subject_model
+            "data" => $library_model
         ];
         return response()->json($response, 200);
     }
@@ -54,10 +49,10 @@ class SubjectModelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\LibraryModel  $libraryModel
      * @return \Illuminate\Http\Response
      */
-    public function show(SubjectModel $subjectModel)
+    public function show(LibraryModel $libraryModel)
     {
         //
     }
@@ -65,30 +60,29 @@ class SubjectModelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\LibraryModel  $libraryModel
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $class['data'] = ClassName::get();
-        $subject_edit = SubjectModel::findOrFail($id);
-        return response()->json($subject_edit, 201);
+        $library_edit = LibraryModel::findOrFail($id);
+        return response()->json($library_edit, 201);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\LibraryModel  $libraryModel
      * @return \Illuminate\Http\Response
      */
-    public function update(SubjectRequest $request, $id)
+    public function update(LibraryRequest $request, $id)
     {
-        $subject_model = SubjectModel::findOrFail($id);
-        $subject_model->fill($request->all())->save();
+        $library_update = LibraryModel::findOrFail($id);
+        $library_update->fill($request->all())->save();
         $response = [
             "status" => 200,
-            "data" => $subject_model
+            "data" => $library_update
         ];
         return response()->json($response, 200);
     }
@@ -96,12 +90,12 @@ class SubjectModelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SubjectModel  $subjectModel
+     * @param  \App\Models\LibraryModel  $libraryModel
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        SubjectModel::findOrFail($id)->delete();
+        LibraryModel::findOrFail($id)->delete();
         return response()->json(null, 200);
     }
 }

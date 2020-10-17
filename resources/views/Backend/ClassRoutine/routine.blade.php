@@ -7,6 +7,7 @@
     <div class="card-body">
         <button type="button" class="btn btn-info margin-5 text-white"  style="float:right" data-toggle="modal" data-target="#addModal">Add Class Routine</button>
         <h5 class="card-title"  >Basic Datatable</h5>
+        <br>
         <div class="table-responsive">
             <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                 {{-- <div class="row">

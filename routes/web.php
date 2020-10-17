@@ -25,9 +25,9 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/subject', 'SubjectModelController');
     Route::resource('/department', 'DepartmentController');
-
     Route::resource('/classroom', 'ClassRoomController');
-
+    Route::resource('/settings', 'AppSettingsController');
+    Route::resource('/library', 'LibraryModelController');
     Route::resource('/class_routine', 'ClassRoutineController');
 
     //Teacher with out ajax
