@@ -115,7 +115,7 @@
         <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Office</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
                 <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Library</span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
+                    <ul aria-expanded="false" class="collapse">
                         <li class="sidebar-item">
                             <a href="{{ url('/admin/library')}}" class="sidebar-link {{ (request()->is('admin/library')) ? 'active' : '' }}">
                                 <i class="mdi mdi-note-outline"></i>
@@ -123,6 +123,24 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ url('/admin/session/')}}" class="sidebar-link  {{ (request()->is('admin/session')) ? 'active' : '' }}">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Session Manager</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="" class="sidebar-link  {{ (request()->is('admin/library')) ? 'active' : '' }}">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Addon Manager</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="" class="sidebar-link  {{ (request()->is('admin/library')) ? 'active' : '' }}">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Noticeboard</span>
+                    </a>
                 </li>
             </ul>
         </li>
