@@ -29,7 +29,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('/settings', 'AppSettingsController');
     Route::resource('/library', 'LibraryModelController');
     Route::resource('/class_routine', 'ClassRoutineController');
-
+    Route::resource('/session', 'SessionManagerController');
     //Teacher with out ajax
     Route::resource('/teacher','TeacherController');
     });

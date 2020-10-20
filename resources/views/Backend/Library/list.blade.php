@@ -4,6 +4,7 @@
             <th>Book Name</th>
             <th>Author</th>
             <th>Copies</th>
+            <th>Available Copies</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -12,6 +13,7 @@
         <tr>
             <td>{{$value->book_name}}</td>
             <td>{{$value->author_name}}</td>
+            <td>{{$value->copy_number}}</td>
             <td>{{$value->copy_number}}</td>
             <td>
                 <button type="button" class="btn btn-outline-danger btn-sm delete" data-csrf="{{csrf_token()}}" data="{{$value->library_id}}">
