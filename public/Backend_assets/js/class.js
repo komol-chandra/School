@@ -2,7 +2,7 @@ $(document).ready(function() {
     datalist();
     $(document).on("submit", "#class_form", function(e) {
         e.preventDefault();
-        var data = $(this).serializeArray();
+        let data = $(this).serializeArray();
         console.log(data);
         $.ajax({
             data: data,
@@ -14,7 +14,7 @@ $(document).ready(function() {
                 toastr.success("Data added successfully", "Success!");
                 $("#close").click();
                 $("#class_form").trigger("reset");
-            },
+            }, 
             error: function(error) {
                 console.log(error);
             }
@@ -82,7 +82,7 @@ $(document).ready(function() {
 
     $(document).on("submit", "#class_update", function(e) {
         e.preventDefault();
-        var id = $("#edit_class_id").val();
+        let id = $("#edit_class_id").val();
 
         let data = $(this).serializeArray();
         $.each(data, function(i, message) {

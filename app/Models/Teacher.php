@@ -11,5 +11,11 @@ class Teacher extends Model
     protected $table = "teachers";
     protected $primaryKey = "teacher_id";
     protected $fillable = ["teacher_name","teacher_email","teacher_password","teacher_designation_name","department_name","teacher_phone","gender_name","blood_name","teacher_facebook","teacher_twitter","teacher_linkedin","teacher_address","teacher_about","teacher_image","status"];
+    public function Designation(){
+    	return $this->belongsTo("App\Models\TeacherDesignationModel","teacher_designation_name");
+    }
+    public function Department(){
+    	return $this->belongsTo("App\Models\Department","department_name");
+    }
 
 }

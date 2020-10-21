@@ -6,6 +6,7 @@ use App\Models\CategoryNameModel;
 use App\Models\ClassName;
 use App\Models\SectionName;
 use App\Http\Requests\StudentRequest;
+use App\Http\Requests\StudentUpdateRequest;
 use App\Traits\FileVerifyUpload;
 
 use Illuminate\Http\Request;
@@ -76,29 +77,36 @@ class StudentController extends Controller
         $student_model->gender_name=$request->gender_name;
         $student_model->blood_name=$request->blood_name;
         $student_model->category_name=$request->category_name;
-        $student_model->religion_name=$request->religion_name;
+        $student_model->religion_name=$request->religion_name; 
         $student_model->student_phone=$request->student_phone;
         $student_model->student_email=$request->student_email;
         $student_model->student_height=$request->student_height;
         $student_model->student_weight=$request->student_weight;
         $student_model->student_current_address=$request->student_current_address;
         $student_model->student_permanent_address=$request->student_permanent_address;
-        $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','StudentProfile');
-        $student_model->student_birth_certificate=$this->ImageVerifyUpload($request,'student_birth_certificate','Backend_assets/Files/Student/student_birth_certificate/','student_birth_certificate');
-        $student_model->student_marksheet=$this->ImageVerifyUpload($request,'student_marksheet','Backend_assets/Files/Student/student_marksheet/','student_marksheet');
-        $student_model->student_testimonial=$this->ImageVerifyUpload($request,'student_testimonial','Backend_assets/Files/Student/student_testimonial/','student_testimonial');
-        $student_model->student_registration_card=$this->ImageVerifyUpload($request,'student_registration_card','Backend_assets/Files/Student/student_registration_card/','student_registration_card');
+        //Guardian
+
         $student_model->student_guardian_relation=$request->student_guardian_relation;
         $student_model->student_guardian_name=$request->student_guardian_name;
         $student_model->student_guardian_phone=$request->student_guardian_phone;
         $student_model->student_guardian_email=$request->student_guardian_email;
         $student_model->student_guardian_occupation=$request->student_guardian_occupation;
         $student_model->student_guardian_address=$request->student_guardian_address;
+        
+        //Student File
+        $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','StudentProfile');
+        $student_model->student_birth_certificate=$this->ImageVerifyUpload($request,'student_birth_certificate','Backend_assets/Files/Student/student_birth_certificate/','student_birth_certificate');
+        $student_model->student_marksheet=$this->ImageVerifyUpload($request,'student_marksheet','Backend_assets/Files/Student/student_marksheet/','student_marksheet');
+        $student_model->student_testimonial=$this->ImageVerifyUpload($request,'student_testimonial','Backend_assets/Files/Student/student_testimonial/','student_testimonial');
+        $student_model->student_registration_card=$this->ImageVerifyUpload($request,'student_registration_card','Backend_assets/Files/Student/student_registration_card/','student_registration_card');
+
+        //Guarian File
         $student_model->student_guardian_image=$this->ImageVerifyUpload($request,'student_guardian_image','Backend_assets/Files/Guardian/student_guardian_image/','student_guardian_image');
         $student_model->student_guardian_idcard=$this->ImageVerifyUpload($request,'student_guardian_idcard','Backend_assets/Files/Guardian/student_guardian_idcard/','student_guardian_idcard');
 
+
         $student_model->save();
-        return redirect('/admin/student/create')->with('status', 'Profile updated!');
+        return redirect()->route('student.create')->with('msg','Data Successfully Inserted');
     }
     public function show($id)
     {
@@ -125,16 +133,16 @@ class StudentController extends Controller
         // exit();
         return view('Backend.Student.edit_student',[
             "student"=>$student,
-
             "className"=>$className,
             "categoryName"=>$categoryName,
             "sectionName"=>$sectionName,
             "blood"=>$blood,
             ]);
     }
-    public function update(StudentRequest $request, $id)
+    public function update(StudentUpdateRequest $request, $id)
     {
-        $student_model=new Student();
+       dd($request->all());
+        $student_model=Student::findOrFail($id);
         $student_model->student_admission_number=$request->student_admission_number;
         $student_model->student_roll_number=$request->student_roll_number;
         $student_model->class_name=$request->class_name;
@@ -154,26 +162,44 @@ class StudentController extends Controller
         $student_model->student_weight=$request->student_weight;
         $student_model->student_current_address=$request->student_current_address;
         $student_model->student_permanent_address=$request->student_permanent_address;
-        $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','StudentProfile');
-        $student_model->student_birth_certificate=$this->ImageVerifyUpload($request,'student_birth_certificate','Backend_assets/Files/Student/student_birth_certificate/','student_birth_certificate');
-        $student_model->student_marksheet=$this->ImageVerifyUpload($request,'student_marksheet','Backend_assets/Files/Student/student_marksheet/','student_marksheet');
-        $student_model->student_testimonial=$this->ImageVerifyUpload($request,'student_testimonial','Backend_assets/Files/Student/student_testimonial/','student_testimonial');
-        $student_model->student_registration_card=$this->ImageVerifyUpload($request,'student_registration_card','Backend_assets/Files/Student/student_registration_card/','student_registration_card');
+        //Guardian
+
         $student_model->student_guardian_relation=$request->student_guardian_relation;
         $student_model->student_guardian_name=$request->student_guardian_name;
         $student_model->student_guardian_phone=$request->student_guardian_phone;
         $student_model->student_guardian_email=$request->student_guardian_email;
         $student_model->student_guardian_occupation=$request->student_guardian_occupation;
         $student_model->student_guardian_address=$request->student_guardian_address;
-        $student_model->student_guardian_image=$this->ImageVerifyUpload($request,'student_guardian_image','Backend_assets/Files/Guardian/student_guardian_image/','student_guardian_image');
+        
+        //Student File
+        $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','StudentProfile');
+        $student_model->student_birth_certificate=$this->ImageVerifyUpload($request,'student_birth_certificate','Backend_assets/Files/Student/student_birth_certificate/','student_birth_certificate');
+        $student_model->student_marksheet=$this->ImageVerifyUpload($request,'student_marksheet','Backend_assets/Files/Student/student_marksheet/','student_marksheet');
+        $student_model->student_testimonial=$this->ImageVerifyUpload($request,'student_testimonial','Backend_assets/Files/Student/student_testimonial/','student_testimonial');
+        $student_model->student_registration_card=$this->ImageVerifyUpload($request,'student_registration_card','Backend_assets/Files/Student/student_registration_card/','student_registration_card');
+
+        //Guarian File
+        $student_model->student_guardian_image=$this->ImageVerifyUpload($request,' student_guardian_image','Backend_assets/Files/Guardian/student_guardian_image/','student_guardian_image');
         $student_model->student_guardian_idcard=$this->ImageVerifyUpload($request,'student_guardian_idcard','Backend_assets/Files/Guardian/student_guardian_idcard/','student_guardian_idcard');
 
-        $student_model->where("student_id",$id)->update($student_model);
-        return redirect()->route('student.index')->with('status', 'Profile updated!');
+        $student_model->save();
+        return redirect()->route('student.edit',$id)->with('msg','Data Successfully Updated');
     }
     public function destroy($id)
     {
-        $stduent_delete = Student::findOrFail($id)->delete();
+
+        $stduent_delete = Student::findOrFail($id);
+        unlink(public_path('Backend_assets/Files/Student/student_image/').$stduent_delete['student_image']);
+        unlink(public_path('Backend_assets/Files/Student/student_birth_certificate/').$stduent_delete['student_birth_certificate']);
+        unlink(public_path('Backend_assets/Files/Student/student_marksheet/').$stduent_delete['student_marksheet']);
+        unlink(public_path('Backend_assets/Files/Student/student_testimonial/').$stduent_delete['student_testimonial']);
+        unlink(public_path('Backend_assets/Files/Student/student_registration_card/').$stduent_delete['student_registration_card']);
+
+
+        unlink(public_path('Backend_assets/Files/Guardian/student_guardian_image/').$stduent_delete['student_guardian_image']);
+        unlink(public_path('Backend_assets/Files/Guardian/student_guardian_idcard/').$stduent_delete['student_guardian_idcard']);
+        
+        $stduent_delete->delete();
         return response()->json(201);
     }
 }
