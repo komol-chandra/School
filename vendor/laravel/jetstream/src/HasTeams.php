@@ -24,12 +24,30 @@ trait HasTeams
     public function currentTeam()
     {
         if (is_null($this->current_team_id) && $this->id) {
-            $this->forceFill([
-                'current_team_id' => $this->personalTeam()->id,
-            ])->save();
+            $this->switchTeam($this->personalTeam());
         }
 
         return $this->belongsTo(Jetstream::teamModel(), 'current_team_id');
+    }
+
+    /**
+     * Switch the user's context to the given team.
+     *
+     * @return bool
+     */
+    public function switchTeam($team)
+    {
+        if (! $this->belongsToTeam($team)) {
+            return false;
+        }
+
+        $this->forceFill([
+            'current_team_id' => $team->id,
+        ])->save();
+
+        $this->setRelation('currentTeam', $team);
+
+        return true;
     }
 
     /**
@@ -43,7 +61,7 @@ trait HasTeams
     }
 
     /**
-     * Get all of the teams the user belongs to.
+     * Get all of the teams the user owns.
      */
     public function ownedTeams()
     {
@@ -55,10 +73,9 @@ trait HasTeams
      */
     public function teams()
     {
-        return $this->belongsToMany(Jetstream::teamModel())
+        return $this->belongsToMany(Jetstream::teamModel(), Jetstream::membershipModel())
                         ->withPivot('role')
                         ->withTimestamps()
-                        ->using(Jetstream::membershipModel())
                         ->as('membership');
     }
 
@@ -115,6 +132,24 @@ trait HasTeams
         return Jetstream::findRole($team->users->where(
             'id', $this->id
         )->first()->membership->role);
+    }
+
+    /**
+     * Determine if the user has the given role on the given team.
+     *
+     * @param  mixed  $team
+     * @param  string  $role
+     * @return bool
+     */
+    public function hasTeamRole($team, string $role)
+    {
+        if ($this->ownsTeam($team)) {
+            return true;
+        }
+
+        return $this->belongsToTeam($team) && optional(Jetstream::findRole($team->users->where(
+            'id', $this->id
+        )->first()->membership->role))->key === $role;
     }
 
     /**

@@ -24,6 +24,13 @@ class LivewireManager
         $this->componentAliases[$alias] = $viewClass;
     }
 
+    public function getAlias($class, $default = null)
+    {
+        $alias = array_search($class, $this->componentAliases);
+
+        return $alias === false ? $default : $alias;
+    }
+
     public function getClass($alias)
     {
         $finder = app(LivewireComponentsFinder::class);
@@ -157,6 +164,13 @@ class LivewireManager
     [wire\:dirty]:not(textarea):not(input):not(select) {
         display: none;
     }
+
+    input:-webkit-autofill, select:-webkit-autofill, textarea:-webkit-autofill {
+        animation-duration: 50000s;
+        animation-name: livewireautofill;
+    }
+
+    @keyframes livewireautofill { from {} }
 </style>
 HTML;
     }
@@ -177,7 +191,7 @@ HTML;
         $assetWarning = null;
 
         // Use static assets if they have been published
-        if (file_exists(public_path('vendor/livewire'))) {
+        if (file_exists(public_path('vendor/livewire/manifest.json'))) {
             $publishedManifest = json_decode(file_get_contents(public_path('vendor/livewire/manifest.json')), true);
             $versionedFileName = $publishedManifest['/livewire.js'];
 

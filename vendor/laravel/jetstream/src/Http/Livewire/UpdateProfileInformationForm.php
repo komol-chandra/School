@@ -62,6 +62,18 @@ class UpdateProfileInformationForm extends Component
     }
 
     /**
+     * Delete user's profile photo.
+     *
+     * @return void
+     */
+    public function deleteProfilePhoto()
+    {
+        Auth::user()->deleteProfilePhoto();
+
+        $this->emit('refresh-navigation-dropdown');
+    }
+
+    /**
      * Get the current user of the application.
      *
      * @return mixed

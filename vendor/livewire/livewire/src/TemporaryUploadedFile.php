@@ -63,16 +63,20 @@ class TemporaryUploadedFile extends UploadedFile
     public function temporaryUrl()
     {
         if (FileUploadConfiguration::isUsingS3() && ! app()->environment('testing')) {
-            return $this->storage->temporaryUrl($this->path, now()->addDay());
+            return $this->storage->temporaryUrl(
+                $this->path,
+                now()->addDay(),
+                ['ResponseContentDisposition' => 'filename="' . $this->getClientOriginalName() . '"']
+            );
         }
 
-        $supportedPreviewTypes = [
-            'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp',
-            'mp4', 'mov', 'avi', 'wmv',
-            'mp3', 'mpga', 'wav', 'm4a', 'wma',
-        ];
+        $supportedPreviewTypes = config('livewire.temporary_file_upload.preview_mimes', [
+            'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
+            'mov', 'avi', 'wmv', 'mp3', 'm4a',
+            'jpeg', 'mpga', 'webp', 'wma',
+        ]);
 
-        if (! in_array($this->guessExtension(), $supportedPreviewTypes)) {
+        if (! in_array($this->guessExtension(),  $supportedPreviewTypes)) {
             // This will throw an error because it's not used with S3.
             return $this->storage->temporaryUrl($this->path, now()->addDay());
         }
@@ -120,7 +124,7 @@ class TemporaryUploadedFile extends UploadedFile
     public static function generateHashNameWithOriginalNameEmbedded($file)
     {
         $hash = Str::random(30);
-        $meta = '-meta'.base64_encode($file->getClientOriginalName()).'-';
+        $meta = Str::of('-meta'.base64_encode($file->getClientOriginalName()).'-')->replace('/', '_');
         $extension = '.'.$file->guessExtension();
 
         return $hash.$meta.$extension;
@@ -128,7 +132,7 @@ class TemporaryUploadedFile extends UploadedFile
 
     public function extractOriginalNameFromFilePath($path)
     {
-        return base64_decode(head(explode('-', last(explode('-meta', $path)))));
+        return base64_decode(head(explode('-', last(explode('-meta', Str::of($path)->replace('_', '/'))))));
     }
 
     public static function createFromLivewire($filePath)

@@ -20,7 +20,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" v-show="! photoPreview">
-                    <img :src="$page.user.profile_photo_url" alt="Current Profile Photo" class="rounded-full h-20 w-20 object-cover">
+                    <img :src="user.profile_photo_url" alt="Current Profile Photo" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->
@@ -30,8 +30,12 @@
                     </span>
                 </div>
 
-                <jet-secondary-button class="mt-2" type="button" @click.native.prevent="selectNewPhoto">
+                <jet-secondary-button class="mt-2 mr-2" type="button" @click.native.prevent="selectNewPhoto">
                     Select A New Photo
+                </jet-secondary-button>
+
+                <jet-secondary-button type="button" class="mt-2" @click.native.prevent="deletePhoto" v-if="user.profile_photo_path">
+                    Remove Photo
                 </jet-secondary-button>
 
                 <jet-input-error :message="form.error('photo')" class="mt-2" />
@@ -65,13 +69,13 @@
 </template>
 
 <script>
-    import JetButton from './../../Jetstream/Button'
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetLabel from './../../Jetstream/Label'
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetSecondaryButton from './../../Jetstream/SecondaryButton'
+    import JetButton from '@/Jetstream/Button'
+    import JetFormSection from '@/Jetstream/FormSection'
+    import JetInput from '@/Jetstream/Input'
+    import JetInputError from '@/Jetstream/InputError'
+    import JetLabel from '@/Jetstream/Label'
+    import JetActionMessage from '@/Jetstream/ActionMessage'
+    import JetSecondaryButton from '@/Jetstream/SecondaryButton'
 
     export default {
         components: {
@@ -84,14 +88,14 @@
             JetSecondaryButton,
         },
 
-        props: ['name', 'email'],
+        props: ['user'],
 
         data() {
             return {
                 form: this.$inertia.form({
                     '_method': 'PUT',
-                    name: this.name,
-                    email: this.email,
+                    name: this.user.name,
+                    email: this.user.email,
                     photo: null,
                 }, {
                     bag: 'updateProfileInformation',
@@ -108,7 +112,7 @@
                     this.form.photo = this.$refs.photo.files[0]
                 }
 
-                this.form.post('/user/profile-information', {
+                this.form.post(route('user-profile-information.update'), {
                     preserveScroll: true
                 });
             },
@@ -125,7 +129,15 @@
                 };
 
                 reader.readAsDataURL(this.$refs.photo.files[0]);
-            }
+            },
+
+            deletePhoto() {
+                this.$inertia.delete(route('current-user-photo.destroy'), {
+                    preserveScroll: true,
+                }).then(() => {
+                    this.photoPreview = null
+                });
+            },
         },
     }
 </script>
