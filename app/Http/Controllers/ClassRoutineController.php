@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+   
 use App\Models\ClassRoutine;
 use App\Models\ClassName;
 use App\Models\SectionName;
