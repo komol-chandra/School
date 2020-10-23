@@ -50,12 +50,12 @@
 </template>
 
 <script>
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetButton from './../../Jetstream/Button'
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetLabel from './../../Jetstream/Label'
+    import JetActionMessage from '@/Jetstream/ActionMessage'
+    import JetButton from '@/Jetstream/Button'
+    import JetFormSection from '@/Jetstream/FormSection'
+    import JetInput from '@/Jetstream/Input'
+    import JetInputError from '@/Jetstream/InputError'
+    import JetLabel from '@/Jetstream/Label'
 
     export default {
         components: {
@@ -82,7 +82,7 @@
 
         methods: {
             updateTeamName() {
-                this.form.put('/teams/' + this.team.id, {
+                this.form.put(route('teams.update', this.team), {
                     preserveScroll: true
                 });
             },

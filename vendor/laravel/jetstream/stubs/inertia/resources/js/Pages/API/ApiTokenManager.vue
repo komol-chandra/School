@@ -163,18 +163,18 @@
 </template>
 
 <script>
-    import JetActionMessage from './../../Jetstream/ActionMessage'
-    import JetActionSection from './../../Jetstream/ActionSection'
-    import JetButton from './../../Jetstream/Button'
-    import JetConfirmationModal from './../../Jetstream/ConfirmationModal'
-    import JetDangerButton from './../../Jetstream/DangerButton'
-    import JetDialogModal from './../../Jetstream/DialogModal'
-    import JetFormSection from './../../Jetstream/FormSection'
-    import JetInput from './../../Jetstream/Input'
-    import JetInputError from './../../Jetstream/InputError'
-    import JetLabel from './../../Jetstream/Label'
-    import JetSecondaryButton from './../../Jetstream/SecondaryButton'
-    import JetSectionBorder from './../../Jetstream/SectionBorder'
+    import JetActionMessage from '@/Jetstream/ActionMessage'
+    import JetActionSection from '@/Jetstream/ActionSection'
+    import JetButton from '@/Jetstream/Button'
+    import JetConfirmationModal from '@/Jetstream/ConfirmationModal'
+    import JetDangerButton from '@/Jetstream/DangerButton'
+    import JetDialogModal from '@/Jetstream/DialogModal'
+    import JetFormSection from '@/Jetstream/FormSection'
+    import JetInput from '@/Jetstream/Input'
+    import JetInputError from '@/Jetstream/InputError'
+    import JetLabel from '@/Jetstream/Label'
+    import JetSecondaryButton from '@/Jetstream/SecondaryButton'
+    import JetSectionBorder from '@/Jetstream/SectionBorder'
 
     export default {
         components: {
@@ -225,7 +225,7 @@
 
         methods: {
             createApiToken() {
-                this.createApiTokenForm.post('/user/api-tokens', {
+                this.createApiTokenForm.post(route('api-tokens.store'), {
                     preserveScroll: true,
                 }).then(response => {
                     if (! this.createApiTokenForm.hasErrors()) {
@@ -241,7 +241,7 @@
             },
 
             updateApiToken() {
-                this.updateApiTokenForm.put('/user/api-tokens/' + this.managingPermissionsFor.id, {
+                this.updateApiTokenForm.put(route('api-tokens.update', this.managingPermissionsFor), {
                     preserveScroll: true,
                     preserveState: true,
                 }).then(response => {
@@ -254,7 +254,7 @@
             },
 
             deleteApiToken() {
-                this.deleteApiTokenForm.delete('/user/api-tokens/' + this.apiTokenBeingDeleted.id, {
+                this.deleteApiTokenForm.delete(route('api-tokens.destroy', this.apiTokenBeingDeleted), {
                     preserveScroll: true,
                     preserveState: true,
                 }).then(() => {

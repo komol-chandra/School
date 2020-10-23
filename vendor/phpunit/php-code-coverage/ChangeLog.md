@@ -2,6 +2,42 @@
 
 All notable changes are documented in this file using the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
 
+## [9.2.0] - 2020-10-02
+
+### Added
+
+* [#812](https://github.com/sebastianbergmann/php-code-coverage/pull/812): Support for Cobertura XML report format
+
+### Changed
+
+* Reduced the number of I/O operations performed by the static analysis cache
+
+## [9.1.11] - 2020-09-19
+
+### Fixed
+
+* [#811](https://github.com/sebastianbergmann/php-code-coverage/issues/811): `T_FN` constant is used on PHP 7.3 where it is not available
+
+## [9.1.10] - 2020-09-18
+
+### Added
+
+* `SebastianBergmann\CodeCoverage\Driver\Selector::forLineCoverage()` and `SebastianBergmann\CodeCoverage\Driver\Selector::forLineAndPathCoverage()` have been added
+
+### Fixed
+
+* [#810](https://github.com/sebastianbergmann/php-code-coverage/issues/810): `SebastianBergmann\CodeCoverage\Driver\Driver::forLineCoverage()` and `SebastianBergmann\CodeCoverage\Driver\Driver::forLineAndPathCoverage()` are marked as internal 
+
+### Removed
+
+* `SebastianBergmann\CodeCoverage\Driver\Driver::forLineCoverage()` and `SebastianBergmann\CodeCoverage\Driver\Driver::forLineAndPathCoverage()` are now deprecated
+
+## [9.1.9] - 2020-09-15
+
+### Fixed
+
+* [#808](https://github.com/sebastianbergmann/php-code-coverage/issues/808): `PHP Warning: Use of undefined constant T_MATCH`
+
 ## [9.1.8] - 2020-09-07
 
 ### Changed
@@ -252,6 +288,10 @@ All notable changes are documented in this file using the [Keep a CHANGELOG](htt
 * Class names are now abbreviated (unqualified name shown, fully qualified name shown on hover) in the file view of the HTML report
 * Update HTML report to Bootstrap 4
 
+[9.2.0]: https://github.com/sebastianbergmann/php-code-coverage/compare/9.1.11...9.2.0
+[9.1.11]: https://github.com/sebastianbergmann/php-code-coverage/compare/9.1.10...9.1.11
+[9.1.10]: https://github.com/sebastianbergmann/php-code-coverage/compare/9.1.9...9.1.10
+[9.1.9]: https://github.com/sebastianbergmann/php-code-coverage/compare/9.1.8...9.1.9
 [9.1.8]: https://github.com/sebastianbergmann/php-code-coverage/compare/9.1.7...9.1.8
 [9.1.7]: https://github.com/sebastianbergmann/php-code-coverage/compare/9.1.6...9.1.7
 [9.1.6]: https://github.com/sebastianbergmann/php-code-coverage/compare/9.1.5...9.1.6

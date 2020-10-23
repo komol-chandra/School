@@ -8,9 +8,7 @@
 
         <div>
             <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-                <update-profile-information-form
-                            :name="$page.user.name"
-                            :email="$page.user.email" />
+                <update-profile-information-form :user="$page.user" />
 
                 <jet-section-border />
 
@@ -35,9 +33,9 @@
 </template>
 
 <script>
-    import AppLayout from './../../Layouts/AppLayout'
+    import AppLayout from '@/Layouts/AppLayout'
     import DeleteUserForm from './DeleteUserForm'
-    import JetSectionBorder from './../../Jetstream/SectionBorder'
+    import JetSectionBorder from '@/Jetstream/SectionBorder'
     import LogoutOtherBrowserSessionsForm from './LogoutOtherBrowserSessionsForm'
     import TwoFactorAuthenticationForm from './TwoFactorAuthenticationForm'
     import UpdatePasswordForm from './UpdatePasswordForm'

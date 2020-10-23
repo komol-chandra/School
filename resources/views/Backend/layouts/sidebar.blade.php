@@ -74,7 +74,7 @@
 
             </ul>
         </li>
-        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fas fa-user"></i><span class="hide-menu">Student & Guardian</span></a>
+        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-graduation-cap"></i><span class="hide-menu">Student & Guardian</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
                 <li class="sidebar-item ">
                     <a href="{{ url('/admin/student')}}" class="sidebar-link">
@@ -112,9 +112,10 @@
                 </li>
             </ul>
         </li>
-        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Office</span></a>
+       
+        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class=" fas fa-x-ray"></i><span class="hide-menu">Office</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
-                <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Library</span></a>
+                <li class="sidebar-item " style="margin-left: 20px;"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-book"></i><span class="hide-menu">Library</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li class="sidebar-item">
                             <a href="{{ url('/admin/library')}}" class="sidebar-link {{ (request()->is('admin/library')) ? 'active' : '' }}">
@@ -130,7 +131,7 @@
                         <span class="hide-menu">Session Manager</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a href="" class="sidebar-link  {{ (request()->is('admin/library')) ? 'active' : '' }}">
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Addon Manager</span>
@@ -141,10 +142,10 @@
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Noticeboard</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
-        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-secret"></i><span class="hide-menu">Settings</span></a>
+        <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cog"></i><span class="hide-menu">Settings</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
                 <li class="sidebar-item">
                     <a href="{{ url('/admin/settings')}}" class="sidebar-link {{ (request()->is('admin/settings')) ? 'active' : '' }}">
