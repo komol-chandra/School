@@ -24,10 +24,9 @@ class AppSettingsRequest extends FormRequest
     public function rules()
     {
         return [
-            'application_name' => 'required',
-            'application_email' => 'required|email',
-            'application_phone' => 'required|min:11',
-            'application_address' => 'required',
+            'app_settings_name' => 'required',
+            'app_settings_email' => 'required|email',
+            'app_settings_phone' => 'required',
             'app_settings_address' => 'required',
             'app_settings_about' => 'required',
         ];
