@@ -8,7 +8,7 @@ Route::get('/admin', 'MainController@index');
 Route::get('/', 'MainController@index');
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
-	//Class 
+	//Class
 	Route::resource('/class', 'ClassNameController');
 	Route::post('/class/store', 'ClassNameController@store');
     Route::get('/class/show/{id}', 'ClassNameController@show');
@@ -32,6 +32,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('/session', 'SessionManagerController');
     //Teacher with out ajax
     Route::resource('teacher','TeacherController');
-    Route::get('/teacher/show/{id}','TeacherController@show');    
+    Route::get('/teacher/show/{id}','TeacherController@show');
+    //Sylabous with out ajax
+    Route::resource('syllabus','SyllabusController');
     });
 });

@@ -4,7 +4,7 @@
             <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             <a class="navbar-brand" href="{{url('/admin')}}">
                 <b class="logo-icon p-l-10">
-                    <img src="{{asset('Backend_assets/Backend/images/sm-logo.png')}}" alt="homepage" class="light-logo" />
+                    <img src="/Backend_assets/Files/App_Settings/{{$app_data->app_settings_logo}}" alt="homepage" class="light-logo" />
                 </b>
                 <span class="logo-text">
                      <img src="{{asset('Backend_assets/Backend/images/School.png')}}" alt="School" class="light-logo" />
@@ -14,8 +14,8 @@
         <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
             <ul class="navbar-nav float-left mr-auto">
                 <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
-                
-                
+
+
             </ul>
             <ul class="navbar-nav float-right">
                 <li class="nav-item dropdown">
@@ -39,8 +39,8 @@
                                         <div class="d-flex no-block align-items-center p-10">
                                             <span class="btn btn-success btn-circle"><i class="ti-calendar"></i></span>
                                             <div class="m-l-10">
-                                                <h5 class="m-b-0">Event today</h5> 
-                                                <span class="mail-desc">Just a reminder that event</span> 
+                                                <h5 class="m-b-0">Event today</h5>
+                                                <span class="mail-desc">Just a reminder that event</span>
                                             </div>
                                         </div>
                                     </a>
@@ -48,8 +48,8 @@
                                         <div class="d-flex no-block align-items-center p-10">
                                             <span class="btn btn-info btn-circle"><i class="ti-settings"></i></span>
                                             <div class="m-l-10">
-                                                <h5 class="m-b-0">Settings</h5> 
-                                                <span class="mail-desc">You can customize this template</span> 
+                                                <h5 class="m-b-0">Settings</h5>
+                                                <span class="mail-desc">You can customize this template</span>
                                             </div>
                                         </div>
                                     </a>
@@ -57,8 +57,8 @@
                                         <div class="d-flex no-block align-items-center p-10">
                                             <span class="btn btn-primary btn-circle"><i class="ti-user"></i></span>
                                             <div class="m-l-10">
-                                                <h5 class="m-b-0">Pavan kumar</h5> 
-                                                <span class="mail-desc">Just see the my admin!</span> 
+                                                <h5 class="m-b-0">Pavan kumar</h5>
+                                                <span class="mail-desc">Just see the my admin!</span>
                                             </div>
                                         </div>
                                     </a>
@@ -66,8 +66,8 @@
                                         <div class="d-flex no-block align-items-center p-10">
                                             <span class="btn btn-danger btn-circle"><i class="fa fa-link"></i></span>
                                             <div class="m-l-10">
-                                                <h5 class="m-b-0">Luanch Admin</h5> 
-                                                <span class="mail-desc">Just see the my new admin!</span> 
+                                                <h5 class="m-b-0">Luanch Admin</h5>
+                                                <span class="mail-desc">Just see the my new admin!</span>
                                             </div>
                                         </div>
                                     </a>

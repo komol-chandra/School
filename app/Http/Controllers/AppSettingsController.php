@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\AppSettings;
 use Illuminate\Http\Request;
 use App\Http\Requests\AppSettingsRequest;
-use Redirect;
-use Illuminate\Support\Arr;
 use File;
-
+use App\Traits\FileVerifyUpload;
 class AppSettingsController extends Controller
 {
+    use FileVerifyUpload;
     /**
      * Display a listing of the resource.
      *
@@ -74,21 +73,21 @@ class AppSettingsController extends Controller
      */
     public function update(AppSettingsRequest $request,$id)
     {
-        $appSettings_model = AppSettings::findOrFail($id);
-        $requested_data = $request->all();
-        if ($request->hasFile('app_settings_logo')) {
-            if (File::exists($appSettings_model->app_settings_logo)) {
-                File::delete($appSettings_model->app_settings_logo);
+        $appSettings =AppSettings::findOrFail($id);
+        $appSettings->app_settings_name=$request->app_settings_name;
+        $appSettings->app_settings_about=$request->app_settings_about;
+        $appSettings->app_settings_email=$request->app_settings_email;
+        $appSettings->app_settings_phone=$request->app_settings_phone;
+        if ($request->app_settings_logo) {
+            $settingsImage=("Backend_assets/Files/App_Settings/{$appSettings->app_settings_logo}");
+            if (File::exists($settingsImage)) {
+                File::delete($settingsImage);
             }
-            $image_type = $request->file('app_settings_logo')->getClientOriginalExtension();
-            $path = "Files/App_Settings";
-            $name = 'app_' . time() . "." . $image_type;
-            $image = $request->file('app_settings_logo')->move($path, $name);
-            $requested_data = Arr::set($requested_data, 'app_settings_logo', $image);
-
+            $appSettings->app_settings_logo=$this->ImageVerifyUpload($request,'app_settings_logo','Backend_assets/Files/App_Settings','app_settings_logo');
         }
-        $appSettings_model->fill($requested_data)->save();
-        return redirect()->back()->with('success', 'App Setting Update Successfully');
+
+        $appSettings->save();
+        return redirect()->route('settings.index',$id)->with('msg','Data Successfully Updated');
     }
 
     /**
