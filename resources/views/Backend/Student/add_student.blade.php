@@ -57,31 +57,31 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="student_mothers_name" class="col-sm-3 text-right control-label col-form-label">Mother's Name <span style="color:red;">*</span></label>
+                            <label for="student_mothers_name" class="col-sm-3 text-right control-label col-form-label">Mother's Name</label>
                             <div class="col-sm-9">
                                 <input type="text" name="student_mothers_name" class="form-control" id="student_mothers_name" placeholder="First Name Here">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="student_fathers_name" class="col-sm-3 text-right control-label col-form-label">Father's Name <span style="color:red;">*</span></label>
+                            <label for="student_fathers_name" class="col-sm-3 text-right control-label col-form-label">Father's Name</label>
                             <div class="col-sm-9">
                                 <input type="text" name="student_fathers_name" class="form-control" id="student_fathers_name" placeholder="First Name Here">
                             </div>
                         </div>
                         <div class="form-group row ">
-                            <label for="student_birthday_date" class="col-sm-3 text-right control-label col-form-label">Birthday Date<span style="color:red;">*</span></label>
+                            <label for="student_birthday_date" class="col-sm-3 text-right control-label col-form-label">Birthday Date</label>
                             <div class="col-md-9">
-                                <input name="student_birthday_date" type="text" class="form-control" id="student_birthday_date datepicker-autoclose" placeholder="mm/dd/yyyy">
+                                <input name="student_birthday_date" type="date" class="form-control" id="student_birthday_date datepicker-autoclose" placeholder="mm/dd/yyyy">
                             </div>
                         </div>
                         <div class="form-group row ">
                             <label for="student_admition_date" class="col-sm-3 text-right control-label col-form-label">Admition Date</label>
                             <div class="col-md-9">
-                                <input type="text" name="student_admition_date" class="form-control" id="student_admition_date datepicker-autoclose" placeholder="mm/dd/yyyy">
+                                <input type="date" name="student_admition_date" class="form-control" id="student_admition_date datepicker-autoclose" placeholder="mm/dd/yyyy">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 text-right">Gender<span style="color:red;">*</span></label>
+                            <label class="col-md-3 text-right">Gender</label>
                             <div class="col-md-9">
                                 <div class="custom-control custom-radio">
                                     <input type="radio" class="custom-control-input" id="one" value="1" name="gender_name" required="">
@@ -210,7 +210,7 @@
                         <div class="col-lg-9">
                             <img style="height: 200px; width: 200px; border-radius: 100px;" name="student_guardian_image" id='previmage' src="{{asset('Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'>
                             <br><br>
-                            <input type='file' id="student_guardian_image" name="student_guardian_image" onchange="readURL(this);" />
+                            <input type='file' id="student_guardian_image" name="student_guardian_image" onchange="readURL1(this);" />
                             <span class="text-danger" id="image"></span>
                         </div>
                     </div>
@@ -290,7 +290,7 @@
         $("#email").prop("readonly", true);
     });
 
-    function readURL(input) {
+    function readURL1(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             reader.onload = function(e) {

@@ -4,7 +4,7 @@ datalist();
 		e.preventDefault();
 		var data = $(this).serializeArray();
 		$.ajax({
-			url:`/admin/section/store`,
+			url:`/admin/section/`,
 			data:data,
 			type:"post",
 			dataType:"json",
@@ -25,7 +25,7 @@ datalist();
 		var data = $(this).attr("data");
 
 		$.ajax({
-            url: `/admin/section/show/${data}`,
+            url: `/admin/section/${data}`,
             type: "get",
             dataType: "json",
             success: function (response) {

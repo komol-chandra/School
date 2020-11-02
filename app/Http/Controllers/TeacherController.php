@@ -43,6 +43,20 @@ class TeacherController extends Controller
             "gender"=>$gender,
         ]);
     }
+    public function teacherList(Request $request){
+        $teacher = Teacher::search($request->search)->orderBy('teacher_id', 'asc')->paginate(10);
+        $department = Department::get();
+        $designation = TeacherDesignationModel::get();
+        $blood = BloodModel::get();
+        $gender = GenderModel::get();
+        return view ('Backend.Teacher.teacherList',[
+            "department"=>$department,
+            "blood"=>$blood,
+            "designation"=>$designation,
+            "gender"=>$gender,
+            "teacher"=>$teacher,
+        ]);
+    }
     public function store(TeacherRequest $request)
     {
         $teacher = new Teacher();
@@ -118,9 +132,11 @@ class TeacherController extends Controller
     public function destroy($id)
     {
         $teacher = Teacher::findOrFail($id);
-        unlink(public_path("Backend_assets/Files/Teacher/").$teacher['teacher_image']);
+        $teacherImage=("Backend_assets/Files/Teacher/{$teacher->teacher_image}");
+            if (File::exists($teacherImage)) {
+                File::delete($teacherImage);
+            }
         $teacher->delete();
-        return response()->json(201);
-
+        return response()->json($teacher, 200);
     }
 }

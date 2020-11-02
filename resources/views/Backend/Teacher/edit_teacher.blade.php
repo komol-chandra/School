@@ -13,6 +13,9 @@
     </div>   
     @endif
     <div class="row">
+        <a class="btn btn-default mb-3" href="{{route('teacher.index')}}">go Back</a>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="form-horizontal">
@@ -126,14 +129,12 @@
                         <label for="teacher_image" class="col-sm-3 control-label text-right"> Image:</label>
                         <div class="col-sm-9">
                             <div class="form-group">
-@if("/Backend_assets/Files/Teacher/{{ $teacher->teacher_image }}")
-<img style="height: 200px; width: 200px; border-radius: 100px;" name="teacher_image" id='previmage' src="/Backend_assets/Files/Teacher/{{$teacher->teacher_image}}" alt="image" class='img-responsive'><br><br>
-@else
-<img src="{{asset('Backend_assets/profile.jpg')}}">
-@endif
-
-                            
-                            <input type='file' id="teacher_image" name="teacher_image" onchange="readURL(this);" />
+                            @if("/Backend_assets/Files/Teacher/{{ $teacher->teacher_image }}")
+                            <img style="height: 200px; width: 200px; border-radius: 100px;" name="teacher_image" id='previmage1' src="/Backend_assets/Files/Teacher/{{$teacher->teacher_image}}" alt="image" class='img-responsive'><br><br>
+                            @else
+                            <img src="{{asset('Backend_assets/profile.jpg')}}">
+                            @endif
+                            <input type='file' id="teacher_image" name="teacher_image" onchange="readURL1(this);" />
                             <span class="text-danger" id="image"></span>
                         </div>
                     </div>
@@ -151,24 +152,6 @@
 </form>
 @endsection
 @section('js')
-<script type="text/javascript">
-    $("#email").click(function() {
-        $("#email").prop("readonly", true);
-    });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#previmage')
-                    .attr('src', e.target.result)
-                    .width(200)
-                    .height(200);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
 <script src="{{asset('Backend_assets/js/teacher.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\TeacherRequest', '#update_teacher_form'); !!}
 @endsection

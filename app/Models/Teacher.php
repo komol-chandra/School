@@ -17,5 +17,12 @@ class Teacher extends Model
     public function Department(){
     	return $this->belongsTo("App\Models\Department","department_name");
     }
-
+    public function scopeActive($query)
+    {
+        $query->where("status", 1);
+    }
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('teacher_name', 'LIKE', '%' . $search . '%');
+    }
 }

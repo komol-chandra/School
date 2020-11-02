@@ -6,7 +6,7 @@ $(document).ready(function() {
         console.log(data);
         $.ajax({
             data: data,
-            url: "/admin/class/store",
+            url: "/admin/class/",
             type: "post",
             dataType: "json",
             success: function(response) {
@@ -52,7 +52,7 @@ $(document).ready(function() {
         let data = $(this).attr("data");
 
         $.ajax({
-            url: `/admin/class/show/${data}`,
+            url: `/admin/class/${data}`,
             type: "get",
             dataType: "json",
             success: function(response) {
@@ -94,10 +94,9 @@ $(document).ready(function() {
             type: "PUT",
             dataType: "json",
             success: function(response) {
-                console.log(response);
+                datalist();
                 toastr.success("Class Updated successfully", "Success!");
                 $("#edit_class").modal("hide");
-                loaddata();
             },
             error: function(error) {
                 $.each(error.responseJSON.errors, function(i, message) {

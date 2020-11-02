@@ -18,13 +18,9 @@
 <script src="{{asset('Backend_assets/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
 
-
 <script src="{{asset('Backend_assets/js/sweetalert.min.js')}}"></script>
-<!-- <script src="{{asset('Backend_assets/js/teacher.js')}}"></script>
- -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-
 <script type="text/javascript">
   toastr.options = {
     "closeButton": true,
@@ -44,19 +40,9 @@
     "hideMethod": "fadeOut"
   }
 </script>
-<!-- responsive dataTable -->
 
-
-
-
-
-
-
-
-
-
-
-<!-- <script type="text/javascript">
+{{-- 
+<script type="text/javascript">
     function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -69,5 +55,5 @@
     reader.readAsDataURL(input.files[0]);
   }
 }
-</script> -->
+</script> --}}
 @yield('js')
