@@ -12,6 +12,9 @@
     </div>   
     @endif
     <div class="row">
+        <a class="btn btn-default mb-3" href="{{route('teacher.index')}}">go Back</a>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="form-horizontal">
@@ -143,24 +146,6 @@
 </form>
 @endsection
 @section('js')
-<script type="text/javascript">
-    $("#email").click(function() {
-        $("#email").prop("readonly", true);
-    });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#previmage')
-                    .attr('src', e.target.result)
-                    .width(200)
-                    .height(200);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
 <script src="{{asset('Backend_assets/js/teacher.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\TeacherRequest', '#teacher_form'); !!}
 @endsection

@@ -4,7 +4,7 @@
             <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             <a class="navbar-brand" href="{{url('/admin')}}">
                 <b class="logo-icon p-l-10">
-                    <img src="/Backend_assets/Files/App_Settings/{{$app_data->app_settings_logo}}" alt="homepage" class="light-logo" />
+                    {{-- <img src="/Backend_assets/Files/App_Settings/{{$app_data->app_settings_logo}}" alt="homepage" class="light-logo" /> --}}
                 </b>
                 <span class="logo-text">
                      <img src="{{asset('Backend_assets/Backend/images/School.png')}}" alt="School" class="light-logo" />

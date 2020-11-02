@@ -1,29 +1,12 @@
 $(document).ready(function(){
-    // $(this).on("change","#class_name",function(){
-    //     var data = $(this).val();
-    //     $.ajax({
-    //         url:`/admin/school/className/${data}`,
-    //         type:"get",
-    //         dataType:"json",
-    //         success:function(response){
-    //             console.log(response);
-    //             var b = $();
-    //             $.each(response.data, function (i, item) {
-    //                 b = b.add("<option value=" + item.section_id + ">" + item.section_name + "</option>")
-    //             });
-    //             console.log("#section_name");
-    //             $("#section_name").html(b);
-    //         }
-    //     })
-    // });
-
     $(this).on("click","#status",function(){
-        var data = $(this).attr("data");
+        let data = $(this).attr("data");
         $.ajax({
-            url:`/admin/student/show/${data}`,
+            url:`/admin/student/${data}`,
             type:"get",
             dataType:"json",
             success:function(response){
+                datalist();
                 if(response.status === 0){
                     toastr.success("Status Inactive","Success!");
                 }else{
@@ -33,8 +16,8 @@ $(document).ready(function(){
         })
     });
     $(this).on("click",".delete",function(){
-        var data = $(this).attr("data");
-        var csrf = $(this).attr("data-csrf");
+        let data = $(this).attr("data");
+        let csrf = $(this).attr("data-csrf");
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this imaginary file!",
@@ -50,6 +33,7 @@ $(document).ready(function(){
                     type:"delete",
                     dataType:"json",
                     success:function(response){
+                        datalist();
                         toastr.success("Data deleted successfully", "Success!");
                     }
                 })
@@ -58,4 +42,23 @@ $(document).ready(function(){
             }
         });
     });
-})
+    // $("#data_lists").on("click", ".page-link", function(e) {
+    //     e.preventDefault();
+    //     let page_link = $(this).attr("href");
+    //     datalist(page_link);
+    // });
+});
+
+function datalist(page_link = `/admin/studentList?filterClass=${filterClass ? filterClass :""}&filterSection=${filterSection ? filterSection :""}`) {
+    let filterClass = $("#filterClass").val();
+    let filterSection =$("#filterSection").val();
+
+    $.ajax({
+        url: page_link,
+        type: "get",
+        datatype: "html",
+        success: function(response) {
+            $("#data_lists").html(response);
+        }
+    });
+}

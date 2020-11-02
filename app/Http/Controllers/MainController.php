@@ -14,4 +14,8 @@ class MainController extends Controller
     {
         return view('Backend.dashboard');
     }
+    public function ex()
+    {
+        return view('index');
+    }
 }

@@ -29,18 +29,6 @@ class StudentController extends Controller
             "sectionName"=>$sectionName,
         ]);
     }
-    public function guardian_list(Request $request){
-        $student=Student::all();
-        $categoryName = CategoryNameModel::all();
-        $className = ClassName::active()->get();
-        $sectionName = SectionName::active()->get();
-        return view('Backend.Student.guardian_list',[
-            "student"=>$student,
-            "className"=>$className,
-            "categoryName"=>$categoryName,
-            "sectionName"=>$sectionName,
-        ]);
-    }
     public function create()
     {
         $blood = BloodModel::all();
@@ -60,6 +48,40 @@ class StudentController extends Controller
         // return StudentCollection::collection($sectionName);
         $sectionData = SectionName::where('class_name',$id)->get();
         return response()->json($sectionData,200);
+    }
+    public function studentList(Request $request){
+        $student = Student::where(function($query) use($request){
+            if ($request->filterClass) {
+                $query->where('class_name', $request->filterClass);
+            }
+            if ($request->filterSection) {
+                $query->where('section_name', $request->filterSection);
+            }
+        })
+        ->orderBy('student_id', 'asc')->get();
+        $blood = BloodModel::all();
+        $categoryName = CategoryNameModel::all();
+        $className = ClassName::active()->get();
+        $sectionName = SectionName::active()->get();
+        return view('Backend.Student.studentList',[
+            "student"=>$student,
+            "blood"=>$blood,
+            "categoryName"=>$categoryName,
+            "className"=>$className,
+            "sectionName"=>$sectionName,
+        ]);
+    }
+    public function guardianList(Request $request){
+        $student = Student::search($request->search)->orderBy('student_id', 'asc')->paginate(10);
+        $categoryName = CategoryNameModel::all();
+        $className = ClassName::active()->get();
+        $sectionName = SectionName::active()->get();
+        return view('Backend.Student.guardianList',[
+            "student"=>$student,
+            "className"=>$className,
+            "categoryName"=>$categoryName,
+            "sectionName"=>$sectionName,
+        ]);
     }
 
     public function store(StudentRequest $request)
@@ -172,7 +194,7 @@ class StudentController extends Controller
         $student_model->student_guardian_address=$request->student_guardian_address;
         
         //Student File
-        $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','StudentProfile');
+        $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','student_image');
         $student_model->student_birth_certificate=$this->ImageVerifyUpload($request,'student_birth_certificate','Backend_assets/Files/Student/student_birth_certificate/','student_birth_certificate');
         $student_model->student_marksheet=$this->ImageVerifyUpload($request,'student_marksheet','Backend_assets/Files/Student/student_marksheet/','student_marksheet');
         $student_model->student_testimonial=$this->ImageVerifyUpload($request,'student_testimonial','Backend_assets/Files/Student/student_testimonial/','student_testimonial');
@@ -187,14 +209,12 @@ class StudentController extends Controller
     }
     public function destroy($id)
     {
-
         $stduent_delete = Student::findOrFail($id);
         unlink(public_path('Backend_assets/Files/Student/student_image/').$stduent_delete['student_image']);
         unlink(public_path('Backend_assets/Files/Student/student_birth_certificate/').$stduent_delete['student_birth_certificate']);
         unlink(public_path('Backend_assets/Files/Student/student_marksheet/').$stduent_delete['student_marksheet']);
         unlink(public_path('Backend_assets/Files/Student/student_testimonial/').$stduent_delete['student_testimonial']);
         unlink(public_path('Backend_assets/Files/Student/student_registration_card/').$stduent_delete['student_registration_card']);
-
 
         unlink(public_path('Backend_assets/Files/Guardian/student_guardian_image/').$stduent_delete['student_guardian_image']);
         unlink(public_path('Backend_assets/Files/Guardian/student_guardian_idcard/').$stduent_delete['student_guardian_idcard']);

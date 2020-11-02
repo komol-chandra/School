@@ -77,8 +77,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post" id="class_update">@csrf
-                    <input type="hidden" name="class_id" id="class_id">
+                <form method="PUT" id="class_update">@csrf
+                    <input type="hidden" name="class_id" id="edit_class_id">
 
                     <div class="form-group row">
                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
