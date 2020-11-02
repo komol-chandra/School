@@ -9,7 +9,7 @@ Route::get('/', 'MainController@index');
 Route::get('/ex', 'MainController@ex');
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
-        
+
     Route::resource('/subject', 'SubjectModelController');
     Route::resource('/department', 'DepartmentController');
     Route::resource('/classroom', 'ClassRoomController');
@@ -30,5 +30,7 @@ Route::prefix('admin')->group(function () {
     //Teacher
     Route::resource('teacher','TeacherController');
     Route::get('/teacherList','TeacherController@teacherList');     
+    //Sylabous with out ajax
+    Route::resource('syllabus','SyllabusController');
     });
 });

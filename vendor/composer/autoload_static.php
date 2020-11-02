@@ -673,6 +673,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
         'App\\Models\\StudentGuardian' => __DIR__ . '/../..' . '/app/Models/StudentGuardian.php',
         'App\\Models\\SubjectModel' => __DIR__ . '/../..' . '/app/Models/SubjectModel.php',
+        'App\\Models\\Sylabous' => __DIR__ . '/../..' . '/app/Models/Sylabous.php',
         'App\\Models\\Teacher' => __DIR__ . '/../..' . '/app/Models/Teacher.php',
         'App\\Models\\TeacherDesignationModel' => __DIR__ . '/../..' . '/app/Models/TeacherDesignationModel.php',
         'App\\Models\\Team' => __DIR__ . '/../..' . '/app/Models/Team.php',

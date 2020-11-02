@@ -87,6 +87,7 @@ return array(
     'App\\Models\\Student' => $baseDir . '/app/Models/Student.php',
     'App\\Models\\StudentGuardian' => $baseDir . '/app/Models/StudentGuardian.php',
     'App\\Models\\SubjectModel' => $baseDir . '/app/Models/SubjectModel.php',
+    'App\\Models\\Sylabous' => $baseDir . '/app/Models/Sylabous.php',
     'App\\Models\\Teacher' => $baseDir . '/app/Models/Teacher.php',
     'App\\Models\\TeacherDesignationModel' => $baseDir . '/app/Models/TeacherDesignationModel.php',
     'App\\Models\\Team' => $baseDir . '/app/Models/Team.php',

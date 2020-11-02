@@ -3,9 +3,6 @@
 @section('head', 'Settings')
 @section('head_name', 'Settings')
 @section('content')
-@if (Session::has('success'))
-<div class="alert alert-success">{{ Session::get('success') }}</div>
-@endif
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6">
@@ -13,6 +10,14 @@
                 <form  id="application_settings" class="form-horizontal" action="{{route('settings.update',$app_data->app_settings_id)}}"  method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    @if(session('msg'))
+                    <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
+                        {{(session('msg'))}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    @endif
                     <div class="card-body">
                         <h4 class="card-title">App Settings</h4>
                         <div class="form-group row">
@@ -24,13 +29,13 @@
                         <div class="form-group row">
                             <label for="app_settings_name" class="col-sm-3 text-right control-label col-form-label">Application Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="app_settings_name" name="app_settings_name"  value="{{$app_data->app_settings_name}}">
+                                <input type="text" class="form-control" id="app_settings_name" name="app_settings_name" value="{{$app_data->app_settings_name}}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="app_settings_about" class="col-sm-3 text-right control-label col-form-label">About Application</label>
                             <div class="col-sm-9">
-                                <textarea  class="form-control"  id="app_settings_about" name="app_settings_about" placeholder="About Application">{{$app_data->app_settings_about}}</textarea>
+                                <input type="text" class="form-control" id="app_settings_about" name="app_settings_about" value="{{$app_data->app_settings_about}}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -64,7 +69,9 @@
             <div class="card">
                 <div class="card-body">
                     <div>
-                        <img id='previmage' src="{{$app_data->app_settings_logo==''? '/Files/App_Settings/blank_avatar.png' : '/'.$app_data->app_settings_logo}}" alt="your image" class='img-responsive img-circle'>
+                        @if("/Backend_assets/Files/App_Settings/{{ $app_data->app_settings_logo }}")
+                        <img name="app_settings_logo" id='previmage' src="/Backend_assets/Files/App_Settings/{{$app_data->app_settings_logo}}" alt="image" class='img-responsive img-circle'><br><br>
+                        @endif
                     </div>
                 </div>
             </div>
