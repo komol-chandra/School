@@ -80,8 +80,11 @@
 					<span class="login100-form-title">
 						Member Login
 					</span>
-
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <div>
+                    <p>mail:Admin@info.com</p>
+                    <p>pass:Admin@info.com</p>
+                    </div>
+					<div class="wrap-input100 validate-input mt-3" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="email" name="email" :value="old('email')" placeholder="Email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
@@ -112,12 +115,12 @@
 							Username / Password?
 						</a>
                     </div>
-                    <div class="text-center p-t-13">
+                    {{-- <div class="text-center p-t-13">
                         <a class="txt2" href="{{ route('register') }}">
                             Create your Account
                             <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
                         </a>
-                    </div>
+                    </div> --}}
 
 					
 				</form>
