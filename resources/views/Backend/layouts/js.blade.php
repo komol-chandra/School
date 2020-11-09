@@ -40,7 +40,28 @@
     "hideMethod": "fadeOut"
   }
 </script>
-
+<script>
+    @foreach ($errors->all() as $error)
+        toastr.warning("{{ $error }}", "Warning!");
+    @endforeach
+    @if(Session::has('message'))
+      var type = "{{ Session::get('alert-type') }}";
+      switch(type){
+          case 'info':
+          toastr.warning("{{ $error }}", "Warning!");
+            break;
+          case 'warning':
+            toastr.warning("{{ $error }}", "Warning!");
+            break;
+          case 'success':
+          toastr.warning("{{ $error }}", "Warning!");
+              break;
+          case 'error':
+            toastr.warning("{{ $error }}", "Warning!");
+              break;
+      }
+    @endif
+  </script>
 {{-- 
 <script type="text/javascript">
     function readURL(input) {

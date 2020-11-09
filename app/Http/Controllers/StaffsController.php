@@ -24,11 +24,11 @@ class StaffsController extends Controller
         $gender = GenderModel::get();
         $staff = Staffs::get();
         return view('Backend.Staff.staff',[
-            "staff"=>$staff,
-            "department"=>$department,
-            "designation"=>$designation,
-            "blood"=>$blood,
-            "gender"=>$gender,
+            "staffs"=>$staff,
+            "departments"=>$department,
+            "designations"=>$designation,
+            "bloods"=>$blood,
+            "genders"=>$gender,
         ]);
     }
     public function create(Request $request)
@@ -104,7 +104,6 @@ class StaffsController extends Controller
                 File::delete($staffImage);
             }
         $staff->delete();
-        $dd($staff);
         return response()->json(201);
     }
 }

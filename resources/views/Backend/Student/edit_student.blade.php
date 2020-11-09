@@ -12,6 +12,9 @@
         </button>
     </div>   
     @endif
+    <div class="row">
+        <a class="btn btn-default mb-3" href="{{ route('student.index') }}">List</a>
+    </div>
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
@@ -34,7 +37,7 @@
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label for="class_name" >Class<span style="color:red;">*</span></label>
-                        <select name="class_name" class="select2 form-control custom-select" id="class_name">
+                        <select name="class_name" class="select2 form-control custom-select" id="class_name" onchange="getSection()">
                             <option disabled selected hidden>Select</option>
                             @foreach($className as $value)
                             <option value="{{$value->class_id}}" {{$student->className->class_id == $value->class_id ? 'selected' : ""}}>{{$value->class_name}}</option>
@@ -311,6 +314,26 @@
 </form>
 @endsection
 @section('js')
+<script>
+    function getSection(){
+        let data = $('#class_name').val();
+        $.ajax({
+            url:`/admin/student/sectionData/${data}`,
+            type:`get`,
+            dataType:`json`,
+            success:function(response){
+                $('.sectionOpt').remove();
+                response.forEach(function(value,index){
+                    
+                    $('#section_name').append(`
+                        <option class="sectionOpt"  value="${value.section_id}" >${value.section_name}</option>
+                        `);
+                })
+            },
+
+        })
+    }
+</script>
 <script src="{{asset('Backend_assets/js/studentImageEdit.js')}}"></script>
 <script src="{{asset('Backend_assets/js/student.js')}}"></script>
 @endsection

@@ -21,18 +21,16 @@
                         <span class="hide-menu">Section</span>
                     </a>
                 </li>
-                
-                <li class="sidebar-item {{ (request()->is('admin/daily_attendance')) ? 'active' : '' }}}">
-                    <a href="{{ url('/admin/daily_attendance')}}" class="sidebar-link">
+                <li class="sidebar-item {{ (request()->is('admin/subject')) ? 'active' : '' }}}">
+                    <a href="{{ url('/admin/subject')}}" class="sidebar-link">
                         <i class="mdi mdi-note-outline"></i>
-                        <span class="hide-menu">Daily Attendance</span>
+                        <span class="hide-menu">Subject</span>
                     </a>
                 </li>
-
-                <li class="sidebar-item {{ (request()->is('admin/class_routine')) ? 'active' : '' }}}">
-                    <a href="{{ url('/admin/class_routine')}}" class="sidebar-link">
+                <li class="sidebar-item {{ (request()->is('admin/classroom')) ? 'active' : '' }}}">
+                    <a href="{{ url('/admin/classroom')}}" class="sidebar-link">
                         <i class="mdi mdi-note-outline"></i>
-                        <span class="hide-menu">Class Routine</span>
+                        <span class="hide-menu">Class Room</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ (request()->is('admin/routine')) ? 'active' : '' }}}">
@@ -41,72 +39,48 @@
                         <span class="hide-menu">Routine</span>
                     </a>
                 </li>
-                <li class="sidebar-item {{ (request()->is('admin/subject')) ? 'active' : '' }}}">
-                    <a href="{{ url('/admin/subject')}}" class="sidebar-link">
+                <li class="sidebar-item {{ (request()->is('admin/daily_attendance')) ? 'active' : '' }}}">
+                    <a href="{{ url('/admin/daily_attendance')}}" class="sidebar-link">
                         <i class="mdi mdi-note-outline"></i>
-                        <span class="hide-menu">Subject</span>
+                        <span class="hide-menu">Daily Attendance</span>
                     </a>
                 </li>
 
+                {{-- <li class="sidebar-item {{ (request()->is('admin/class_routine')) ? 'active' : '' }}}">
+                    <a href="{{ url('/admin/class_routine')}}" class="sidebar-link">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Class Routine</span>
+                    </a>
+                </li> --}}
+                
                 <li class="sidebar-item {{ (request()->is('admin/syllabus')) ? 'active' : '' }}}">
                     <a href="{{ url('/admin/syllabus')}}" class="sidebar-link">
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Syllabus</span>
                     </a>
                 </li>
-
-                
-
-                <li class="sidebar-item {{ (request()->is('admin/classroom')) ? 'active' : '' }}}">
-                    <a href="{{ url('/admin/classroom')}}" class="sidebar-link">
-                        <i class="mdi mdi-note-outline"></i>
-                        <span class="hide-menu">Class Room</span>
-                    </a>
-                </li>
-
                 <li class="sidebar-item {{ (request()->is('admin/department')) ? 'active' : '' }}}">
                     <a href="{{ url('/admin/department')}}" class="sidebar-link">
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Department</span>
                     </a>
                 </li>
-
-                
-
                 <li class="sidebar-item {{ (request()->is('admin/event_calendar')) ? 'active' : '' }}}">
                     <a href="{{ url('/admin/eventCalender')}}" class="sidebar-link">
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Event Calender</span>
                     </a>
                 </li>
-
             </ul>
         </li>
-
-{{-- Student --}}
+        
         <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user"></i><span class="hide-menu">User</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
-                <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-graduation-cap"></i><span class="hide-menu">Student & Guardian</span></a>
-                    <ul aria-expanded="false" class="collapse  first-level">
-                        <li class="sidebar-item ">
-                            <a href="{{ url('/admin/student')}}" class="sidebar-link">
-                                <i class="mdi mdi-note-outline"></i>
-                                <span class="hide-menu">Student List</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{{ url('/admin/student/create')}}" class="sidebar-link">
-                                <i class="mdi mdi-note-outline"></i>
-                                <span class="hide-menu">Add Student </span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{{ url('/admin/guardianList')}}" class="sidebar-link">
-                                <i class="mdi mdi-note-outline"></i>
-                                <span class="hide-menu">Guardian List </span>
-                            </a>
-                        </li>
-                    </ul>
+                <li class="sidebar-item">
+                    <a href="{{ url('/admin/student')}}" class="sidebar-link">
+                        <i class="fas fa-piggy-bank"></i>
+                        <span class="hide-menu">Student & Guardian</span>
+                    </a>
                 </li>
                 <li class="sidebar-item">
                     <a href="{{ url('/admin/teacher')}}" class="sidebar-link">

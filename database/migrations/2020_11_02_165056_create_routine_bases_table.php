@@ -19,6 +19,7 @@ class CreateRoutineBasesTable extends Migration
             $table->foreign('class_name')->references('class_id')->on('class_names');
             $table->unsignedBigInteger('section_name');
             $table->foreign('section_name')->references('section_id')->on('section_names');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

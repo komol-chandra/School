@@ -103,7 +103,7 @@ $(document).ready(function() {
 function loaddata() {
     let filterClass = $("#filter_class").val();
 
-    let page_link = `/student/create?filterClass=${
+    let page_link = `/subject/create?filterClass=${
         filterClass ? filterClass : ""
     }`;
 

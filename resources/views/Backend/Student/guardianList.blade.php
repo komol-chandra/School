@@ -2,7 +2,7 @@
 @section('title', ' Guardian List')
 @section('head', 'Guardian List')
 @section('content')
-
+<a class="btn btn-default mb-3" href="{{route('student.index')}}">Student List</a>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Basic Datatable</h5>

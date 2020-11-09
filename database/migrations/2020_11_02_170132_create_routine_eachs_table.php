@@ -28,6 +28,7 @@ class CreateRoutineEachsTable extends Migration
             $table->string('sarting_hour');
             $table->string('ending_hour');
             $table->string('duration');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

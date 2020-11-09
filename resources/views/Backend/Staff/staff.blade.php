@@ -74,7 +74,7 @@
                         <div class="col-sm-9">
                             <select value="{{old('staff_designation_name') ? old('staff_designation_name') : ''}}" name="staff_designation_name" id="staff_designation_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                @foreach($designation as $value)
+                                @foreach($designations as $value)
                                 <option value="{{$value->staff_designation_id}}">{{$value->staff_designation_name}}</option>
                                 @endforeach
                             </select>
@@ -85,7 +85,7 @@
                         <div class="col-sm-9">
                             <select value="{{old('staff_department_name') ? old('staff_department_name') : ''}}" name="staff_department_name" id="staff_department_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                @foreach($department as $value)
+                                @foreach($departments as $value)
                                 <option value="{{$value->staff_department_id}}">{{$value->staff_department_name}}</option>
                                 @endforeach
                             </select>
@@ -103,7 +103,7 @@
                         <div class="col-sm-9">
                             <select value="{{old('gender_name') ? old('gender_name') : ''}}" name="gender_name" id="gender_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                @foreach($gender as $gender)
+                                @foreach($genders as $gender)
                                 <option value="{{$gender->gender_id}}">{{$gender->gender_name}}</option>
                                 @endforeach
                             </select>
@@ -114,7 +114,7 @@
                         <div class="col-sm-9">
                             <select value="{{old('blood_name') ? old('blood_name') : ''}}" name="blood_name" id="blood_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                @foreach($blood as $blood)
+                                @foreach($bloods as $blood)
                                 <option value="{{$blood->blood_id}}">{{$blood->blood_name}}</option>
                                 @endforeach
                             </select>
@@ -193,23 +193,23 @@
                     <div class="form-group row">
                         <label for="edit_staff_designation_name" class="col-sm-3 text-right control-label col-form-label">Designation<span style="color:red;">*</span></label>
                         <div class="col-sm-9">
-                            {{-- <select value="{{old('staff_designation_name') ? old('staff_designation_name') : ''}}" name="staff_designation_name" id="edit_staff_designation_name" class="select2 form-control custom-select">
+                            <select value="{{old('staff_designation_name') ? old('staff_designation_name') : ''}}" name="staff_designation_name" id="edit_staff_designation_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                @foreach($designation as $value)
+                                @foreach($designations as $value)
                                 <option value="{{$value->staff_designation_id}}">{{$value->staff_designation_name}}</option>
                                 @endforeach
-                            </select> --}}
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="edit_staff_department_name" class="col-sm-3 text-right control-label col-form-label">Department<span style="color:red;">*</span></label>
                         <div class="col-sm-9">
-                            {{-- <select value="{{old('staff_department_name') ? old('staff_department_name') : ''}}" name="staff_department_name" id="edit_staff_department_name" class="select2 form-control custom-select">
+                            <select value="{{old('staff_department_name') ? old('staff_department_name') : ''}}" name="staff_department_name" id="edit_staff_department_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                @foreach($department as $value)
+                                @foreach($departments as $value)
                                 <option value="{{$value->staff_department_id}}">{{$value->staff_department_name}}</option>
                                 @endforeach
-                            </select> --}}
+                            </select>
                         </div>
                     </div>
 
@@ -224,21 +224,21 @@
                         <div class="col-sm-9">
                             <select value="{{old('gender_name') ? old('gender_name') : 'selected'}}"  name="gender_name" id="edit_gender_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                {{-- @foreach($gender as $value)
+                                @foreach($genders as $value)
                                 <option value="{{$value->gender_id}}">{{$value->gender_name}}</option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="edit_blood_name" class="col-sm-3 text-right control-label col-form-label">Blood Group<span style="color:red;">*</span></label>
                         <div class="col-sm-9">
-                            {{-- <select value="{{old('blood_name') ? old('blood_name') : ''}}" name="blood_name" id="edit_blood_name" class="select2 form-control custom-select">
+                            <select value="{{old('blood_name') ? old('blood_name') : ''}}" name="blood_name" id="edit_blood_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
-                                @foreach($blood as $blood)
+                                @foreach($bloods as $blood)
                                 <option value="{{$blood->blood_id}}">{{$blood->blood_name}}</option>
                                 @endforeach
-                            </select> --}}
+                            </select>
                         </div>
                     </div>
 
