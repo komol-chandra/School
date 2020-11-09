@@ -1,16 +1,15 @@
 <?php
 namespace App\Http\Controllers;
+use File;
 use App\Models\Student;
-use App\Models\BloodModel;
-use App\Models\CategoryNameModel;
 use App\Models\ClassName;
+use App\Models\BloodModel;
 use App\Models\SectionName;
+use Illuminate\Http\Request;
+use App\Traits\FileVerifyUpload;
+use App\Models\CategoryNameModel;
 use App\Http\Requests\StudentRequest;
 use App\Http\Requests\StudentUpdateRequest;
-use App\Traits\FileVerifyUpload;
-
-use Illuminate\Http\Request;
-
 class StudentController extends Controller
 {
     use FileVerifyUpload;
@@ -83,7 +82,6 @@ class StudentController extends Controller
             "sectionName"=>$sectionName,
         ]);
     }
-
     public function store(StudentRequest $request)
     {
         $student_model=new Student();
@@ -144,11 +142,11 @@ class StudentController extends Controller
     }
     public function edit($id)
     {
+        $student = Student::with('className')->findOrFail($id);
         $categoryName = CategoryNameModel::all();
         $className = ClassName::active()->get();
-        $sectionName = SectionName::active()->get();
+        $sectionName = SectionName::where('class_name',$student->class_name)->get();
         // $student = Student::findOrFail($id)->with('className')->get()->toArray();
-        $student = Student::with('className')->findOrFail($id);
         $blood = BloodModel::all();
         // echo "<pre>";
         // print_r($student);
@@ -163,7 +161,7 @@ class StudentController extends Controller
     }
     public function update(StudentUpdateRequest $request, $id)
     {
-       dd($request->all());
+    //    dd($request->all());
         $student_model=Student::findOrFail($id);
         $student_model->student_admission_number=$request->student_admission_number;
         $student_model->student_roll_number=$request->student_roll_number;
@@ -194,32 +192,95 @@ class StudentController extends Controller
         $student_model->student_guardian_address=$request->student_guardian_address;
         
         //Student File
-        $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','student_image');
-        $student_model->student_birth_certificate=$this->ImageVerifyUpload($request,'student_birth_certificate','Backend_assets/Files/Student/student_birth_certificate/','student_birth_certificate');
-        $student_model->student_marksheet=$this->ImageVerifyUpload($request,'student_marksheet','Backend_assets/Files/Student/student_marksheet/','student_marksheet');
-        $student_model->student_testimonial=$this->ImageVerifyUpload($request,'student_testimonial','Backend_assets/Files/Student/student_testimonial/','student_testimonial');
-        $student_model->student_registration_card=$this->ImageVerifyUpload($request,'student_registration_card','Backend_assets/Files/Student/student_registration_card/','student_registration_card');
+        if ($request->student_image) {
+            $studentImage=("Backend_assets/Files/Student/student_image/{$student_model->student_image}");
+            if (File::exists($studentImage)) {
+                File::delete($studentImage);
+            }
+            $student_model->student_image=$this->ImageVerifyUpload($request,'student_image','Backend_assets/Files/Student/student_image/','student_image');
+        }
+        if ($request->student_birth_certificate) {
+            $studentCertificate=("Backend_assets/Files/Student/student_birth_certificate/{$student_model->student_birth_certificate}");
+            if (File::exists($studentCertificate)) {
+                File::delete($studentCertificate);
+            }
+            $student_model->student_birth_certificate=$this->ImageVerifyUpload($request,'student_birth_certificate','Backend_assets/Files/Student/student_birth_certificate/','student_birth_certificate');
+        }
+        if ($request->student_marksheet) {
+            $studentMarksheet=("Backend_assets/Files/Student/student_marksheet/{$student_model->student_marksheet}");
+            if (File::exists($studentMarksheet)) {
+                File::delete($studentMarksheet);
+            }
+            $student_model->student_marksheet=$this->ImageVerifyUpload($request,'student_marksheet','Backend_assets/Files/Student/student_marksheet/','student_marksheet');
+        
+        }
+        if ($request->student_testimonial) {
+            $studentTestimonial=("Backend_assets/Files/Student/student_testimonial/{$student_model->student_testimonial}");
+            if (File::exists($studentTestimonial)) {
+                File::delete($studentTestimonial);
+            }
+            $student_model->student_testimonial=$this->ImageVerifyUpload($request,'student_testimonial','Backend_assets/Files/Student/student_testimonial/','student_testimonial');
+        }
+        if ($request->student_registration_card) {
+            $studentRegistration=("Backend_assets/Files/Student/student_registration_card/{$student_model->student_registration_card}");
+            if (File::exists($studentRegistration)) {
+                File::delete($studentRegistration);
+            }
+            $student_model->student_registration_card=$this->ImageVerifyUpload($request,'student_registration_card','Backend_assets/Files/Student/student_registration_card/','student_registration_card');
+        }
 
         //Guarian File
-        $student_model->student_guardian_image=$this->ImageVerifyUpload($request,' student_guardian_image','Backend_assets/Files/Guardian/student_guardian_image/','student_guardian_image');
-        $student_model->student_guardian_idcard=$this->ImageVerifyUpload($request,'student_guardian_idcard','Backend_assets/Files/Guardian/student_guardian_idcard/','student_guardian_idcard');
+        if ($request->student_guardian_image) {
+            $guardianImage=("Backend_assets/Files/Guardian/student_guardian_image/{$student_model->student_guardian_image}");
+            if (File::exists($guardianImage)) {
+                File::delete($guardianImage);
+            }
+            $student_model->student_guardian_image=$this->ImageVerifyUpload($request,' student_guardian_image','Backend_assets/Files/Guardian/student_guardian_image/','student_guardian_image');
+        }
+
+        if ($request->student_guardian_idcard) {
+            $guardianIdcard=("Backend_assets/Files/Guardian/student_guardian_idcard/{$student_model->student_guardian_idcard}");
+            if (File::exists($guardianIdcard)) {
+                File::delete($guardianIdcard);
+            }
+            $student_model->student_guardian_idcard=$this->ImageVerifyUpload($request,'student_guardian_idcard','Backend_assets/Files/Guardian/student_guardian_idcard/','student_guardian_idcard');
+        }
 
         $student_model->save();
         return redirect()->route('student.edit',$id)->with('msg','Data Successfully Updated');
     }
     public function destroy($id)
     {
-        $stduent_delete = Student::findOrFail($id);
-        unlink(public_path('Backend_assets/Files/Student/student_image/').$stduent_delete['student_image']);
-        unlink(public_path('Backend_assets/Files/Student/student_birth_certificate/').$stduent_delete['student_birth_certificate']);
-        unlink(public_path('Backend_assets/Files/Student/student_marksheet/').$stduent_delete['student_marksheet']);
-        unlink(public_path('Backend_assets/Files/Student/student_testimonial/').$stduent_delete['student_testimonial']);
-        unlink(public_path('Backend_assets/Files/Student/student_registration_card/').$stduent_delete['student_registration_card']);
-
-        unlink(public_path('Backend_assets/Files/Guardian/student_guardian_image/').$stduent_delete['student_guardian_image']);
-        unlink(public_path('Backend_assets/Files/Guardian/student_guardian_idcard/').$stduent_delete['student_guardian_idcard']);
-        
-        $stduent_delete->delete();
+        $student = Student::findOrFail($id);
+        $studentImage=("Backend_assets/Files/Student/student_image/{$student->student_image}");
+            if (File::exists($studentImage)) {
+                File::delete($studentImage);
+            }
+        $studentBirthCertificate=("Backend_assets/Files/Student/student_birth_certificate/{$student->student_birth_certificate}");
+            if (File::exists($studentBirthCertificate)) {
+                File::delete($studentBirthCertificate);
+            }
+        $studentMarksheet=("Backend_assets/Files/Student/student_marksheet/{$student->student_marksheet}");
+            if (File::exists($studentMarksheet)) {
+                File::delete($studentMarksheet);
+            }
+        $studenTestimonial=("Backend_assets/Files/Student/student_testimonial/{$student->student_testimonial}");
+            if (File::exists($studenTestimonial)) {
+                File::delete($studenTestimonial);
+            }
+        $studentRegistration=("Backend_assets/Files/Student/student_registration_card/{$student->student_registration_card}");
+            if (File::exists($studentRegistration)) {
+                File::delete($studentRegistration);
+            }
+        $studentGuardianImage=("Backend_assets/Files/Guardian/student_guardian_image/{$student->student_guardian_image}");
+            if (File::exists($studentGuardianImage)) {
+                File::delete($studentGuardianImage);
+            }
+        $studentGuardianIdcard=("Backend_assets/Files/Guardian/student_guardian_idcard/{$student->student_guardian_idcard}");
+            if (File::exists($studentGuardianIdcard)) {
+                File::delete($studentGuardianIdcard);
+            }
+        $student->delete();
         return response()->json(201);
     }
 }

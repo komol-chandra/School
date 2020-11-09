@@ -3,8 +3,10 @@
 @section('head', 'Routine')
 @section('head_name', 'Routine')
 @section('content')
-<button data-toggle="modal" data-target="#add_modal" class="btn btn-primary" type="button">Add New</button>
-<br><br>
+<div class="row">
+    <a class="btn btn-default mb-3" href="{{route('routine.create')}}">add new</a>
+</div>
+<br>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Basic Datatable</h5>
@@ -26,11 +28,6 @@
                             <label>Search:<input type="search" class="search form-control form-control-sm" placeholder="" aria-controls="zero_config">
                             </label>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="data_lists"></div>
                     </div>
                 </div>
             </div>

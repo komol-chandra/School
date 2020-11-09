@@ -2,7 +2,6 @@
 @section('title', ' Student')
 @section('head', 'Student')
 @section('content')
-<form action="{{route('student.store')}}"  method="post" enctype="multipart/form-data">@csrf
     @if(session('msg'))
     <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
         {{(session('msg'))}}
@@ -11,6 +10,10 @@
         </button>
     </div>  
     @endif
+    <div class="row">
+        <a class="btn btn-default mb-3" href="{{route('student.index')}}">List</a>
+    </div>
+    <form action="{{route('student.store')}}"  method="post" enctype="multipart/form-data">@csrf
     <div class="row">
         <div class="col-md-6">
             <div class="card">

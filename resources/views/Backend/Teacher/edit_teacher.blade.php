@@ -13,7 +13,7 @@
     </div>   
     @endif
     <div class="row">
-        <a class="btn btn-default mb-3" href="{{route('teacher.index')}}">go Back</a>
+        <a class="btn btn-default mb-3" href="{{route('teacher.index')}}">Data List</a>
     </div>
     <div class="row">
         <div class="col-md-12">

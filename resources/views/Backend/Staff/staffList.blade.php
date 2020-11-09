@@ -38,9 +38,9 @@
                 <button type="button" class="btn btn-outline-danger btn-sm delete" data-csrf="{{csrf_token()}}" data="{{$value->staff_id}}">
                     <i class="fa fa-trash"></i>
                 </button>
-                <button type="button" class="btn btn-outline-info btn-sm edit" data="{{$value->staff_id}}" data-toggle="modal" data-target="#edit_modal">
+                {{-- <button type="button" class="btn btn-outline-info btn-sm edit" data="{{$value->staff_id}}" data-toggle="modal" data-target="#edit_modal">
                     <i class="fas fa-edit"></i>
-                </button>
+                </button> --}}
                 
             </td>
         </tr>
