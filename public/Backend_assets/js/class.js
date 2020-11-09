@@ -3,7 +3,6 @@ $(document).ready(function() {
     $(document).on("submit", "#class_form", function(e) {
         e.preventDefault();
         let data = $(this).serializeArray();
-        console.log(data);
         $.ajax({
             data: data,
             url: "/admin/class/",

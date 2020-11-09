@@ -38,7 +38,7 @@
     </div>
 </div>
 {{--Add Modal--}}
-<form method="post" id="class_form">@csrf
+<form method="POST" id="class_form">@csrf
     <div class="modal fade" id="add_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
