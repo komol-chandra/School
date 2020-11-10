@@ -50,9 +50,9 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                {{-- <div class="col-md-2">
                                     <button class="btn btn-block btn-secondary" onclick="loaddata()" >Filter</button>
-                                </div>
+                                </div> --}}
                             </div>
                             {{-- <div class="card-body data_lists">
                                   <div class="empty_box">

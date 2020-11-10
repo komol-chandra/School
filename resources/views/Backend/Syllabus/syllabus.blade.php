@@ -24,24 +24,24 @@
                             <div class="row mt-3">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
-                                    <select name="class_id" id="filter_class" class="form-control select2" data-toggle = "select2" required onchange="loaddata()">
-                                        <option value="" >Select A Class</option>
+                                    <select id="filter_class" class="select2 form-control custom-select" onchange="loaddata()">
+                                        <option disabled selected hidden >Select A Class</option>
                                         @foreach($class as $value)
                                             <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select name="section_id" id="filter_section" class="form-control select2" data-toggle = "select2" required onchange="loaddata()">
-                                        <option value="" >Select A Section</option>
+                                    <select id="filter_section" class="select2 form-control custom-select" onchange="loaddata()">
+                                        <option disabled selected hidden >Select A Section</option>
                                         @foreach($section as $value)
                                             <option value="{{$value->section_id}}" >{{$value->section_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-md-2">
+                                {{-- <div class="col-md-2">
                                     <button class="btn btn-block btn-secondary" onclick="loaddata()" >Filter</button>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

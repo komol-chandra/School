@@ -4,59 +4,42 @@
 @section('head_name', 'Subject')
 @section('content')
 
-<button type="button" class="btn btn-info margin-5 text-white" data-toggle="modal" data-target="#addModal">Add Subject     </button><br><br>
 <div class="card">
     <div class="card-body">
+        <button type="button" class="btn btn-info margin-5 text-white"  style="float:right" data-toggle="modal" data-target="#addModal">Add Subject</button>
         <h5 class="card-title">Basic Datatable</h5>
+        <br>
         <div class="table-responsive">
             <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                {{-- <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="dataTables_length" id="zero_config_length">
-                            <label>Show <select id="perPage" name="zero_config_length" aria-controls="zero_config" class="form-control form-control-sm">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50">50</option>
-                                <option value="100">100</option>
-                            </select> entries</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                        <div id="zero_config_filter" class="dataTables_filter" style="float: right;">
-                            <label>Search:<input type="search" class="search form-control form-control-sm" placeholder="" aria-controls="zero_config">
-                            </label>
-                        </div>
-                    </div>
-                </div> --}}
-
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="row mt-3">
-                                <div class="col-md-3"></div>
+                                <div class="col-md-4"></div>
                                 <div class="col-md-4">
-                                    <select name="class_id" id="filter_class" class="form-control select2" data-toggle = "select2" required onchange="loaddata()">
-                                        <option value = "" >Select Class</option>
+                                    <select id="filter_class" class="select2 form-control custom-select" onchange="loaddata()">
+                                        <option disabled selected hidden >Select A Class</option>
                                         @foreach($data as $value)
                                             <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                {{-- <div class="col-md-4">
+                                    <select id="filter_section" class="select2 form-control custom-select" onchange="loaddata()">
+                                        <option disabled selected hidden >Select A Section</option>
+                                        @foreach($section as $value)
+                                            <option value="{{$value->section_id}}" >{{$value->section_name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div> --}}
                                 {{-- <div class="col-md-2">
                                     <button class="btn btn-block btn-secondary" onclick="loaddata()" >Filter</button>
                                 </div> --}}
                             </div>
-                            <div class="card-body subject_content">
-                                  <div class="empty_box">
-                                    <img class="mb-1-center" width="120px" src="http://ekattor-school-erp.com/demo/v7/assets/backend/images/empty_box.png" />
-                                    <br>
-                                    <span class="">No Data Found</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-
+                <br>
                 <div class="row">
                     <div class="col-sm-12">
                         <div id="data_lists"></div>

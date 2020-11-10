@@ -17,8 +17,8 @@ class SubjectModelController extends Controller
     public function create(Request $request)
     {
         $data['subject'] = SubjectModel::where(function($query) use($request){
-            if ($request->class) {
-                $query->where('class_name', $request->class);
+            if ($request->filterClass) {
+                $query->where('class_name', $request->filterClass);
             }
         })->get();
         return view('Backend.Subject.list',$data);
