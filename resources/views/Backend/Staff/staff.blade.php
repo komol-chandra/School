@@ -142,19 +142,19 @@
                     
                     <div class="form-group row">
                         <label for="staff_address" class="col-sm-3 text-right control-label col-form-label">Address</label>
-                        <div class="col-md-9">
+                        <div class="col-sm-9">
                             <textarea value="{{old('staff_address') ? old('staff_address') : ''}}" class="form-control" name="staff_address" id="staff_address " rows="5"  placeholder="address"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="staff_about" class="col-sm-3 text-right control-label col-form-label">Bio</label>
-                        <div class="col-md-9">
+                        <div class="col-sm-9">
                             <textarea value="{{old('staff_about') ? old('staff_about') : ''}}" class="form-control" name="staff_about" id="staff_about " rows="5"  placeholder="About yourself"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="staff_image" class="col-lg-3 control-label text-right"> Image:</label>
-                        <div class="col-lg-9">
+                        <label for="staff_image" class="col-sm-3 control-label text-right"> Image:</label>
+                        <div class="col-sm-9">
                             <img style="height: 200px; width: 200px; border-radius: 100px;" name="staff_image" id='staffImage' src="{{asset('Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'>
                             <br><br>
                             <input type='file' id="staff_image" name="staff_image" onchange="readURL(this);" />
@@ -196,7 +196,7 @@
                             <select value="{{old('staff_designation_name') ? old('staff_designation_name') : ''}}" name="staff_designation_name" id="edit_staff_designation_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
                                 @foreach($designations as $value)
-                                <option value="{{$value->staff_designation_id}}">{{$value->staff_designation_name}}</option>
+                                <option value="{{$value->staff_designation_id}}"{{$value->staff_designation_name== $value->staff_designation_id ? 'selected' : ''}}>{{$value->staff_designation_name}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -204,7 +204,7 @@
                     <div class="form-group row">
                         <label for="edit_staff_department_name" class="col-sm-3 text-right control-label col-form-label">Department<span style="color:red;">*</span></label>
                         <div class="col-sm-9">
-                            <select value="{{old('staff_department_name') ? old('staff_department_name') : ''}}" name="staff_department_name" id="edit_staff_department_name" class="select2 form-control custom-select">
+                            <select value="{{old('staff_department_name') ? old('staff_department_name') : 'selected'}}" name="staff_department_name" id="edit_staff_department_name" class="select2 form-control custom-select">
                                 <option selected disabled hidden>Select</option>
                                 @foreach($departments as $value)
                                 <option value="{{$value->staff_department_id}}">{{$value->staff_department_name}}</option>
@@ -263,19 +263,19 @@
                     
                     <div class="form-group row">
                         <label for="edit_staff_address" class="col-sm-3 text-right control-label col-form-label">Address</label>
-                        <div class="col-md-9">
-                            <textarea value="{{old('staff_address') ? old('staff_address') : ''}}" class="form-control" name="staff_address" id="edit_staff_address " rows="5"  placeholder="address"></textarea>
+                        <div class="col-sm-9">
+                            <textarea value="" class="form-control" name="staff_address" id="edit_staff_address " rows="5"  placeholder="address">{{old('staff_address') ? old('staff_address') : ''}} </textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="edit_staff_about" class="col-sm-3 text-right control-label col-form-label">Bio</label>
-                        <div class="col-md-9">
+                        <div class="col-sm-9">
                             <textarea value="{{old('staff_about') ? old('staff_about') : ''}}" class="form-control" name="staff_about" id="edit_staff_about " rows="5"  placeholder="About yourself"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="editStaffImage" class="col-lg-3 control-label text-right"> Image:</label>
-                        <div class="col-lg-9">
+                        <label for="editStaffImage" class="col-sm-3 control-label col-form-label text-right"> Image:</label>
+                        <div class="col-sm-9">
                             <img style="height: 200px; width: 200px; border-radius: 100px;" name="staff_image" id='editStaffImage' src="{{asset('Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'>
                             <br><br>
                             <input type='file' id="editStaffImage" name="staff_image" onchange="readURL2(this);" />
@@ -284,7 +284,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="close" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" id="close2" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </div>

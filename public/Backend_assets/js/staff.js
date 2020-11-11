@@ -33,7 +33,10 @@ $(document).ready(function(){
             success:function(data)
             {
                 $("#edit_staff_name").val(data.staff_name);
+                $("#edit_staff_designation_name").val(data.staff_designation_name);
+                $("#edit_staff_department_name").val(data.staff_department_name);
                 $("#edit_gender_name").val(data.gender_name);
+                $("#edit_blood_name").val(data.blood_name);
                 $("#edit_staff_phone").val(data.staff_phone);
                 $("#edit_staff_facebook").val(data.staff_facebook);
                 $("#edit_staff_twitter").val(data.staff_twitter);
@@ -47,6 +50,32 @@ $(document).ready(function(){
             }
           });
       });
+
+    $(document).on("submit", "#staff_form_update", function (e) {
+        e.preventDefault();
+        let data = $('#slider_update_form').get(0);
+        let id = $("#edit_staff_id").val();
+        $.ajax({
+            url:`/admin/staff/${id}`,
+            type:'PUT',
+            dataType: "json",
+            data: new FormData(data),
+            enctype: 'multipart/form-data',
+            processData: false,
+            contentType: false,
+            success:function(data){
+                if (data.status==201){
+                    datalist();
+                    toastr.success(data.message, "Success!");
+                    $("#close2").click();
+                    $("#staff_form_update").trigger("reset");
+                }
+            },
+            error:function(errors){
+                console.log(errors);
+            }
+        }); 
+    });
 
     $(document).on("click", "#status", function() {
         let data = $(this).attr("data");

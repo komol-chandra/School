@@ -4,6 +4,11 @@
             <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             <a class="navbar-brand" href="{{url('/admin')}}">
                 <b class="logo-icon p-l-10">
+                    {{-- @if (File::exists($app_data->app_settings_logo))
+                        <img src="{{ asset('/Backend_assets/Files/App_Settings/'.$app_data->app_settings_logo) }}" alt="image" />
+                    @else 
+                        <img src="{{ asset('Backend_assets/Files/App_Settings/logo-sm.png') }}" alt="image" />
+                    @endif --}}
                     {{-- <img src="/Backend_assets/Files/App_Settings/{{$app_data->app_settings_logo}}" alt="homepage" class="light-logo" /> --}}
                 </b>
                 <span class="logo-text">

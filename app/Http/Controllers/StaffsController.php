@@ -92,9 +92,36 @@ class StaffsController extends Controller
         $staff= Staffs::findOrFail($id);
         return response()->json($staff, 201);
     }
-    public function update(Request $request, Staffs $staffs)
+    public function update(StaffRequest $request ,$id)
     {
-        //
+        $staff=Staffs::findOrFail($request->$id);
+        if ($request->staff_image) {
+            $path=("Backend_assets/Files/Staff{$staff->staff_image}");
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+            $staff->staff_image=$this->ImageVerifyUpload($request,'staff_image','Backend_assets/Files/Staff','staff_image');
+        }
+        $staff->staff_name=$request->staff_name;
+        $staff->staff_email=$request->staff_email;
+        $staff->staff_password=$request->staff_password;
+        $staff->staff_designation_name=$request->staff_designation_name;
+        $staff->staff_department_name=$request->staff_department_name;
+        $staff->staff_phone=$request->staff_phone;
+        $staff->gender_name=$request->gender_name;
+        $staff->blood_name=$request->blood_name;
+        $staff->staff_facebook=$request->staff_facebook;
+        $staff->staff_twitter=$request->staff_twitter;
+        $staff->staff_linkedin=$request->staff_linkedin;
+        $staff->staff_address=$request->staff_address;
+        $staff->staff_about=$request->staff_about;
+        $staff->save();
+        $status=201;
+        $response=[
+                'status'=>$status,
+                'message'=>'Data Successfully Updated',
+            ];
+        return response()->json($response,$status);
     }
     public function destroy($id)
     {

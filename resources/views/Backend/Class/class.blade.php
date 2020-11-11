@@ -38,7 +38,7 @@
     </div>
 </div>
 {{--Add Modal--}}
-<form method="post" id="class_form">@csrf
+<form method="POST" id="class_form">@csrf
     <div class="modal fade" id="add_class" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
+                        <label for="fname" class="col-sm-3  control-label col-form-label">Class Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="class_name" class="form-control" id="class_name" placeholder="Class Name Here">
                         </div>
@@ -81,7 +81,7 @@
                     <input type="hidden" name="class_id" id="edit_class_id">
 
                     <div class="form-group row">
-                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
+                        <label for="fname" class="col-sm-3 control-label col-form-label">Class Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="class_name" class="form-control" id="edit_class_name">
                             <span class="help-block" id="class_name_edit" style="color:red;"></span>

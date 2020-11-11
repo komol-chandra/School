@@ -81,8 +81,8 @@
 						Member Login
 					</span>
                     <div>
-                    <p>mail:Admin@info.com</p>
-                    <p>pass:Admin@info.com</p>
+                    <p>mail:info@info.com</p>
+                    <p>pass:info@info.com</p>
                     </div>
 					<div class="wrap-input100 validate-input mt-3" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="email" name="email" :value="old('email')" placeholder="Email">
