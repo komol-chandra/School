@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClassNameRequest;
 use App\Models\ClassName;
 use Illuminate\Http\Request;
-use App\Http\Requests\ClassNameRequest;
-use JsValidator;
+use Illuminate\Http\Response;
 
 class ClassNameController extends Controller
 {
@@ -24,7 +24,7 @@ class ClassNameController extends Controller
         $save_modal = new ClassName();
         $save_modal->class_name = $request->class_name;
         $save_modal->save();
-        $status = 201;
+        $status = Response::HTTP_CREATED;
         $response = [
             'staus'   => $status,
             'message' => 'Data inserted Succesfully!',
