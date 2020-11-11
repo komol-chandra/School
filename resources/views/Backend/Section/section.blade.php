@@ -48,7 +48,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label class="col-sm-3 text-right control-label col-form-label">class Name</label>
+                        <label class="col-sm-3  control-label col-form-label">class Name</label>
                         <div class="col-sm-9">
                             <select name="class_name" class="select2 form-control custom-select">
                                 <option id="class_name" selected disabled hidden>Select</option>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Section Name</label>
+                        <label for="fname" class="col-sm-3 control-label col-form-label">Section Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="section_name" class="form-control" placeholder="Section Name Here">
                         </div>
@@ -88,7 +88,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="class_id" id="class_id">
                     <div class="form-group row">
-                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Class Name</label>
+                        <label for="fname" class="col-sm-3 control-label col-form-label">Class Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="class_name" class="form-control" id="e_class_name">
                         </div>

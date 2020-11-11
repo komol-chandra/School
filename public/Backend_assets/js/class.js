@@ -20,8 +20,8 @@ $(document).ready(function() {
         });
     });
     $(document).on("click", ".delete", function() {
-        var data = $(this).attr("data");
-        var csrf = $(this).attr("data-csrf");
+        let data = $(this).attr("data");
+        let csrf = $(this).attr("data-csrf");
         swal({
             title: "Are you sure?",
             text:
@@ -66,7 +66,7 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".edit", function() {
-        var data = $(this).attr("data");
+        let data = $(this).attr("data");
 
         $.ajax({
             url: `/admin/class/${data}/edit`,
@@ -82,13 +82,12 @@ $(document).ready(function() {
     $(document).on("submit", "#class_update", function(e) {
         e.preventDefault();
         let id = $("#edit_class_id").val();
-
         let data = $(this).serializeArray();
         $.each(data, function(i, message) {
             $("#" + message.name + "_edit").html((message = ""));
         });
         $.ajax({
-            url: "/admin/class/" + id,
+            url: `/admin/class/${id}`,
             data: data,
             type: "PUT",
             dataType: "json",
@@ -107,7 +106,7 @@ $(document).ready(function() {
 
     $("#data_lists").on("click", ".page-link", function(e) {
         e.preventDefault();
-        var page_link = $(this).attr("href");
+        let page_link = $(this).attr("href");
         datalist(page_link);
     });
 
@@ -116,7 +115,7 @@ $(document).ready(function() {
     });
 
     function datalist(page_link = "/admin/class/create") {
-        var search = $(".search").val();
+        let search = $(".search").val();
 
         $.ajax({
             url: page_link,

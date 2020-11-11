@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             
             DepartmentSeeder::class,
             ClassSeeder::class,
+            SectionSeeder::class,
             GenderSeeder::class,
             BloodSeeder::class,
             CategorySeeder::class,
@@ -29,7 +30,11 @@ class DatabaseSeeder extends Seeder
             StartingMinuteSeeder::class,
             EndingHourSeeder::class,
             EndingMinuteSeeder::class,
+            EventSeeder::class,
+            TeacherSeeder::class,
+            StaffSeeder::class,
             UserSeeder::class,
+            appSettingSeeder::class,
         ]);
     }
 }

@@ -15,9 +15,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-        	'name' => 'Nipen',
-            'email' => 'amitmojumder356@gmail.com',
-            'password' => '$2y$10$h.6aNPkOPiejef0mqAkHv.mLaztTjYV.Uw/0wY8eYEY6w/9CTMePq',
+        	'name' => 'kiri2ka',
+            'email' => 'info@info.com',
+            'password' => '$2y$10$WNcHoHuyH.OyDISmjVRzLO7S98gYFEFIX.MDXX5T.WWqOnrzAGIQW',
         ]);
     }
 }
