@@ -96,19 +96,17 @@ $(document).ready(function() {
             }
         });
     });
-
-    loaddata();
 });
 
 function loaddata() {
     let filterClass = $("#filter_class").val();
 
-    let page_link = `/subject/create?filterClass=${
+    let pageLink = `/subject/create?filterClass=${
         filterClass ? filterClass : ""
     }`;
 
     $.ajax({
-        url: page_link,
+        url: pageLink,
         type: "get",
         datatype: "html",
         success: function(response) {

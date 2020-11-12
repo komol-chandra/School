@@ -36,11 +36,11 @@ class SyllabusController extends Controller
     public function create(Request $request)
     {
         $data['syllabus'] = Syllabus::where(function($query) use($request){
-            if ($request->class) {
-                $query->where('class_name', $request->class);
+            if ($request->className) {
+                $query->where('class_name', $request->className);
             }
-            if ($request->section) {
-                $query->where('section_name', $request->section);
+            if ($request->sectionName) {
+                $query->where('section_name', $request->sectionName);
             }
         })->get();
         return view('Backend.Syllabus.list',$data);

@@ -1,10 +1,8 @@
 $(document).ready(function(){
-
 });
 function datalist() {
     let filterClass = $("#filterClass").val();
     let filterSection = $("#filterSection").val();
-
     page_link = `/admin/routineList?filterClass=${
         filterClass ? filterClass : ""
     }&filterSection=${filterSection ? filterSection : ""}`;
