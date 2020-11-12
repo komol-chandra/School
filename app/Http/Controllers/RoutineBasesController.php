@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoutineBasesRequest;
 use App\Models\ClassName;
 use App\Models\ClassRoom;
 use App\Models\Days;
@@ -11,13 +12,17 @@ use App\Models\SectionName;
 use App\Models\SubjectModel;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
-use App\Http\Requests\RoutineBasesRequest;
 
 class RoutineBasesController extends Controller
 {
     public function index()
     {
-        return view('Backend.Routine.routine');
+        $className = ClassName::active()->get();
+        $sectionName = SectionName::active()->get();
+        return view('Backend.Routine.routine', [
+            'className'   => $className,
+            'sectionName' => $sectionName,
+        ]);
     }
     public function create()
     {
@@ -35,6 +40,24 @@ class RoutineBasesController extends Controller
         // return StudentCollection::collection($sectionName);
         $sectionData = SectionName::where('class_name', $id)->get();
         return response()->json($sectionData, 200);
+    }
+    public function routineList(Request $request)
+    {
+        $data = routine_bases::where(function ($query) use ($request) {
+            if ($request->filterClass) {
+                $query->where('class_name', $request->filterClass);
+            }
+            if ($request->filterSection) {
+                $query->where('section_name', $request->filterSection);
+            }
+        })->get();
+        $className = ClassName::active()->get();
+        $sectionName = SectionName::active()->get();
+        return view('Backend.Routine.routineList', [
+            'className'   => $className,
+            'sectionName' => $sectionName,
+            'data'        => $data,
+        ]);
     }
     public function store(RoutineBasesRequest $request)
     {
@@ -55,7 +78,7 @@ class RoutineBasesController extends Controller
                 ];
             }
             routine_eachs::insert($data);
-        return redirect()->route('routine.create')->with('msg','Data Successfully Inserted');
+            return redirect()->route('routine.create')->with('msg', 'Data Successfully Inserted');
         } catch (\Exception $e) {
             return redirect()->back()->with("status", "message=" . $e->getMessage());
 

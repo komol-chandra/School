@@ -4,176 +4,163 @@
 @section('head_name', 'Dashboard')
 @section('content')
 <div class="row">
-    <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
-        <div class="card card-hover">
-            <div class="box bg-cyan text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-view-dashboard"></i></h1>
-                <h6 class="text-white">Dashboard</h6>
-            </div>
-        </div>
-    </div>
-    <!-- Column -->
-    <div class="col-md-6 col-lg-4 col-xlg-3">
+    <div class="col-sm-6 col-md-6 col-lg-2 col-xlg-3">
         <div class="card card-hover">
             <div class="box bg-success text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-chart-areaspline"></i></h1>
-                <h6 class="text-white">Charts</h6>
+                <img src="{{asset('Backend_assets/Files/Basic_Image/teacher.jpg')}}" class="my-2 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h4 class="text-white" id="teacherdata">2540</h4>
+                <h6 class="text-white">Teacher</h6>
+                <a class="btn btn-secondary" href="{{ route('teacher.index') }}"> More Info</a>
             </div>
         </div>
     </div>
-     <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
+    <div class="col-md-6  col-sm-6 col-lg-2 col-xlg-3">
+        <div class="card card-hover">
+            <div class="box bg-danger text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/student.jpg')}}" class="my-2 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h4 class="text-white" id="studentData"></h4>
+                <h6 class="text-white">Student List</h6>
+                <a class="btn btn-secondary" href="{{ route('student.index') }}"> More Info</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
+        <div class="card card-hover">
+            <div class="box bg-info text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/staff.jpg')}}" class="my-2 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h4 class="text-white" id="staffData"></h4>
+                <h6 class="text-white">Staff</h6>
+                <a class="btn btn-secondary" href="{{ route('staff.index') }}"> More Info</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
+        <div class="card card-hover">
+            <div class="box bg-dark text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/parents.jpg')}}" class="my-2 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h4 class="text-white" id="parentData"></h4>
+                <h6 class="text-white">Parents</h6>
+                <a class="btn btn-secondary" href="{{ url('/admin/guardianList') }}"> More Info</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-2 col-xlg-3">
         <div class="card card-hover">
             <div class="box bg-warning text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-collage"></i></h1>
-                <h6 class="text-white">Widgets</h6>
+                <img src="{{asset('Backend_assets/Files/Basic_Image/admition.png')}}" class="my-3 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h6 class="text-white">Admit Student</h6>
+                <a class="btn btn-secondary" href="{{ route('student.create') }}"> More Info</a>
             </div>
         </div>
     </div>
-    <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
+    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
         <div class="card card-hover">
-            <div class="box bg-danger text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-border-outside"></i></h1>
-                <h6 class="text-white">Tables</h6>
+            <div class="box bg-dark text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/setting.png')}}" class="my-3 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h6 class="text-white">Settings</h6>
+                <a class="btn btn-secondary" href="{{ route('settings.index') }}"> More Info</a>
             </div>
         </div>
     </div>
-    <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
-        <div class="card card-hover">
-            <div class="box bg-info text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-arrow-all"></i></h1>
-                <h6 class="text-white">Full Width</h6>
-            </div>
-        </div>
-    </div>
-    <!-- Column -->
-    <!-- Column -->
-    <div class="col-md-6 col-lg-4 col-xlg-3">
-        <div class="card card-hover">
-            <div class="box bg-danger text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-receipt"></i></h1>
-                <h6 class="text-white">Forms</h6>
-            </div>
-        </div>
-    </div>
-    <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
-        <div class="card card-hover">
-            <div class="box bg-info text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-relative-scale"></i></h1>
-                <h6 class="text-white">Buttons</h6>
-            </div>
-        </div>
-    </div>
-     <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
-        <div class="card card-hover">
-            <div class="box bg-cyan text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-pencil"></i></h1>
-                <h6 class="text-white">Elements</h6>
-            </div>
-        </div>
-    </div>
-    <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
+    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
         <div class="card card-hover">
             <div class="box bg-success text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-calendar-check"></i></h1>
-                <h6 class="text-white">Calnedar</h6>
+                <img src="{{asset('Backend_assets/Files/Basic_Image/routine.png')}}" class="my-3 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h6 class="text-white">Routine</h6>
+                <a class="btn btn-secondary" href="{{ route('routine.index') }}"> More Info</a>
             </div>
         </div>
     </div>
-    <!-- Column -->
-    <div class="col-md-6 col-lg-2 col-xlg-3">
+    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
         <div class="card card-hover">
-            <div class="box bg-warning text-center">
-                <h1 class="font-light text-white"><i class="mdi mdi-alert"></i></h1>
-                <h6 class="text-white">Errors</h6>
+            <div class="box bg-info text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/Attendance.png')}}" class="my-3 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h6 class="text-white">Attendance</h6>
+                <a class="btn btn-secondary" href="#"> More Info</a>
             </div>
         </div>
     </div>
-    <!-- Column -->
-</div>
-<!-- ============================================================== -->
-<!-- Sales chart -->
-<!-- ============================================================== -->
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-md-flex align-items-center">
-                    <div>
-                        <h4 class="card-title">Site Analysis</h4>
-                        <h5 class="card-subtitle">Overview of Latest Month</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- column -->
-                    <div class="col-lg-9">
-                        <div class="flot-chart">
-                            <div class="flot-chart-content" id="flot-line-chart"></div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="bg-dark p-10 text-white text-center">
-                                   <i class="fa fa-user m-b-5 font-16"></i>
-                                   <h5 class="m-b-0 m-t-5">2540</h5>
-                                   <small class="font-light">Total Users</small>
-                                </div>
-                            </div>
-                             <div class="col-6">
-                                <div class="bg-dark p-10 text-white text-center">
-                                   <i class="fa fa-plus m-b-5 font-16"></i>
-                                   <h5 class="m-b-0 m-t-5">120</h5>
-                                   <small class="font-light">New Users</small>
-                                </div>
-                            </div>
-                            <div class="col-6 m-t-15">
-                                <div class="bg-dark p-10 text-white text-center">
-                                   <i class="fa fa-cart-plus m-b-5 font-16"></i>
-                                   <h5 class="m-b-0 m-t-5">656</h5>
-                                   <small class="font-light">Total Shop</small>
-                                </div>
-                            </div>
-                             <div class="col-6 m-t-15">
-                                <div class="bg-dark p-10 text-white text-center">
-                                   <i class="fa fa-tag m-b-5 font-16"></i>
-                                   <h5 class="m-b-0 m-t-5">9540</h5>
-                                   <small class="font-light">Total Orders</small>
-                                </div>
-                            </div>
-                            <div class="col-6 m-t-15">
-                                <div class="bg-dark p-10 text-white text-center">
-                                   <i class="fa fa-table m-b-5 font-16"></i>
-                                   <h5 class="m-b-0 m-t-5">100</h5>
-                                   <small class="font-light">Pending Orders</small>
-                                </div>
-                            </div>
-                            <div class="col-6 m-t-15">
-                                <div class="bg-dark p-10 text-white text-center">
-                                   <i class="fa fa-globe m-b-5 font-16"></i>
-                                   <h5 class="m-b-0 m-t-5">8540</h5>
-                                   <small class="font-light">Online Orders</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- column -->
-                </div>
+    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
+        <div class="card card-hover">
+            <div class="box bg-success text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/syllabus.png')}}" class="my-3 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h6 class="text-white">Syllabus</h6>
+                <a class="btn btn-secondary" href="{{ route('syllabus.index') }}"> More Info</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
+        <div class="card card-hover">
+            <div class="box bg-danger text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/event.png')}}" class="my-3 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h6 class="text-white">Event Calender</h6>
+                <a class="btn btn-secondary" href="{{ route('eventCalender.index') }}"> More Info</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-lg-2 col-xlg-3">
+        <div class="card card-hover">
+            <div class="box bg-info text-center">
+                <img src="{{asset('Backend_assets/Files/Basic_Image/library.png')}}" class="my-3 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
+                <h6 class="text-white">Library</h6>
+                <a class="btn btn-secondary" href="{{ route('library.index') }}"> More Info</a>
             </div>
         </div>
     </div>
 </div>
-<!-- ============================================================== -->
-<!-- Sales chart -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Recent comment and chats -->
-<!-- ============================================================== -->
+@endsection
+@section('js')
+<script>
+    $(document).ready(function(){
+        getTeacher();
+        getStudent();
+        getStaff();
+        getParent();
 
+        function getTeacher() {
+            $.ajax({
+                url: "/admin/teacherDashboard",
+                type: "get",
+                cache: false,
+                datatype: "html",
+                success: function(data) {
+                    $("#teacherdata").html(data);
+                }
+            });
+        }
+        function getStudent() {
+            $.ajax({
+                url: "/admin/studentDashboard",
+                type: "get",
+                cache: false,
+                datatype: "html",
+                success: function(data) {
+                    $("#studentData").html(data);
+                }
+            });
+        }
+        function getParent() {
+            $.ajax({
+                url: "/admin/parentDashboard",
+                type: "get",
+                cache: false,
+                datatype: "html",
+                success: function(data) {
+                    $("#parentData").html(data);
+                }
+            });
+        }
+        function getStaff() {
+            $.ajax({
+                url: "/admin/staffDashboard",
+                type: "get",
+                cache: false,
+                datatype: "html",
+                success: function(data) {
+                    $("#staffData").html(data);
+                }
+            });
+        }
+    });
+</script>
 @endsection
