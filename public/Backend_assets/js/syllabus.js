@@ -26,10 +26,8 @@ $(document).ready(function() {
             }
         });
     });
-
-    loaddata();
 });
-function loaddata(pagelink = "/admin/syllabus/create") {
+function loaddata() {
     let className = $("#filter_class").val();
     let sectionName = $("#filter_section").val();
 

@@ -21,6 +21,10 @@
                      {{$value->teacher->teacher_name}}
                 </p>
                 <p>
+                    <i class="fas fa-user-circle"></i>
+                     {{$value->className->class_name}}
+                </p>
+                <p>
                     <i class=" fas fa-home"></i>
                      {{$value->classRoom->classroom_name}}
                 </p>

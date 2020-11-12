@@ -98,6 +98,7 @@ $(document).ready(function() {
 
     loaddata();
 });
+
 function loaddata() {
     let className = $("#filter_class").val();
     let sectionName = $("#filter_section").val();
