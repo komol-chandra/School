@@ -87,15 +87,15 @@
                             <label class="col-md-3 text-right">Gender</label>
                             <div class="col-md-9">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="one" value="1" name="gender_name" required="">
+                                    <input type="radio" class="custom-control-input" id="one" value="1" name="gender_name">
                                     <label class="custom-control-label" for="one">Male</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="two" value="2" name="gender_name" required="">
+                                    <input type="radio" class="custom-control-input" id="two" value="2" name="gender_name" >
                                     <label class="custom-control-label" for="two">Female</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" id="three" value="3" name="gender_name" required="">
+                                    <input type="radio" class="custom-control-input" id="three" value="3" name="gender_name">
                                     <label class="custom-control-label" for="three">other</label>
                                 </div>
                             </div>

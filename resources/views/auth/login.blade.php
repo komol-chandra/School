@@ -81,8 +81,11 @@
 						Member Login
 					</span>
                     <div>
-                    <p>mail:info@info.com</p>
-                    <p>pass:info@info.com</p>
+                    <div class="text-center p-t-12">
+                        <p>Email: <span class="ml-1">info@info.com</span></p>
+                        <p>pass: <span class="ml-1">info@info.com</span></p>
+                        
+                    </div>
                     </div>
 					<div class="wrap-input100 validate-input mt-3" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="email" name="email" :value="old('email')" placeholder="Email">
@@ -115,6 +118,7 @@
 							Username / Password?
 						</a>
                     </div>
+                    
                     {{-- <div class="text-center p-t-13">
                         <a class="txt2" href="{{ route('register') }}">
                             Create your Account
