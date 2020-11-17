@@ -101,7 +101,7 @@ $(document).ready(function() {
 function loaddata() {
     let filterClass = $("#filter_class").val();
 
-    let pageLink = `/subject/create?filterClass=${
+    let pageLink = `/admin/subject/create?filterClass=${
         filterClass ? filterClass : ""
     }`;
 
