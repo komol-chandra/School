@@ -24,9 +24,9 @@
             <td>
                 @if ($value->classroom_status == 1)
                 <button class="btn btn-outline-success btn-sm" id="classroom_status" data="{{$value->classroom_id}}"><i class="fas fa-sync"></i></button>
-            @else
+                @else
                 <button class="btn btn-outline-info btn-sm" id="classroom_status" data="{{$value->classroom_id}}"><i class="fas fa-sync"></i></button>
-            @endif
+                @endif
 
                 <button type="button" class="btn btn-outline-danger btn-sm delete" data-csrf="{{csrf_token()}}" data="{{$value->classroom_id}}">
                     <i class="fa fa-trash"></i>

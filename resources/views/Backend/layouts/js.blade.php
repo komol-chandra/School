@@ -17,6 +17,9 @@
 <script src="{{asset('Backend_assets/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
 
+<script src="{{asset('Backend_assets/assets/libs/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+<script src="{{asset('Backend_assets/dist/js/pages/calendar/cal-init.js')}}"></script>
 
 <script src="{{asset('Backend_assets/js/sweetalert.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -62,7 +65,7 @@
       }
     @endif
   </script>
-{{-- 
+{{--
 <script type="text/javascript">
     function readURL(input) {
   if (input.files && input.files[0]) {

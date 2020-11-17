@@ -7,9 +7,7 @@
 <button type="button" class="btn btn-info margin-5 text-white " data-toggle="modal" data-target="#addModal">Add Class Room</button><br><br>
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Basic Datatable Expriment
-
-        </h5>
+        <h5 class="card-title">Basic Datatable Expriment</h5>
         <div class="table-responsive">
             <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
