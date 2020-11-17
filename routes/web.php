@@ -9,22 +9,28 @@ Route::get('/', 'MainController@index');
 Route::get('/ex', 'MainController@ex');
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
+        Route::get('/teacherDashboard', 'MainController@teacherDashboard');
+        Route::get('/studentDashboard', 'MainController@studentDashboard');
+        Route::get('/staffDashboard', 'MainController@staffDashboard');
+        Route::get('/parentDashboard', 'MainController@parentDashboard');
 
         Route::resource('/subject', 'SubjectModelController');
         Route::resource('/department', 'DepartmentController');
         Route::resource('/classroom', 'ClassRoomController');
         Route::resource('/settings', 'AppSettingsController');
         Route::resource('/library', 'LibraryModelController');
-        Route::resource('/class_routine', 'ClassRoutineController');
         Route::resource('/session', 'SessionManagerController');
         Route::resource('/class', 'ClassNameController');
         Route::resource('/section', 'SectionNameController');
         Route::resource('/eventCalender', 'EventCalendersController');
+        Route::resource('syllabus', 'SyllabusController');
         Route::resource('/staff', 'StaffsController');
+        //Routine
         Route::resource('/routine', 'RoutineBasesController');
         Route::resource('/notice', 'NoticeController');
         Route::resource('/daily_attendance', 'AttendanceController');
         Route::get('/routine/sectionData/{id}', 'RoutineBasesController@sectionData');
+        Route::get('/routineList','RoutineBasesController@routineList');
         //Student
         Route::resource('/student', 'StudentController');
         Route::get('/studentList', 'StudentController@studentList');
@@ -34,6 +40,5 @@ Route::prefix('admin')->group(function () {
         Route::resource('teacher', 'TeacherController');
         Route::get('/teacherList', 'TeacherController@teacherList');
         //Syllabus with out ajax
-        Route::resource('syllabus', 'SyllabusController');
     });
 });

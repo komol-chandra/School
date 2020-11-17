@@ -24,17 +24,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- <div class="col-md-4">
-                                    <select id="filter_section" class="select2 form-control custom-select" onchange="loaddata()">
-                                        <option disabled selected hidden >Select A Section</option>
-                                        @foreach($section as $value)
-                                            <option value="{{$value->section_id}}" >{{$value->section_name}}</option>
-                                        @endforeach
-                                    </select>
-                                </div> --}}
-                                {{-- <div class="col-md-2">
-                                    <button class="btn btn-block btn-secondary" onclick="loaddata()" >Filter</button>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
