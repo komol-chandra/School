@@ -27,6 +27,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('/staff', 'StaffsController');
         //Routine
         Route::resource('/routine', 'RoutineBasesController');
+        Route::resource('/notice', 'NoticeController');
+        Route::resource('/daily_attendance', 'AttendanceController');
         Route::get('/routine/sectionData/{id}', 'RoutineBasesController@sectionData');
         Route::get('/routineList','RoutineBasesController@routineList');
         //Student

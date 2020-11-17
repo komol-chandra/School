@@ -36,7 +36,6 @@ class ClassRoomController extends Controller
      */
     public function store(ClassRoomRequest $request)
     {
-
         $classroom_model = new ClassRoom;
         $classroom_model->fill($request->all())->save();
         $response = [
