@@ -15,8 +15,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="row mt-3">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
+                                {{-- <div class="col-md-4"></div> --}}
+                                <div class="col-md-4 col-sm-3 mb-1">
+                                    <h5 class="card-title">Filter Data</h5>
+                                </div>
+                                <div class="col-md-4 form-group row">
                                     <select id="filter_class" class="select2 form-control custom-select" onchange="loaddata()">
                                         <option disabled selected hidden >Select A Class</option>
                                         @foreach($data as $value)
