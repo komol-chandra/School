@@ -27,6 +27,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('/staff', 'StaffsController');
         //Routine
         Route::resource('/routine', 'RoutineBasesController');
+        Route::resource('/notice', 'NoticeController');
+        Route::resource('/daily_attendance', 'AttendanceController');
         Route::get('/routine/sectionData/{id}', 'RoutineBasesController@sectionData');
         Route::get('/routineList', 'RoutineBasesController@routineList');
         //Student
@@ -40,5 +42,9 @@ Route::prefix('admin')->group(function () {
         //Profile
         Route::resource('/profile','ProfileController');
         Route::post('profile/password','ProfileController@password');
+        //System Setting
+        Route::resource('system_setting', 'SystemSettingController');
+        //School Setting
+        Route::resource('school_setting', 'SchoolSettingController');
     });
 });
