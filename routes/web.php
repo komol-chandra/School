@@ -41,10 +41,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/teacherList', 'TeacherController@teacherList');
         //Syllabus with out ajax
 
-        //Setting
         //System Setting
         Route::resource('system_setting', 'SystemSettingController');
-
         //School Setting
         Route::resource('school_setting', 'SchoolSettingController');
     });
