@@ -11,7 +11,6 @@ trait FileVerifyUpload
             $path=public_path($path);
             $image=$name.time().'.'.$filetype;
             $request->file($fieldname)->move($path,$image);
-
             $request->$fieldname=$image;
             return $request->$fieldname;
         }

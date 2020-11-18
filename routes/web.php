@@ -28,7 +28,7 @@ Route::prefix('admin')->group(function () {
         //Routine
         Route::resource('/routine', 'RoutineBasesController');
         Route::get('/routine/sectionData/{id}', 'RoutineBasesController@sectionData');
-        Route::get('/routineList','RoutineBasesController@routineList');
+        Route::get('/routineList', 'RoutineBasesController@routineList');
         //Student
         Route::resource('/student', 'StudentController');
         Route::get('/studentList', 'StudentController@studentList');
@@ -37,6 +37,8 @@ Route::prefix('admin')->group(function () {
         //Teacher
         Route::resource('teacher', 'TeacherController');
         Route::get('/teacherList', 'TeacherController@teacherList');
-        //Syllabus with out ajax
+        //Profile
+        Route::resource('/profile','ProfileController');
+        Route::post('profile/password','ProfileController@password');
     });
 });

@@ -5,17 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Staffs;
 use Illuminate\Http\Request;
 use File;
+use Arr;
+use App\Traits\FileUpload;
 use App\Models\BloodModel;
 use App\Models\GenderModel;
 use App\Models\StaffDepartments;
 use App\Models\StaffDesignations;
 use App\Http\Requests\StaffRequest;
 use JsValidator;
-use App\Traits\FileVerifyUpload;
+use Illuminate\Support\Facades\Hash;
 
 class StaffsController extends Controller
 {
-    use FileVerifyUpload;
+    use FileUpload;
     public function index()
     {
         $department = StaffDepartments::get();
@@ -48,22 +50,17 @@ class StaffsController extends Controller
     }
     public function store(StaffRequest $request)
     {
+
         $staff=new Staffs();
-        $staff->staff_image=$this->ImageVerifyUpload($request,'staff_image','Backend_assets/Files/Staff','staff_image');
-        $staff->staff_name=$request->staff_name;
-        $staff->staff_email=$request->staff_email;
-        $staff->staff_password=$request->staff_password;
-        $staff->staff_designation_name=$request->staff_designation_name;
-        $staff->staff_department_name=$request->staff_department_name;
-        $staff->staff_phone=$request->staff_phone;
-        $staff->gender_name=$request->gender_name;
-        $staff->blood_name=$request->blood_name;
-        $staff->staff_facebook=$request->staff_facebook;
-        $staff->staff_twitter=$request->staff_twitter;
-        $staff->staff_linkedin=$request->staff_linkedin;
-        $staff->staff_address=$request->staff_address;
-        $staff->staff_about=$request->staff_about;
-        $staff->save();
+        
+        if($request->image){
+            $ext=$request->file('image')->getClientOriginalExtension();
+            $path="Backend_assets/Files/Staff/";
+            $name='Staff_'.time().'.'.$ext;
+            $request->file('image')->move($path,$name);
+            Arr::set($request,'staff_image',"/".$path.$name);
+        }
+        $staff->fill($request->all())->save();
         $status=201;
         $response=[
                 'status'=>$status,
@@ -92,30 +89,21 @@ class StaffsController extends Controller
         $staff= Staffs::findOrFail($id);
         return response()->json($staff, 201);
     }
-    public function update(StaffRequest $request ,$id)
+    public function update(StaffRequest $request )
     {
-        $staff=Staffs::findOrFail($request->$id);
-        if ($request->staff_image) {
-            $path=("Backend_assets/Files/Staff{$staff->staff_image}");
-            if (File::exists($path)) {
-                File::delete($path);
+        $staff=Staffs::findOrFail($request->staff_id);
+
+        if ($request->image) {
+            if (File::exists($staff->staff_image)) {
+                File::delete($staff->staff_image);
             }
-            $staff->staff_image=$this->ImageVerifyUpload($request,'staff_image','Backend_assets/Files/Staff','staff_image');
+            $ext=$request->file('image')->getClientOriginalExtension();
+            $path="Backend_assets/Files/Staff/";
+            $name='Staff_'.time().'.'.$ext;
+            $request->file('image')->move($path,$name);
+            Arr::set($request,'staff_image',"/".$path.$name);
         }
-        $staff->staff_name=$request->staff_name;
-        $staff->staff_email=$request->staff_email;
-        $staff->staff_password=$request->staff_password;
-        $staff->staff_designation_name=$request->staff_designation_name;
-        $staff->staff_department_name=$request->staff_department_name;
-        $staff->staff_phone=$request->staff_phone;
-        $staff->gender_name=$request->gender_name;
-        $staff->blood_name=$request->blood_name;
-        $staff->staff_facebook=$request->staff_facebook;
-        $staff->staff_twitter=$request->staff_twitter;
-        $staff->staff_linkedin=$request->staff_linkedin;
-        $staff->staff_address=$request->staff_address;
-        $staff->staff_about=$request->staff_about;
-        $staff->save();
+        $staff->fill($request->all())->save();
         $status=201;
         $response=[
                 'status'=>$status,
@@ -126,10 +114,10 @@ class StaffsController extends Controller
     public function destroy($id)
     {
         $staff=Staffs::findOrFail($id);
-        $staffImage=("Backend_assets/Files/Staff/{$staff->staff_image}");
-            if (File::exists($staffImage)) {
-                File::delete($staffImage);
-            }
+        // $staffImage=("{$staff->staff_image}");
+        if(\File::exists(public_path($staff->staff_image))){
+            \File::delete(public_path($staff->staff_image));
+          }
         $staff->delete();
         return response()->json(201);
     }

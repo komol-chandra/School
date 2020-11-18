@@ -155,9 +155,9 @@
                     <div class="form-group row">
                         <label for="staff_image" class="col-sm-3 control-label text-right"> Image:</label>
                         <div class="col-sm-9">
-                            <img style="height: 200px; width: 200px; border-radius: 100px;" name="staff_image" id='staffImage' src="{{asset('Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'>
+                            <img style="height: 200px; width: 200px; border-radius: 100px;" id='staffImage' src="{{asset('Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'>
                             <br><br>
-                            <input type='file' id="staff_image" name="staff_image" onchange="readURL(this);" />
+                            <input type='file' id="staff_image" name="image" onchange="readURL(this);" />
                             <span class="text-danger" id="image"></span>
                         </div>
                     </div>
@@ -172,7 +172,8 @@
 </form>
 {{--Add Modal--}}
 {{--Edit Modal--}}
-<form method="PUT" enctype="multipart/form-data" id="staff_form_update">@csrf
+<form enctype="multipart/form-data" id="staff_form_update">
+    @csrf
     <div id="edit_modal" class="modal fixed-left fade" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-aside" role="document">
             <div class="modal-content">
@@ -276,9 +277,9 @@
                     <div class="form-group row">
                         <label for="editStaffImage" class="col-sm-3 control-label col-form-label text-right"> Image:</label>
                         <div class="col-sm-9">
-                            <img style="height: 200px; width: 200px; border-radius: 100px;" name="staff_image" id='editStaffImage' src="{{asset('Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'>
+                            <img style="height: 200px; width: 200px; border-radius: 100px;" id='editStaffImage' src="" alt="image" class='img-responsive'>
                             <br><br>
-                            <input type='file' id="editStaffImage" name="staff_image" onchange="readURL2(this);" />
+                            <input type='file' id="editStaffImage" name="image" onchange="readURL2(this);" />
                             <span class="text-danger" id="image"></span>
                         </div>
                     </div>
