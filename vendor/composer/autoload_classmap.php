@@ -54,7 +54,7 @@ return array(
     'App\\Http\\Requests\\ClassRoutineRequest' => $baseDir . '/app/Http/Requests/ClassRoutineRequest.php',
     'App\\Http\\Requests\\DepartmentRequest' => $baseDir . '/app/Http/Requests/DepartmentRequest.php',
     'App\\Http\\Requests\\EvenCalanderRequest' => $baseDir . '/app/Http/Requests/EvenCalanderRequest.php',
-    'App\\Http\\Requests\\LibraryRequest' => $baseDir . '/app/Http/Requests/LibraryRequest.php'
+    'App\\Http\\Requests\\LibraryRequest' => $baseDir . '/app/Http/Requests/LibraryRequest.php',
     'App\\Http\\Requests\\NoticeRequest' => $baseDir . '/app/Http/Requests/NoticeRequest.php',
     'App\\Http\\Requests\\RoutineBasesRequest' => $baseDir . '/app/Http/Requests/RoutineBasesRequest.php',
     'App\\Http\\Requests\\SectionRequest' => $baseDir . '/app/Http/Requests/SectionRequest.php',
