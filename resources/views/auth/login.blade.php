@@ -82,8 +82,8 @@
 					</span>
                     <div>
                     <div class="text-center p-t-12">
-                        <p>Email: <span class="ml-1">info@info.com</span></p>
-                        <p>pass: <span class="ml-1">info@info.com</span></p>
+                        <p>Email: <span class="ml-1">superadmin@example.com</span></p>
+                        <p>pass: <span class="ml-1">superadmin@example.com</span></p>
                         
                     </div>
                     </div>

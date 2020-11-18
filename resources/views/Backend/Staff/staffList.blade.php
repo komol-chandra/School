@@ -16,7 +16,12 @@
         <tr>
             <td>{{$key+1}}</td>
             <td>
-                <img src="/Backend_assets/Files/Staff/{{$value->staff_image}}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
+                
+                @if (File::exists(public_path($value->staff_image)))
+                <img src="{{$value->staff_image}}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
+                @else
+                <img src="/Backend_assets/profile.jpg" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
+                @endif
             </td>
             <td>{{$value->staff_name}}</td>
             <td>{{$value->staff_email}}</td>

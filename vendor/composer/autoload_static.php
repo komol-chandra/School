@@ -678,6 +678,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Providers\\FortifyServiceProvider' => __DIR__ . '/../..' . '/app/Providers/FortifyServiceProvider.php',
         'App\\Providers\\JetstreamServiceProvider' => __DIR__ . '/../..' . '/app/Providers/JetstreamServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
+        'App\\Traits\\FileUpload' => __DIR__ . '/../..' . '/app/Traits/FileUpload.php',
         'App\\Traits\\FileVerifyUpload' => __DIR__ . '/../..' . '/app/Traits/FileVerifyUpload.php',
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
         'App\\View\\Components\\GuestLayout' => __DIR__ . '/../..' . '/app/View/Components/GuestLayout.php',
@@ -5598,7 +5599,6 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'phpDocumentor\\Reflection\\Utils' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/Utils.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {

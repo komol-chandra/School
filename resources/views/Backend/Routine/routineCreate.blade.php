@@ -93,7 +93,6 @@
     </div>
 </div>
 <div class="row">
-    <button type='reset' class="btn btn-primary ">Reset</button>
     <button type='submit' class="btn btn-success submit ml-2">Submit</button>
 </div>
 </form>
@@ -191,6 +190,6 @@
       $(this).closest('div').remove(); i--;
     });
     });
-    </script>
+</script>
 <script src="{{asset('Backend_assets/js/dynamicRoutine.js')}}"></script>
 @endsection

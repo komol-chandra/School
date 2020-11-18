@@ -48,8 +48,8 @@
                         <label>Section<span style="color:red;">*</span></label>
                         <select name="section_name" id="section_name" class="select2 form-control custom-select">
                             <option value="" selected disabled hidden>Select</option>
-                            @foreach($sectionName as $sectionName)
-                            <option value="{{$sectionName->section_id}}">{{$sectionName->section_name}}</option>
+                            @foreach($sectionName as $value)
+                            <option class="sectionOpt" value="{{$value->section_id}}" {{$student->sectionName->section_id == $value->section_id ? 'selected' : ""}}>{{$value->section_name}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -326,7 +326,7 @@
                 response.forEach(function(value,index){
                     
                     $('#section_name').append(`
-                        <option class="sectionOpt"  value="${value.section_id}" >${value.section_name}</option>
+                        <option class="sectionOpt" value="${value.section_id}" >${value.section_name}</option>
                         `);
                 })
             },

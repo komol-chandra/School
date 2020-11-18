@@ -16,11 +16,24 @@
 <script src="{{asset('Backend_assets/dist/js/pages/chart/chart-page-init.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/extra-libs/DataTables/datatables.min.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')}}"></script>
-
+{{-- dashbord chart --}}
+<script src="{{asset('Backend_assets/assets/libs/chart/matrix.interface.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/chart/excanvas.min.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/flot/jquery.flot.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/flot/jquery.flot.pie.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/flot/jquery.flot.time.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/flot/jquery.flot.stack.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/flot/jquery.flot.crosshair.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/chart/jquery.peity.min.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/chart/matrix.charts.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/chart/jquery.flot.pie.min.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
+<script src="{{asset('Backend_assets/assets/libs/chart/turning-series.js')}}"></script>
+<script src="{{asset('Backend_assets/dist/js/pages/chart/chart-page-init.js')}}"></script>
+    {{-- dashbord chart --}}
 <script src="{{asset('Backend_assets/assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
 <script src="{{asset('Backend_assets/dist/js/pages/calendar/cal-init.js')}}"></script>
-
 <script src="{{asset('Backend_assets/js/sweetalert.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
@@ -65,19 +78,4 @@
       }
     @endif
   </script>
-
-<script type="text/javascript">
-    function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      $('#previmage')
-        .attr('src', e.target.result)
-        .width(200)
-        .height(200);
-    };
-    reader.readAsDataURL(input.files[0]);
-  }
-}
-</script>
-@yield('js')
+  @yield('js')
