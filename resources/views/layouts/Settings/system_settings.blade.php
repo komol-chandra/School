@@ -1,15 +1,15 @@
 @extends('Backend.layouts.app')
 @section('title', 'System Settings')
-@section('head', 'Settings')
+@section('head', 'System Settings')
 @section('head_name', 'System Settings')
 @section('content')
-@if(session('msg'))
-    <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
-        {{(session('msg'))}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div>
+    @if(session('msg'))
+        <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
+            {{(session('msg'))}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
     @endif
 <div class="container-fluid">
     <div class="row">
