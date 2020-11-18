@@ -117,12 +117,6 @@ class SystemSettingController extends Controller
 
         $system_setting->save();
         return redirect()->back()->with('msg', 'System Setting Successfully Updated');
-
-        // $system_setting->regular_logo = $this->ImageVerifyUpload($request, 'regular_logo', 'Backend_assets/Files/Logo', 'regular_logo');
-
-        // $light_logo->light_logo = $this->ImageVerifyUpload($request, 'teacher_image', 'Backend_assets/Files/Teacher', 'teacher_image');
-        // $small_logo->small_logo = $this->ImageVerifyUpload($request, 'teacher_image', 'Backend_assets/Files/Teacher', 'teacher_image');
-        // $fav_icon->fav_icon = $this->ImageVerifyUpload($request, 'teacher_image', 'Backend_assets/Files/Teacher', 'teacher_image');
     }
 
     /**
