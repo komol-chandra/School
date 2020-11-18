@@ -125,13 +125,14 @@
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Addon Manager</span>
                     </a>
-                </li>
+                </li> --}}
+
                 <li class="sidebar-item">
-                    <a href="" class="sidebar-link  {{ (request()->is('admin/library')) ? 'active' : '' }}">
+                    <a href="{{ url('/admin/notice/')}}" class="sidebar-link  {{ (request()->is('admin/notice')) ? 'active' : '' }}">
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">Noticeboard</span>
                     </a>
-                </li> --}}
+                </li>
             </ul>
         </li>
         <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cog"></i><span class="hide-menu">Settings</span></a>
