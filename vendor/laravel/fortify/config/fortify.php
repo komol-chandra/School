@@ -8,7 +8,10 @@ return [
     'passwords' => 'users',
     'username' => 'email',
     'email' => 'email',
+    'views' => true,
     'home' => '/home',
+    'prefix' => '',
+    'domain' => null,
     'limiters' => [
         'login' => null,
     ],

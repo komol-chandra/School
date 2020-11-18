@@ -5,10 +5,13 @@ namespace Laravel\Jetstream\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Jetstream\Actions\ValidateTeamDeletion;
 use Laravel\Jetstream\Contracts\DeletesTeams;
+use Laravel\Jetstream\RedirectsActions;
 use Livewire\Component;
 
 class DeleteTeamForm extends Component
 {
+    use RedirectsActions;
+
     /**
      * The team instance.
      *
@@ -47,7 +50,7 @@ class DeleteTeamForm extends Component
 
         $deleter->delete($this->team);
 
-        return redirect(config('fortify.home'));
+        return $this->redirectPath($deleter);
     }
 
     /**

@@ -2,6 +2,15 @@
 
 All notable changes to `ignition` will be documented in this file
 
+## 2.5.1 - 2020-11-13
+
+- add support for LiveWire component urls
+
+## 2.5.0 - 2020-10-27
+
+- add PHP 8.0-dev support
+- remove unnecessary `scrivo/highlight.php` dependency
+
 ## 2.4.1 - 2020-10-14
 
 - fix copy casing
@@ -17,7 +26,7 @@ All notable changes to `ignition` will be documented in this file
 ## 2.3.7 - 2020-09-06
 
 - add loading state on share button (#309)
-- compatiblity fix for L8
+- compatibility fix for L8
 
 ## 2.3.6 - 2020-08-10
 

@@ -138,9 +138,33 @@
         <li class="sidebar-item "> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-cog"></i><span class="hide-menu">Settings</span></a>
             <ul aria-expanded="false" class="collapse  first-level">
                 <li class="sidebar-item">
-                    <a href="{{ url('/admin/settings')}}" class="sidebar-link {{ (request()->is('admin/settings')) ? 'active' : '' }}">
+                    <a href="{{ url('/admin/system_setting')}}" class="sidebar-link {{ (request()->is('admin/system_setting')) ? 'active' : '' }}">
                         <i class="mdi mdi-note-outline"></i>
                         <span class="hide-menu">System Settings</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="" class="sidebar-link">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">WebSite Settings</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="{{ url('/admin/school_setting')}}" class="sidebar-link {{ (request()->is('admin/school_setting')) ? 'active' : '' }}">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">School Settings</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="" class="sidebar-link">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">Developer Part</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="" class="sidebar-link">
+                        <i class="mdi mdi-note-outline"></i>
+                        <span class="hide-menu">About</span>
                     </a>
                 </li>
             </ul>

@@ -30,7 +30,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/notice', 'NoticeController');
         Route::resource('/daily_attendance', 'AttendanceController');
         Route::get('/routine/sectionData/{id}', 'RoutineBasesController@sectionData');
-        Route::get('/routineList','RoutineBasesController@routineList');
+        Route::get('/routineList', 'RoutineBasesController@routineList');
         //Student
         Route::resource('/student', 'StudentController');
         Route::get('/studentList', 'StudentController@studentList');
@@ -40,5 +40,12 @@ Route::prefix('admin')->group(function () {
         Route::resource('teacher', 'TeacherController');
         Route::get('/teacherList', 'TeacherController@teacherList');
         //Syllabus with out ajax
+
+        //Setting
+        //System Setting
+        Route::resource('system_setting', 'SystemSettingController');
+
+        //School Setting
+        Route::resource('school_setting', 'SchoolSettingController');
     });
 });
