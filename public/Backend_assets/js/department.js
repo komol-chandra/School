@@ -2,9 +2,7 @@ $(document).ready(function() {
     $(document).on("submit", "#department_save", function(e) {
         e.preventDefault();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_error").html((message = ""));
-        });
+
         $.ajax({
             url: "/admin/department/",
             data: data,
@@ -18,9 +16,7 @@ $(document).ready(function() {
                 $("#department_save").trigger("reset");
             },
             error: function(error) {
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_error").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
@@ -42,12 +38,7 @@ $(document).ready(function() {
     $(document).on("submit", "#department_update", function(e) {
         e.preventDefault();
         var id = $("#edit_department_id").val();
-
         let data = $(this).serializeArray();
-        console.log(data);
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_edit").html((message = ""));
-        });
         $.ajax({
             url: "/admin/department/" + id,
             data: data,
@@ -60,9 +51,7 @@ $(document).ready(function() {
                 loaddata();
             },
             error: function(error) {
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_edit").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
