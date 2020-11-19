@@ -27,11 +27,4 @@ class ClassRoomRequest extends FormRequest
             'classroom_name' => 'required',
         ];
     }
-
-    public function message()
-    {
-        return [
-            'classroom_name.required' => 'Class Room Name Required',
-        ];
-    }
 }

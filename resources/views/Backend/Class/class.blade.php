@@ -103,5 +103,5 @@
 @section('js')
 <script src="{{asset('Backend_assets/js/class.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\ClassNameRequest', '#class_form'); !!}
-{!! JsValidator::formRequest('App\Http\Requests\ClassNameRequest', '#update_class_form'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\ClassNameRequest', '#class_update'); !!}
 @endsection

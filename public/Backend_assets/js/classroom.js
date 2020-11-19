@@ -2,9 +2,7 @@ $(document).ready(function() {
     $(document).on("submit", "#classroom_save", function(e) {
         e.preventDefault();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_error").html((message = ""));
-        });
+
         $.ajax({
             url: "/admin/classroom/",
             data: data,
@@ -18,9 +16,7 @@ $(document).ready(function() {
                 $("#classroom_save").trigger("reset");
             },
             error: function(error) {
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_error").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
@@ -66,11 +62,7 @@ $(document).ready(function() {
     $(document).on("submit", "#classroom_update", function(e) {
         e.preventDefault();
         var id = $("#edit_classroom_id").val();
-        console.log(id);
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_edit").html((message = ""));
-        });
         $.ajax({
             url: "/admin/classroom/" + id,
             data: data,
@@ -83,9 +75,7 @@ $(document).ready(function() {
                 loaddata();
             },
             error: function(error) {
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_edit").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });
