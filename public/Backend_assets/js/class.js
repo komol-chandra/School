@@ -13,7 +13,7 @@ $(document).ready(function() {
                 toastr.success("Data added successfully", "Success!");
                 $("#close").click();
                 $("#class_form").trigger("reset");
-            }, 
+            },
             error: function(error) {
                 console.log(error);
             }
@@ -83,9 +83,7 @@ $(document).ready(function() {
         e.preventDefault();
         let id = $("#edit_class_id").val();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_edit").html((message = ""));
-        });
+
         $.ajax({
             url: `/admin/class/${id}`,
             data: data,
@@ -97,9 +95,7 @@ $(document).ready(function() {
                 $("#edit_class").modal("hide");
             },
             error: function(error) {
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_edit").html(message[0]);
-                });
+                console.log(error);
             }
         });
     });

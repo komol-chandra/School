@@ -15,11 +15,9 @@ class StudentGuardians extends Migration
             $table->string('student_guardian_relation')->nullable();
             $table->string('student_guardian_name')->nullable();
             $table->string('student_guardian_phone')->nullable();
-            $table->string('student_guardian_email')->nullable();
             $table->string('student_guardian_occupation')->nullable();
             $table->string('student_guardian_address')->nullable();
-            $table->string('student_guardian_image',1000)->nullable();
-            $table->string('student_guardian_idcard',1000)->nullable(); 
+            $table->string('student_guardian_idcard',1000)->nullable();
             $table->timestamps();
         });
     }

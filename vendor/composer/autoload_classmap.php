@@ -110,6 +110,7 @@ return array(
     'App\\Providers\\FortifyServiceProvider' => $baseDir . '/app/Providers/FortifyServiceProvider.php',
     'App\\Providers\\JetstreamServiceProvider' => $baseDir . '/app/Providers/JetstreamServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\Traits\\FileUpload' => $baseDir . '/app/Traits/FileUpload.php',
     'App\\Traits\\FileVerifyUpload' => $baseDir . '/app/Traits/FileVerifyUpload.php',
     'App\\View\\Components\\AppLayout' => $baseDir . '/app/View/Components/AppLayout.php',
     'App\\View\\Components\\GuestLayout' => $baseDir . '/app/View/Components/GuestLayout.php',

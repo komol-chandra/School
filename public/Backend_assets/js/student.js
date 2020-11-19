@@ -48,9 +48,26 @@ $(document).ready(function() {
     //     datalist(page_link);
     // });
 });
-
+function getSection(){
+    let data = $('#class_name').val();
+    $.ajax({
+        url:`/admin/student/sectionData/${data}`,
+        type:`get`,
+        dataType:`json`,
+        success:function(response){
+            $('.sectionOpt').remove();
+            response.forEach(function(value,index){
+                
+                $('#section_name').append(`
+                    <option class="sectionOpt"  value="${value.section_id}" >${value.section_name}</option>
+                    `);
+            })
+        },
+    })
+}
 
 function datalist() {
+    getSection()
     let filterClass = $("#filterClass").val();
     let filterSection = $("#filterSection").val();
 

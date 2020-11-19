@@ -2,9 +2,7 @@ $(document).ready(function() {
     $(document).on("submit", "#subject_save", function(e) {
         e.preventDefault();
         let data = $(this).serializeArray();
-        $.each(data, function(i, message) {
-            $("#" + message.name + "_error").html((message = ""));
-        });
+
         $.ajax({
             url: "/admin/subject/",
             data: data,
@@ -19,9 +17,7 @@ $(document).ready(function() {
             },
             error: function(error) {
                 toastr.warning("Validation Required", "Warning!");
-                $.each(error.responseJSON.errors, function(i, message) {
-                    $("#" + i + "_error").html(message[0]);
-                });
+                confirm.log(error);
             }
         });
     });
@@ -95,6 +91,11 @@ $(document).ready(function() {
                 swal("Your imaginary Data is safe!");
             }
         });
+    });
+    $("#data_lists").on("click", ".page-link", function(e) {
+        e.preventDefault();
+        let page_link = $(this).attr("href");
+        loaddata(page_link);
     });
 });
 

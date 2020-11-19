@@ -61,7 +61,7 @@
                         <label class="col-sm-3 text-right control-label col-form-label">Select Class</label>
                         <div class="col-md-9">
                             <select name="class_name" id="class_name" class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                <option >Select Class</option>
+                                <option value="">Select Class</option>
                                 @foreach($data as $value)
                                 <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
                                 @endforeach
@@ -105,7 +105,7 @@
                         <label class="col-sm-3 text-right control-label col-form-label">Select Class</label>
                         <div class="col-md-9">
                             <select name="class_name" id="edit_class_name" class="select2 form-control custom-select" style="width: 100%; height:36px;">
-                                <option >Select Class</option>
+                                <option value="">Select Class</option>
                                 @foreach($data as $value)
                                 <option value="{{$value->class_id}}">{{$value->class_name}}</option>
                                 @endforeach
@@ -133,4 +133,6 @@
 @endsection
 @section('js')
 <script src="{{asset('Backend_assets/js/subject.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\SubjectRequest', '#subject_save'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\SubjectRequest', '#subject_update'); !!}
 @endsection

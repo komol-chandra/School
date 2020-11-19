@@ -1,40 +1,43 @@
-$(document).ready(function(){
+$(document).ready(function() {
     datalist();
-    $(document).on("submit", "#staff_form", function (e) {
+    $(document).on("submit", "#staff_form", function(e) {
         e.preventDefault();
-        let data = $('#staff_form').get(0);
+        let data = $("#staff_form").get(0);
         $.ajax({
-            url:"/admin/staff",
-            type:'post',
+            url: "/admin/staff",
+            type: "post",
             data: new FormData(data),
-            enctype: 'multipart/form-data',
+            enctype: "multipart/form-data",
             processData: false,
             contentType: false,
-            success:function(data){
-              if (data.status==201){
-              datalist();
-              toastr.success(data.message, "Success!");
-              $("#close").click();
-              $("#staff_form").trigger("reset");
-              }
+            success: function(data) {
+                if (data.status == 201) {
+                    datalist();
+                    toastr.success(data.message, "Success!");
+                    $("#close").click();
+                    $("#staff_form").trigger("reset");
+                }
             },
-            error:function(errors){
-              console.log(errors);
+            error: function(errors) {
+                console.log(errors);
             }
         });
-      });
-      $(document).on("click",".edit",function ()
-      {
-        let id=$(this).attr("data");
+    });
+    $(document).on("click", ".edit", function() {
+        let id = $(this).attr("data");
         $.ajax({
-            url:`/admin/staff/${id}/edit`,
-            type:'get',
-            dataType:'json',
-            success:function(data)
-            {
+            url: `/admin/staff/${id}/edit`,
+            type: "get",
+            dataType: "json",
+            success: function(data) {
+                $("#edit_staff_id").val(data.staff_id);
                 $("#edit_staff_name").val(data.staff_name);
-                $("#edit_staff_designation_name").val(data.staff_designation_name);
-                $("#edit_staff_department_name").val(data.staff_department_name);
+                $("#edit_staff_designation_name").val(
+                    data.staff_designation_name
+                );
+                $("#edit_staff_department_name").val(
+                    data.staff_department_name
+                );
                 $("#edit_gender_name").val(data.gender_name);
                 $("#edit_blood_name").val(data.blood_name);
                 $("#edit_staff_phone").val(data.staff_phone);
@@ -45,36 +48,39 @@ $(document).ready(function(){
                 $("#edit_staff_about").val(data.staff_about);
                 $("#edit_staff_facebook").val(data.staff_facebook);
                 $("#edit_staff_facebook").val(data.staff_facebook);
-                $("#editStaffImage").attr('src', data.staff_image ? `/Backend_assets/Files/Staff/${data.staff_image}` : '/Backend_assets/profile.jpg');
-              
+                $("#editStaffImage").attr(
+                    "src",
+                    data.staff_image
+                        ? `${data.staff_image}`
+                        : "/Backend_assets/profile.jpg"
+                );
             }
-          });
-      });
+        });
+    });
 
-    $(document).on("submit", "#staff_form_update", function (e) {
+    $(document).on("submit", "#staff_form_update", function(e) {
         e.preventDefault();
-        let data = $('#slider_update_form').get(0);
+        // let data = $("#slider_update_form").get(0);
         let id = $("#edit_staff_id").val();
         $.ajax({
-            url:`/admin/staff/${id}`,
-            type:'PUT',
+            url: `/admin/staff/${id}`,
+            type: "PUT",
             dataType: "json",
-            data: new FormData(data),
-            enctype: 'multipart/form-data',
-            processData: false,
+            data: new FormData(this),
             contentType: false,
-            success:function(data){
-                if (data.status==201){
+            processData: false,
+            success: function(data) {
+                if (data.status == 201) {
                     datalist();
                     toastr.success(data.message, "Success!");
                     $("#close2").click();
                     $("#staff_form_update").trigger("reset");
                 }
             },
-            error:function(errors){
+            error: function(errors) {
                 console.log(errors);
             }
-        }); 
+        });
     });
 
     $(document).on("click", "#status", function() {
@@ -121,47 +127,47 @@ $(document).ready(function(){
         });
     });
 });
-    function datalist(page_link = "/admin/staff/create") {
-        var search = $(".search").val();
-    
-        $.ajax({
-            url: page_link,
-            data: { search: search },
-            type: "get",
-            datatype: "html",
-            success: function(response) {
-                $("#data_lists").html(response);
-            }
-        });
-    }
+function datalist(page_link = "/admin/staff/create") {
+    var search = $(".search").val();
 
-    $("#email").click(function() {
-        $("#email").prop("readonly", true);
-    });
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#staffImage')
-                    .attr('src', e.target.result)
-                    .width(200)
-                    .height(200);
-            };
-            reader.readAsDataURL(input.files[0]);
+    $.ajax({
+        url: page_link,
+        data: { search: search },
+        type: "get",
+        datatype: "html",
+        success: function(response) {
+            $("#data_lists").html(response);
         }
-    }
-    $("#email").click(function() {
-        $("#email").prop("readonly", true);
     });
-    function readURL2(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#editStaffImage')
-                    .attr('src', e.target.result)
-                    .width(200)
-                    .height(200);
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
+}
+
+$("#email").click(function() {
+    $("#email").prop("readonly", true);
+});
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#staffImage")
+                .attr("src", e.target.result)
+                .width(200)
+                .height(200);
+        };
+        reader.readAsDataURL(input.files[0]);
     }
+}
+$("#email").click(function() {
+    $("#email").prop("readonly", true);
+});
+function readURL2(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $("#editStaffImage")
+                .attr("src", e.target.result)
+                .width(200)
+                .height(200);
+        };
+        reader.readAsDataURL(input.files[0]);
+    }
+}

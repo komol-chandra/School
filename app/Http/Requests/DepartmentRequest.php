@@ -27,11 +27,4 @@ class DepartmentRequest extends FormRequest
             'department_name' => 'required',
         ];
     }
-
-    public function message()
-    {
-        return [
-            'department_name.required' => 'Department Name Required',
-        ];
-    }
 }

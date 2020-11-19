@@ -3,13 +3,11 @@
 @section('head', 'Department')
 @section('head_name', 'Department')
 @section('content')
-
-<button type="button" class="btn btn-info margin-5 text-white " data-toggle="modal" data-target="#addModal">Add Department</button><br><br>
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Basic Datatable Expriment
-
-        </h5>
+        <button type="button" class="btn btn-info margin-5 text-white" style="float:right" data-toggle="modal" data-target="#addModal">Add Department</button>
+        <h5 class="card-title">Basic Datatable</h5>
+        <br>
         <div class="table-responsive">
             <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
@@ -58,7 +56,6 @@
                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Department Name</label>
                         <div class="col-sm-9">
                             <input type="text" name="department_name" class="form-control" id="department_name" placeholder="Department Name Here">
-                            <span class="help-block" id="department_name_error" style="color:red;"></span>
                         </div>
                     </div>
                 </div>
@@ -93,7 +90,6 @@
                             <label for="fname" class="col-sm-3 text-right control-label col-form-label" >Department Name</label>
                             <div class="col-sm-9">
                                 <input type="text" name="department_name" class="form-control" id="edit_department_name">
-                                <span class="help-block" id="department_name_edit" style="color:red;"></span>
                             </div>
                         </div>
 
@@ -111,4 +107,6 @@
 @endsection
 @section('js')
 <script src="{{asset('Backend_assets/js/department.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\DepartmentRequest', '#department_save'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\DepartmentRequest', '#department_update'); !!}
 @endsection

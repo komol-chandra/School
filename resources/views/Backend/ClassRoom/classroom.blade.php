@@ -3,11 +3,11 @@
 @section('head', 'Class Room')
 @section('head_name', 'Class Room')
 @section('content')
-
-<button type="button" class="btn btn-info margin-5 text-white " data-toggle="modal" data-target="#addModal">Add Class Room</button><br><br>
 <div class="card">
     <div class="card-body">
-        <h5 class="card-title">Basic Datatable Expriment</h5>
+        <button type="button" class="btn btn-info margin-5 text-white"  style="float:right" data-toggle="modal" data-target="#addModal">Add Class Room</button>
+        <h5 class="card-title">Basic Datatable</h5>
+        <br>
         <div class="table-responsive">
             <div id="zero_config_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
                 <div class="row">
@@ -109,4 +109,6 @@
 @endsection
 @section('js')
 <script src="{{asset('Backend_assets/js/classroom.js')}}"></script>
+{!! JsValidator::formRequest('App\Http\Requests\ClassRoomRequest', '#classroom_save'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\ClassRoomRequest', '#classroom_update'); !!}
 @endsection
