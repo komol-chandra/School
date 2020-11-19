@@ -17,15 +17,15 @@
     <div class="col-md-2"></div>
         <div class="col-md-7">
             <div class="card">
-                <form class="form-horizontal" action="{{url('admin/school_setting/'. $school_settings->school_id)}}" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" id="schoolSetForm" action="{{url('admin/school_setting/'. $school_settings->school_id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                     <div class="card-body">
                         <h4 class="card-title">School Settings</h4>
                         <div class="form-group row">
-                            <label for="fname" name="school_name" class="col-sm-3 text-right control-label col-form-label">School Name</label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" name="school_name" value="{{$school_settings->school_name}}" id="fname" placeholder="School Name Here">
+                            <label for="cono1" class="col-sm-3 text-right control-label col-form-label" name="school_phone">School Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="school_name" value="{{$school_settings->school_name}}" id="cono1" placeholder="Name Here">
                                 @if($errors->first('school_name'))
                                     <label for="fname" class="error">{{$errors->first('school_name')}}</label>
                                 @endif
@@ -63,6 +63,7 @@
 
 @endsection
 @section('js')
+{!! JsValidator::formRequest('App\Http\Requests\SchoolSettingRequest', '#schoolSetForm'); !!}
 <script type="text/javascript">
 
 </script>

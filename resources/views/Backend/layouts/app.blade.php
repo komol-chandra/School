@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{$settings->fav_icon ? '/Backend_assets/Files/Logo/fav_icon/'.$settings->fav_icon  : '/Backend_assets/Backend/images/avter4.png'}}">
     <title>School | @yield('title')</title>
     @include('Backend.layouts.css')
 </head>
@@ -14,7 +14,7 @@
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
-            <div class="lds-pos"></div> 
+            <div class="lds-pos"></div>
         </div>
     </div>
     <div id="main-wrapper">

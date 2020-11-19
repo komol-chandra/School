@@ -10,4 +10,6 @@
     <link href="{{asset('Backend_assets/assets/extra-libs/calendar/calendar.css')}}" rel="stylesheet" />
 <link href="{{asset('Backend_assets/css/style.css')}}" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Inline+Text:wght@600&display=swap" rel="stylesheet">
 @yield('css')

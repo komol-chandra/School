@@ -16,7 +16,7 @@
     <div class="col-md-1"></div>
         <div class="col-md-10">
             <div class="card">
-                <form class="form-horizontal" action="{{url('admin/system_setting/'. $system_setting->system_id)}}" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" id="systemForm" action="{{url('admin/system_setting/'. $system_setting->system_id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                     <div class="card-body">
@@ -133,7 +133,7 @@
                             <div class="relative">
                                 <img name="fav_icon" id='favIcon'
                                 src="{{$system_setting->fav_icon ? '/Backend_assets/Files/Logo/fav_icon/'.$system_setting->fav_icon  : '/Backend_assets/Backend/images/avter4.png'}}"
-                                alt="fav_icon image" class='img-responsive' style="hight:150px;width:135px">
+                                alt="fav_icon image" class='img-responsive' style="hight:150px;width:200px">
                                 <br><br>
                                 <input type='file' id="favIcon" name="fav_icon" onchange="readURL4(this);" />
                                 <span class="text-danger" id="favIcon"></span>
@@ -153,8 +153,7 @@
         </div>
 @endsection
 @section('js')
-<!-- <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-{!! JsValidator::formRequest('App\Http\Requests\AppSettingsRequest', '#application_settings'); !!} -->
+{!! JsValidator::formRequest('App\Http\Requests\SystemSettingRequest', '#systemForm'); !!}
 <script type="text/javascript">
     function readURL1(input) {
         if (input.files && input.files[0]) {

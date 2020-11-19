@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SystemSettingRequest;
 use App\Models\SystemSetting;
 use App\Traits\FileVerifyUpload;
+use Cache;
 use File;
 use Illuminate\Http\Request;
 
@@ -72,9 +74,9 @@ class SystemSettingController extends Controller
      * @param  \App\Models\SystemSetting  $systemSetting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SystemSettingRequest $request, $id)
     {
-
+        Cache::flush();
         $system_setting = SystemSetting::findOrFail($id);
         // $requested_data = $request->all();
         // dd($requested_data);

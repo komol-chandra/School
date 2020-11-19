@@ -24,9 +24,8 @@ class SectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'class_name' => 'required',
+            'class_name'   => 'required',
             'section_name' => 'required',
-
         ];
     }
 }
