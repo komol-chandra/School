@@ -15,7 +15,6 @@ class StaffRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -24,15 +23,15 @@ class StaffRequest extends FormRequest
     public function rules()
     {
         return [
-            "staff_name"=>'required',
-            "staff_email"=>'required',
-            "staff_password"=>'required|min:8',
-            "staff_phone"=>'required',
-            "staff_designation_name"=>'required',
-            "staff_department_name"=>'required',
-            "gender_name"=>'required',
-            "blood_name"=>'required',
-            "staff_image"=>'mimes:png,jpg,jpeg',
+            "staff_name"             => 'required',
+            "staff_email"            => 'required',
+            "staff_password"         => 'required|min:8',
+            "staff_phone"            => 'required',
+            "staff_designation_name" => 'required',
+            "staff_department_name"  => 'required',
+            "gender_name"            => 'required',
+            "blood_name"             => 'required',
+            "staff_image"            => 'mimes:png,jpg,jpeg',
         ];
     }
 }

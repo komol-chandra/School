@@ -4,24 +4,22 @@
             <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
             <a class="navbar-brand" href="{{url('/admin')}}">
                 <b class="logo-icon p-l-10">
-                    {{-- @if (File::exists($app_data->app_settings_logo))
-                        <img src="{{ asset('/Backend_assets/Files/App_Settings/'.$app_data->app_settings_logo) }}" alt="image" />
-                    @else 
-                        <img src="{{ asset('Backend_assets/Files/App_Settings/logo-sm.png') }}" alt="image" />
-                    @endif --}}
-                    {{-- <img src="/Backend_assets/Files/App_Settings/{{$app_data->app_settings_logo}}" alt="homepage" class="light-logo" /> --}}
+                        <img style="width: 47px; margin-left: -14px;" src="{{$settings->small_logo ? '/Backend_assets/Files/Logo/small_logo/'.$settings->small_logo  : '/Backend_assets/Backend/images/sm-logo.png'}}"
+                        alt="image" />
                 </b>
                 <span class="logo-text">
-                     <img src="{{asset('Backend_assets/Backend/images/School.png')}}" alt="School" class="light-logo" />
+                     <img style="width:165px;"
+                     src="{{$settings->regular_logo ? '/Backend_assets/Files/Logo/regular_logo/'.$settings->regular_logo  : '/Backend_assets/Backend/images/School.png'}}" alt="School" class="light-logo" />
                 </span>
             <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
         </div>
         <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
             <ul class="navbar-nav float-left mr-auto">
                 <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a></li>
-
-
             </ul>
+            <div style="text-align: left; width: 82%;">
+                <h3 style="color:#c0fff3; font-family: 'Big Shoulders Inline Text', cursive;     font-size:23px;margin-top: 7px;">{{$settings->system_name}}......</h3>
+            </div>
             <ul class="navbar-nav float-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="mdi mdi-bell font-24"></i>
@@ -84,8 +82,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('Backend_assets/Backend/images/profile.jpg')}}" alt="user" class="rounded-circle" width="31"></a>
                     <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                        <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
                         <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
-                        
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

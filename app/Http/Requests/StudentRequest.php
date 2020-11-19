@@ -41,6 +41,11 @@ class StudentRequest extends FormRequest
     public function messages()
     {
         return [
+            "student_admission_number" => 'required',
+            "student_roll_number"      => 'required',
+            "class_name"               => 'required',
+            "section_name"             => 'required',
+            "student_name"             => 'required',
             'student_roll_number.required'   => 'Student roll number is required',
             'class_name.required'            => 'Class is required',
             'section_name.required'          => 'Section is required',

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SectionRequest extends FormRequest
+class SystemSettingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,12 @@ class SectionRequest extends FormRequest
     public function rules()
     {
         return [
-            'class_name'   => 'required',
-            'section_name' => 'required',
+            "system_name"  => 'required',
+            "footer_text"  => 'required',
+            "regular_logo" => 'mimes:png,jpg,jpeg,webp',
+            "light_logo"   => 'mimes:png,jpg,jpeg,webp',
+            "small_logo"   => 'mimes:png,jpg,jpeg,webp',
+            "fav_icon"     => 'mimes:png,jpg,jpeg,webp',
         ];
     }
 }

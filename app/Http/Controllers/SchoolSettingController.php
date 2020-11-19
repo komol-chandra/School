@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\SchoolSetting;
 use Illuminate\Http\Request;
+use App\Http\Requests\SchoolSettingRequest;
+use JsValidator;
 
 class SchoolSettingController extends Controller
 {
@@ -69,7 +71,7 @@ class SchoolSettingController extends Controller
      * @param  \App\Models\SchoolSetting  $schoolSetting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SchoolSettingRequest $request, $id)
     {
         $school_settings = SchoolSetting::findOrFail($id);
         // $requested_data = $request->all();

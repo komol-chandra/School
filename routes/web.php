@@ -46,5 +46,10 @@ Route::prefix('admin')->group(function () {
         Route::resource('system_setting', 'SystemSettingController');
         //School Setting
         Route::resource('school_setting', 'SchoolSettingController');
+        //About Developer
+        Route::get('about_developer', function () {
+            return view('layouts.Settings.about_developer');
+        });
+
     });
 });
