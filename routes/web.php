@@ -40,8 +40,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('teacher', 'TeacherController');
         Route::get('/teacherList', 'TeacherController@teacherList');
         //Profile
-        Route::resource('/profile','ProfileController');
-        Route::post('profile/password','ProfileController@password');
+        Route::resource('/profile', 'ProfileController');
+        Route::post('profile/password', 'ProfileController@password');
         //System Setting
         Route::resource('system_setting', 'SystemSettingController');
         //School Setting
