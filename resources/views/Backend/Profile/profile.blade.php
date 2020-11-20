@@ -145,7 +145,8 @@
                             {{-- Update Password --}}
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <div class="card">
-                                    <form action="/admin/profile/password"  method="post">
+                                    <form action="{{url('/admin/profile/password')}}"  method="post">
+                                        @csrf
                                         <div class="card-body ">
                                             <div class="form-group row mt-5">
                                                 <label for="password" class="col-sm-3 text-right control-label col-form-label">Current Password</label>
