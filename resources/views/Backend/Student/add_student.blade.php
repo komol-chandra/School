@@ -1,21 +1,23 @@
 @extends('Backend.layouts.app')
 @section('title', '  Student Admission Form')
-@section('head', ' Student Admission Form')
-@section('css')
-<link href="{{asset('Backend_assets/css/formWizerd.css')}}" rel="stylesheet">
-@endsection
+@section('head_name', ' Student Admission Form')
 @section('content')
-    @if(session('msg'))
-    <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
-        {{(session('msg'))}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div>
-    @endif
-    <div class="row">
-        <a class="btn btn-default mb-3" href="{{route('student.index')}}">List</a>
-    </div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Add Student
+        <a href="{{route('student.index')}}" class="btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class=" fas fa-arrow-circle-left mr-2"></i>Go Back To List Page</a>
+        </h4>
+    </div> 
+</div>    
+@if(session('msg'))
+<div class="alert with-close alert-info alert-dismissible fade show" role="alert">
+    {{(session('msg'))}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+</div>
+@endif
     <div class="row">
         <div class="col-lg-12">
             <section id="tabs" class="project-tab">

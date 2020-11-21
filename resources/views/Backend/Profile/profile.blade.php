@@ -1,8 +1,18 @@
 @extends('Backend.layouts.app')
 @section('title', ' Profile')
-@section('head', 'Profile')
 @section('head_name', 'Profile')
 @section('content')
+<div class="row ">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="page-title">
+                <i class="mdi mdi-calendar-clock title_icon"></i>Profile
+                </h4>
+            </div> 
+        </div> 
+    </div>
+</div> 
 <div class="row">
     <div class="col-lg-12">
         <section id="tabs" class="project-tab">
@@ -53,11 +63,11 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-3"><h4>Full Name</h4></div>
-                                                            <div class="col-lg-9"><h4>:&nbsp;{{ Auth::user()->full_name }}</h4></div>
+                                                            <div class="col-lg-9"><h4>:&nbsp;{{ Auth::user()->full_name ? Auth::user()->full_name : 'null' }}</h4></div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-3"><h4>Contract</h4></div>
-                                                            <div class="col-lg-9"><h4>:&nbsp;{{ Auth::user()->contract }}</h4></div>
+                                                            <div class="col-lg-9"><h4>:&nbsp;{{ Auth::user()->contract ? Auth::user()->contract: 'null' }}</h4></div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-3"><h4>Email</h4></div>
@@ -65,7 +75,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-3"><h4>Adderss</h4></div>
-                                                            <div class="col-lg-9"><h4>:&nbsp;{{ Auth::user()->address }}</h4></div>
+                                                            <div class="col-lg-9"><h4>:&nbsp;{{ Auth::user()->address ? Auth::user()->address : 'null'}}</h4></div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-lg-3"><h4>Login as</h4></div>

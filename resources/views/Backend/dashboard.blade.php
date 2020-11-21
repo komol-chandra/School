@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
+    {{-- <div class="col-md-6 col-sm-6 col-lg-2 col-xlg-3">
         <div class="card card-hover">
             <div class="box bg-dark text-center">
                 <img src="{{asset('Backend_assets/Files/Basic_Image/parents.jpg')}}" class="my-2 rounded-circle img-fluid img-thumbnail" style="width: 100px ;max-height: 100px; ">
@@ -43,7 +43,7 @@
                 <a class="btn btn-secondary" href="{{ url('/admin/guardianList') }}"> More Info</a>
             </div>
         </div>
-    </div>
+    </div> --}}
     <div class="col-sm-6 col-md-6 col-lg-2 col-xlg-3">
         <div class="card card-hover">
             <div class="box bg-warning text-center">

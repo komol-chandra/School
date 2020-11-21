@@ -1,10 +1,16 @@
 @extends('Backend.layouts.app')
 @section('title', ' Staff')
-@section('head', 'Staff')
+{{-- @section('head', 'Staff') --}}
 @section('head_name', 'Staff')
 @section('content')
-<button data-toggle="modal" data-target="#add_modal" class="btn btn-primary" type="button">Add New</button>
-<br><br>
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Staff List
+        <button data-toggle="modal" data-target="#add_modal" class="btn btn-outline-primary btn-rounded alignToTitle" type="button" style="float: right" > <i class="mdi mdi-plus"></i> Add New Staff</button>
+        </h4>
+    </div> 
+</div>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Basic Datatable</h5>
