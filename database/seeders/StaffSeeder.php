@@ -28,7 +28,7 @@ class StaffSeeder extends Seeder
             'staff_linkedin'         => 'https://www.linkedin.com/info',
             'staff_address'          => 'Murmur 1,dhaka',
             'staff_about'            => ' hi i am mr. x',
-            'staff_image'            => 'staff.png',
+            'staff_image'            => '',
         ]);
         DB::table('staffs')->insert([
             'staff_name'             => 'Mr. korim',
@@ -44,7 +44,7 @@ class StaffSeeder extends Seeder
             'staff_linkedin'         => 'https://www.linkedin.com/info',
             'staff_address'          => 'Murmur 1,dhaka',
             'staff_about'            => ' hi i am mr. x',
-            'staff_image'            => 'staff.png',
+            'staff_image'            => '',
         ]);
         DB::table('staffs')->insert([
             'staff_name'             => 'Mr. x',
@@ -60,7 +60,7 @@ class StaffSeeder extends Seeder
             'staff_linkedin'         => 'https://www.linkedin.com/info',
             'staff_address'          => 'Murmur 1,dhaka',
             'staff_about'            => ' hi i am mr. x',
-            'staff_image'            => 'staff.png',
+            'staff_image'            => '',
         ]);
         DB::table('staffs')->insert([
             'staff_name'             => 'Mr. y',
@@ -76,7 +76,7 @@ class StaffSeeder extends Seeder
             'staff_linkedin'         => 'https://www.linkedin.com/info',
             'staff_address'          => 'Murmur 1,dhaka',
             'staff_about'            => ' hi i am mr. x',
-            'staff_image'            => 'staff.png',
+            'staff_image'            => '',
         ]);
     }
 }

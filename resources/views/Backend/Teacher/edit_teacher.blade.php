@@ -1,7 +1,15 @@
 @extends('Backend.layouts.app')  
 @section('title', 'Edit Teacher')
-@section('head', 'Edit Teacher')
+@section('head_name', 'Edit Teacher')
 @section('content')
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Edit Teacher
+        <a href="{{route('teacher.index')}}" class="btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class=" fas fa-arrow-circle-left mr-2"></i>Go Back To List Page</a>
+        </h4>
+    </div> 
+</div>
 <form action="{{route('teacher.update',$teacher->teacher_id)}}" id="update_teacher_form"  method="post" enctype="multipart/form-data">@csrf
     @method("PUT")
     @if(session('msg'))
@@ -12,9 +20,6 @@
         </button>
     </div>   
     @endif
-    <div class="row">
-        <a class="btn btn-default mb-3" href="{{route('teacher.index')}}">Data List</a>
-    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card">

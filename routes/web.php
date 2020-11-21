@@ -1,8 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//    return view('dashboard');
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+   return view('dashboard');
+})->name('dashboard');
 
 Route::get('/admin', 'MainController@index');
 Route::get('/', 'MainController@index');

@@ -1,5 +1,19 @@
 <nav class="sidebar-nav">
-    <ul id="sidebarnav" class="p-t-30">
+    <ul id="sidebarnav" class="">
+        {{-- <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('Backend_assets/Backend/images/profile.jpg')}}" alt="user" class="rounded-circle" width="31"></a> --}}
+        <li class="sidebar-item">
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
+                {{-- <img src="{{asset('Backend_assets/Backend/images/profile.jpg')}}" alt="user" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100"> --}}
+                @if(Auth::user()->profile_photo_path)
+                <img src="/{{ Auth::user()->profile_photo_path }}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100">
+                @else  
+                <img  src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100"> 
+                @endif
+            </a>
+            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
+                <p>Email<span>:&nbsp;{{ Auth::user()->email }}</span></p>
+            </a>
+        </li>
         <li class="sidebar-item {{ (request()->is('admin')) ? 'active' : '' }}">
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/admin')}}" aria-expanded="false">
                 <i class="mdi mdi-view-dashboard"></i>

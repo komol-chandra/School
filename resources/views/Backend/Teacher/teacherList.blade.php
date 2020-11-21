@@ -16,7 +16,7 @@
         <tr>
             <td>{{$key+1}}</td>
             <td>
-                <img src="/Backend_assets/Files/Teacher//{{$value->teacher_image}}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
+                <img src="{{ $value->teacher_image ? '/Backend_assets/Files/Teacher/'.$value->teacher_image:'/Backend_assets/profile.jpg' }}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
             </td>
             <td>{{$value->teacher_name}}</td>
             <td>{{$value->teacher_email}}</td>

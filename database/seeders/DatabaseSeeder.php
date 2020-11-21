@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             StaffSeeder::class,
             SubjectSeeder::class,
             UserSeeder::class,
-            appSettingSeeder::class,
+            SystemSettingSeeder::class,
+            SchoolSeetingSeeder::class,
         ]);
     }
 }

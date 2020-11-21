@@ -101,7 +101,7 @@ class StudentController extends Controller
             $requested_data = $request->all();
             $requested_data['student_sku_id'] = 'Student_' . time();
             if ($request->hasFile('student_birth_certificate')) {
-                $requested_data['student_birth_certificate'] = $this->ImageUpload($request, 'student_birth_certificate', 'student', 'student_birth_certificate');
+                $requested_data['student_birth_certificate'] = $this->ImageUpload($request, 'student_birth_certificate', 'StudentFiles/student_birth_certificate/', 'student_birth_certificate');
             }
             $student_model->fill($requested_data)->save();
 
@@ -111,7 +111,7 @@ class StudentController extends Controller
             $user->type = 2;
             $user->parentId = $student_model->student_id;
             if ($request->hasFile('profile_photo')) {
-                $user->profile_photo_path = $this->ImageUpload($request, 'profile_photo', 'student', 'student');
+                $user->profile_photo_path = $this->ImageUpload($request, 'profile_photo', 'User/', 'user_profile');
             }
             $user->save();
             //Guardian
@@ -120,7 +120,7 @@ class StudentController extends Controller
             $requested_data_guardian = $request->all();
             $requested_data_guardian['student_id'] = $student_model->student_id;
             if ($request->hasFile('student_guardian_idcard')) {
-                $requested_data_guardian['student_guardian_idcard'] = $this->ImageUpload($request, 'student_guardian_idcard', 'student_guardian_idcard', 'student_guardian_idcard');
+                $requested_data_guardian['student_guardian_idcard'] = $this->ImageUpload($request, 'student_guardian_idcard', 'StudentFiles/student_guardian_idcard/', 'student_guardian_idcard');
             }
             $guardian_model->fill($requested_data_guardian)->save();
             $userTwo->name = $request->student_guardian_name;
@@ -129,7 +129,7 @@ class StudentController extends Controller
             $userTwo->type = 3;
             $userTwo->parentId = $guardian_model->student_guardian_id;
             if ($request->hasFile('guardian_image')) {
-                $userTwo->profile_photo_path = $this->ImageUpload($request, 'guardian_image', 'guardian', 'guardian');
+                $userTwo->profile_photo_path = $this->ImageUpload($request, 'guardian_image', 'User/', 'user_profile');
             }
             $userTwo->save();
 
