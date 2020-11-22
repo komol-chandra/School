@@ -168,6 +168,12 @@
                         <span class="hide-menu">About Developer</span>
                     </a>
                 </li>
+                <li class="sidebar-item">
+                    <a href="{{url('/admin/web_settings')}}" class="sidebar-link">
+                        <i class="fas fa-piggy-bank"></i>
+                        <span class="hide-menu">web_settings</span>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>
