@@ -149,6 +149,12 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a href="{{url('/admin/website_setting')}}" class="sidebar-link">
+                        <i class="fas fa-piggy-bank"></i>
+                        <span class="hide-menu">WebSite Settings</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a href="{{url('/admin/about_developer')}}" class="sidebar-link">
                         <i class="fas fa-piggy-bank"></i>
                         <span class="hide-menu">About Developer</span>

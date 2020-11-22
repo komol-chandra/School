@@ -40,8 +40,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('teacher', 'TeacherController');
         Route::get('/teacherList', 'TeacherController@teacherList');
         //Profile
-        Route::resource('/profile','ProfileController');
-        Route::post('profile/password','ProfileController@password');
+        Route::resource('/profile', 'ProfileController');
+        Route::post('profile/password', 'ProfileController@password');
         //System Setting
         Route::resource('system_setting', 'SystemSettingController');
         //School Setting
@@ -50,6 +50,10 @@ Route::prefix('admin')->group(function () {
         Route::get('about_developer', function () {
             return view('layouts.Settings.about_developer');
         });
-
+        //WebSite Setting
+        Route::get('website_setting', function () {
+            // return view('layouts.Settings.about_developer');
+            return view('layouts.Settings.website_setting');
+        });
     });
 });
