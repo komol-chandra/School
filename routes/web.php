@@ -1,8 +1,8 @@
 <?php
 use Illuminate\Support\Facades\Route;
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//    return view('dashboard');
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
 Route::get('/admin', 'MainController@index');
 Route::get('/', 'MainController@index');
@@ -50,10 +50,17 @@ Route::prefix('admin')->group(function () {
         Route::get('about_developer', function () {
             return view('layouts.Settings.about_developer');
         });
+
         //WebSite Setting
-        Route::get('website_setting', function () {
-            // return view('layouts.Settings.about_developer');
-            return view('layouts.Settings.website_setting');
-        });
+        // Route::get('web_settings', function () {
+        //     Route::resource('/general_setting', 'GeneralSettingsController');
+        // });
+        Route::resource('/web_settings', 'GeneralSettingsController');
+    });
+});
+Route::prefix('admin/web_settings')->group(function () {
+    Route::middleware('auth')->group(function () {
+        // Route::resource('/general_setting', 'GeneralSettingsController');
+
     });
 });

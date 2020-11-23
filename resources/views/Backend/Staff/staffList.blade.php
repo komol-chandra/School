@@ -16,12 +16,7 @@
         <tr>
             <td>{{$key+1}}</td>
             <td>
-                
-                @if (File::exists(public_path($value->staff_image)))
-                <img src="{{$value->staff_image}}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
-                @else
-                <img src="/Backend_assets/profile.jpg" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
-                @endif
+                <img src="{{ $value->staff_image ? $value->staff_image:'/Backend_assets/profile.jpg' }}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
             </td>
             <td>{{$value->staff_name}}</td>
             <td>{{$value->staff_email}}</td>
@@ -43,9 +38,9 @@
                 <button type="button" class="btn btn-outline-danger btn-sm delete" data-csrf="{{csrf_token()}}" data="{{$value->staff_id}}">
                     <i class="fa fa-trash"></i>
                 </button>
-                <button type="button" class="btn btn-outline-info btn-sm edit" data="{{$value->staff_id}}" data-toggle="modal" data-target="#edit_modal">
+                {{-- <button type="button" class="btn btn-outline-info btn-sm edit" data="{{$value->staff_id}}" data-toggle="modal" data-target="#edit_modal">
                     <i class="fas fa-edit"></i>
-                </button>
+                </button> --}}
                 
             </td>
         </tr>

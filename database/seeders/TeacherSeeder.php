@@ -28,7 +28,7 @@ class TeacherSeeder extends Seeder
             'teacher_linkedin'         => 'https://www.linkedin.com/info',
             'teacher_address'          => 'mirpur 1,dhaka',
             'teacher_about'            => ' hi i am mr. x',
-            'teacher_image'            => 'teacher.png',
+            'teacher_image'            => '',
         ]);
         DB::table('teachers')->insert([
             'teacher_name'             => 'Mr. korim',
@@ -44,7 +44,7 @@ class TeacherSeeder extends Seeder
             'teacher_linkedin'         => 'https://www.linkedin.com/info',
             'teacher_address'          => 'mirpur 1,dhaka',
             'teacher_about'            => ' hi i am mr. x',
-            'teacher_image'            => 'teacher.png',
+            'teacher_image'            => '',
         ]);
         DB::table('teachers')->insert([
             'teacher_name'             => 'Mr. x',
@@ -60,7 +60,7 @@ class TeacherSeeder extends Seeder
             'teacher_linkedin'         => 'https://www.linkedin.com/info',
             'teacher_address'          => 'mirpur 1,dhaka',
             'teacher_about'            => ' hi i am mr. x',
-            'teacher_image'            => 'teacher.png',
+            'teacher_image'            => '',
         ]);
         DB::table('teachers')->insert([
             'teacher_name'             => 'Mr. y',
@@ -76,7 +76,7 @@ class TeacherSeeder extends Seeder
             'teacher_linkedin'         => 'https://www.linkedin.com/info',
             'teacher_address'          => 'mirpur 1,dhaka',
             'teacher_about'            => ' hi i am mr. x',
-            'teacher_image'            => 'teacher.png',
+            'teacher_image'            => '',
         ]);
         DB::table('teachers')->insert([
             'teacher_name'             => 'Mr. z',
@@ -92,7 +92,7 @@ class TeacherSeeder extends Seeder
             'teacher_linkedin'         => 'https://www.linkedin.com/info',
             'teacher_address'          => 'mirpur 1,dhaka',
             'teacher_about'            => ' hi i am mr. x',
-            'teacher_image'            => 'teacher.png',
+            'teacher_image'            => '',
         ]);
     }
 }

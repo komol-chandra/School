@@ -22,15 +22,15 @@
         </div>
     </div>
     <div class="card p-3 py-4">
-        <div class="text-center"> <img src="{{'/Backend_assets/assets/images/developer/komol.jpg'}}" width="150" class="rounded-circle">
+        <div class="text-center"> <img src="{{'/Backend_assets/assets/images/developer/komol.png'}}" width="150" class="rounded-circle">
             <h3 class="mt-2">Komol Chandra</h3>
             <span class="mt-1 clearfix">Web Designer & Developer</span>
             <small class="mt-4">Describe Developer Details</small>
             <div class="social-buttons mt-5">
-                <button class="neo-button"><i class="fab fa-facebook-f"></i> </button>
-                <button class="neo-button"><i class="fab fa-linkedin-in"></i></button>
-                <button class="neo-button"><i class="fab fa-github"></i> </button>
-                <button class="neo-button"><i class="fab fa-twitter"></i> </button>
+                <button class="neo-button"><a href="https://www.facebook.com/kiri2ka/" target="_blank"><i class="fab fa-facebook-f"></i></a></button>
+                <button class="neo-button"><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></button>
+                <button class="neo-button"><a href="https://github.com/komol-chandra" target="_blank"><i class="fab fa-github"></i></a></button>
+                <button class="neo-button"><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></button>
             </div>
         </div>
     </div>

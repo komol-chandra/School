@@ -8,6 +8,8 @@ use App\Models\User;
 use File;
 use App\Http\Requests\UserProfileRequest;
 use App\Traits\FileUpload;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -19,7 +21,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('Backend.pages.Profile.profile');
+        return view('Backend.Profile.profile');
     }
 
     /**
@@ -87,17 +89,8 @@ class ProfileController extends Controller
     }
     public function password(UserPasswordRequest  $request)
     {
-        dd($request->all());
-        // $user_model=User::findOrFail($id);
-        // if ($request->hasFile('profile_photo')) {
-
-        //     if (File::exists($user_model->profile_photo_path)) {
-        //         File::delete($user_model->profile_photo_path);
-        //     }
-        //     $user_model->profile_photo_path = $this->ImageUpload($request, 'profile_photo', 'User/', 'user_profile');
-        // }
-        // $user_model->fill($request->all())->save();
-        // return redirect()->route('profile.index', $id)->with('msg', 'Data Successfully Updated');
+        User::where('id',Auth::user()->id)->update(['password'=>Hash::make($request->new_password)]);
+        return redirect()->route('profile.index')->with('msg', 'Password Successfully Updated');
     }
 
     /**

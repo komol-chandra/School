@@ -1,6 +1,6 @@
 @extends('Backend.layouts.app')
 @section('title', ' Student')
-@section('head', 'Student')
+@section('head_name', 'Student')
 @section('content')
 @if(session('msg'))
 @if (session('status'))
@@ -9,9 +9,14 @@
 </div>
 @endif
 @endif
-<div class="row">
-    <a class="btn btn-default mb-3" href="{{route('student.create')}}">add new</a>
-    <a class="btn btn-default mb-3 ml-3" href="{{ url('/admin/guardianList')}}">Guardian List</a>
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Student List
+        <a href="{{route('student.create')}}" class="btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class="mdi mdi-plus"></i> Add New Student</a>
+        {{-- <a href="{{ url('/admin/guardianList')}}" class=" mr-2 btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class=" fas fa-arrow-circle-left"></i> Gurdian List</a> --}}
+        </h4>
+    </div> 
 </div>
 <div class="card">
     <div class="card-body">
@@ -32,9 +37,9 @@
             <div class="col-md-4 mb-1">
                 <select name="class_name" class="select2 form-control custom-select" id="filterSection" onchange="datalist()">
                     <option disabled selected hidden>Select Section</option>
-                    {{-- @foreach($sectionName as $vlaue)
+                    @foreach($sectionName as $vlaue)
                     <option  class="sectionOpt" value="{{$vlaue->section_id}}">{{$vlaue->section_name}}</option>
-                    @endforeach --}}
+                    @endforeach
                 </select>
             </div>
         </div>

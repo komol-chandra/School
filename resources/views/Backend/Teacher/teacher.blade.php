@@ -1,12 +1,17 @@
 @extends('Backend.layouts.app')
 @section('title', ' Teacher')
-@section('head', 'Teacher')
+{{-- @section('head', 'Teacher') --}}
 @section('head_name', 'Teacher')
 @section('content')
 
-<div class="row">
-    <a class="btn btn-default mb-3" href="{{route('teacher.create')}}">add new</a>
-</div>
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Teacher
+        <a href="{{route('teacher.create')}}" class="btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class="mdi mdi-plus"></i> Add New Teacher</a>
+        </h4>
+    </div> 
+</div> 
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Basic Datatable</h5>

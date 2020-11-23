@@ -34,7 +34,7 @@
                 <button class="btn btn-outline-info btn-sm status" id="status" data="{{$value->student_id}}"><i class="fas fa-sync"></i></button>
                 @endif
                 <button class="btn btn-outline-danger btn-sm delete" data="{{$value->student_id}}" data-csrf="{{csrf_token()}}"><i class="fa fa-trash"></i></button>
-                <a type="button" href="{{route('student.edit',$value->student_id)}}" class="btn btn-outline-info btn-sm edit"><i class="fas fa-edit"></i></a>
+                {{-- <a type="button" href="{{route('student.edit',$value->student_id)}}" class="btn btn-outline-info btn-sm edit"><i class="fas fa-edit"></i></a> --}}
 
             </td>
         </tr>

@@ -25,9 +25,9 @@ class UserPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password'       => 'required|min:8',
             'password'       => new OldPassword(),
-            'retypePassword' => 'required|same:password',
+            'new_password'       => 'required|min:8',
+            'retype_password' => 'required|same:new_password',
         ];
     }
     public function messages()
