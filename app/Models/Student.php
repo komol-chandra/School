@@ -10,7 +10,7 @@ class Student extends Model
     protected $table = "students";
     protected $primaryKey = "student_id";
     protected $fillable = [
-        "student_sku_id",
+        "student_school_id",
         "student_roll_number",
         "class_name",
         "section_name",
