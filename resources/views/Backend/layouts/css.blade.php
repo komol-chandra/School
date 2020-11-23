@@ -9,6 +9,8 @@
 <link href="{{asset('Backend_assets/assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet" />
 <link href="{{asset('Backend_assets/assets/extra-libs/calendar/calendar.css')}}" rel="stylesheet" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Editor -->
+<link href="{{asset('Backend_assets/css/editor.css')}}" rel="stylesheet" />
 <style>
     .project-tab {
     /* padding: 10%;

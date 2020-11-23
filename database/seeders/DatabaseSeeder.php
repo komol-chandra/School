@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             SystemSettingSeeder::class,
             SchoolSeetingSeeder::class,
+            GeneralSettingSeeder::class,
+            AboutUsSeeder::class,
         ]);
     }
 }
