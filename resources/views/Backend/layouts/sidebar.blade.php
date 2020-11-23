@@ -6,8 +6,8 @@
                 {{-- <img src="{{asset('Backend_assets/Backend/images/profile.jpg')}}" alt="user" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100"> --}}
                 @if(Auth::user()->profile_photo_path)
                 <img src="/{{ Auth::user()->profile_photo_path }}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100">
-                @else  
-                <img  src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100"> 
+                @else
+                <img  src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100">
                 @endif
             </a>
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
@@ -163,15 +163,15 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{url('/admin/about_developer')}}" class="sidebar-link">
+                    <a href="{{url('/admin/web_settings')}}" class="sidebar-link">
                         <i class="fas fa-piggy-bank"></i>
-                        <span class="hide-menu">About Developer</span>
+                        <span class="hide-menu">WebSite Settings</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{url('/admin/web_settings')}}" class="sidebar-link">
+                    <a href="{{url('/admin/about_developer')}}" class="sidebar-link">
                         <i class="fas fa-piggy-bank"></i>
-                        <span class="hide-menu">web_settings</span>
+                        <span class="hide-menu">About Developer</span>
                     </a>
                 </li>
             </ul>

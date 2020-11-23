@@ -653,6 +653,7 @@ class ComposerStaticInitb2f31c025ba8634a9a89b0b99f4873ef
         'App\\Models\\EventCalenders' => __DIR__ . '/../..' . '/app/Models/EventCalenders.php',
         'App\\Models\\ExtraFiles' => __DIR__ . '/../..' . '/app/Models/ExtraFiles.php',
         'App\\Models\\GenderModel' => __DIR__ . '/../..' . '/app/Models/GenderModel.php',
+        'App\\Models\\GeneralSetting' => __DIR__ . '/../..' . '/app/Models/GeneralSetting.php',
         'App\\Models\\LibraryModel' => __DIR__ . '/../..' . '/app/Models/LibraryModel.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Notice' => __DIR__ . '/../..' . '/app/Models/Notice.php',

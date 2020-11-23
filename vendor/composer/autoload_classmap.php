@@ -85,6 +85,7 @@ return array(
     'App\\Models\\EventCalenders' => $baseDir . '/app/Models/EventCalenders.php',
     'App\\Models\\ExtraFiles' => $baseDir . '/app/Models/ExtraFiles.php',
     'App\\Models\\GenderModel' => $baseDir . '/app/Models/GenderModel.php',
+    'App\\Models\\GeneralSetting' => $baseDir . '/app/Models/GeneralSetting.php',
     'App\\Models\\LibraryModel' => $baseDir . '/app/Models/LibraryModel.php',
     'App\\Models\\Membership' => $baseDir . '/app/Models/Membership.php',
     'App\\Models\\Notice' => $baseDir . '/app/Models/Notice.php',
