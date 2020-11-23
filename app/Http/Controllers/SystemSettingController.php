@@ -21,7 +21,7 @@ class SystemSettingController extends Controller
     public function index()
     {
         $system_setting = SystemSetting::first();
-        return view('layouts.Settings.system_settings', ['system_setting' => $system_setting]);
+        return view('Backend.Settings.system_settings', ['system_setting' => $system_setting]);
     }
 
     /**

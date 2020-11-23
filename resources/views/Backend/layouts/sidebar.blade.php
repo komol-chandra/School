@@ -8,9 +8,6 @@
                 <img  src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100">
                 @endif
             </a>
-            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
-                <span style="text-align:center; width: 90%; font-size: 20px; margin-top: -15px; font-weight: bold; font-family: cursive;">{{ Auth::user()->name }}</span>
-            </a>
         </li>
         <li class="sidebar-item {{ (request()->is('admin')) ? 'active' : '' }}">
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/admin')}}" aria-expanded="false">

@@ -20,7 +20,7 @@ class GeneralSettingsController extends Controller
     public function index()
     {
         $general_setting = GeneralSettings::first();
-        return view('layouts.Settings.web_settings', ['general_setting' => $general_setting]);
+        return view('Backend.Settings.web_settings', ['general_setting' => $general_setting]);
     }
 
     /**

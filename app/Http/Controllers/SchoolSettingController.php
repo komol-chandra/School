@@ -18,7 +18,7 @@ class SchoolSettingController extends Controller
     {
         $school_settings = SchoolSetting::first();
         // dd($school_settings);
-        return view('layouts.Settings.school_settings', ['school_settings' => $school_settings]);
+        return view('Backend.Settings.school_settings', ['school_settings' => $school_settings]);
     }
 
     /**

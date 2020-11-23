@@ -2,7 +2,7 @@
 use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
-   return view('dashboard');
+    return view('dashboard');
 })->name('dashboard');
 
 Route::get('/admin', 'MainController@index');
@@ -49,16 +49,12 @@ Route::prefix('admin')->group(function () {
         Route::resource('school_setting', 'SchoolSettingController');
         //About Developer
         Route::get('about_developer', function () {
-            return view('layouts.Settings.about_developer');
+            return view('Backend.Settings.about_developer');
         });
         Route::get('web_settings', function () {
             return view('layouts.Settings.web_settings');
         });
 
-        //WebSite Setting
-        // Route::get('web_settings', function () {
-        //     Route::resource('/general_setting', 'GeneralSettingsController');
-        // });
         Route::resource('/web_settings', 'GeneralSettingsController');
     });
 });
