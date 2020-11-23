@@ -50,6 +50,9 @@ Route::prefix('admin')->group(function () {
         Route::get('about_developer', function () {
             return view('layouts.Settings.about_developer');
         });
+        Route::get('web_settings', function () {
+            return view('layouts.Settings.web_settings');
+        });
 
         //WebSite Setting
         // Route::get('web_settings', function () {

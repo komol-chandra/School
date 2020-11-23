@@ -1,6 +1,6 @@
 @extends('Backend.layouts.app')
 @section('title', 'Noticeboard')
-@section('head', 'Noticeboard Calendar')
+{{-- @section('head', 'Noticeboard Calendar') --}}
 @section('head_name', 'Noticeboard Calendar')
 @section('content')
 <div class="content-page">
