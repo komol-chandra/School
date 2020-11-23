@@ -13,8 +13,8 @@
                             <h4 class="page-title">
                             <i class="mdi mdi-calendar-clock title_icon"></i> Noticeboard Calendar          <button type="button" class="btn btn-outline-primary btn-rounded alignToTitle" data-toggle="modal" style="float: right" data-target="#addModal"> <i class="mdi mdi-plus"></i> Add New Notice</button>
                             </h4>
-                        </div> 
-                    </div> 
+                        </div>
+                    </div>
                 </div>
             </div>
         <div class="row">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 </div>
 {{--Add Modal--}}

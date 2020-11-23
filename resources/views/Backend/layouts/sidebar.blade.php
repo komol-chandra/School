@@ -1,17 +1,15 @@
 <nav class="sidebar-nav">
     <ul id="sidebarnav" class="">
-        {{-- <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('Backend_assets/Backend/images/profile.jpg')}}" alt="user" class="rounded-circle" width="31"></a> --}}
         <li class="sidebar-item">
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
-                {{-- <img src="{{asset('Backend_assets/Backend/images/profile.jpg')}}" alt="user" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100"> --}}
                 @if(Auth::user()->profile_photo_path)
                 <img src="/{{ Auth::user()->profile_photo_path }}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100">
-                @else  
-                <img  src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100"> 
+                @else
+                <img  src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class="img-responsive img-fluid img-thumbnail rounded-circle mx-auto d-block" width="100">
                 @endif
             </a>
             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
-                <p>Email<span>:&nbsp;{{ Auth::user()->email }}</span></p>
+                <span style="text-align:center; width: 90%; font-size: 20px; margin-top: -15px; font-weight: bold; font-family: cursive;">{{ Auth::user()->name }}</span>
             </a>
         </li>
         <li class="sidebar-item {{ (request()->is('admin')) ? 'active' : '' }}">
@@ -58,13 +56,6 @@
                         <span class="hide-menu">Daily Attendance</span>
                     </a>
                 </li>
-
-                {{-- <li class="sidebar-item {{ (request()->is('admin/class_routine')) ? 'active' : '' }}}">
-                    <a href="{{ url('/admin/class_routine')}}" class="sidebar-link">
-                        <i class="mdi mdi-note-outline"></i>
-                        <span class="hide-menu">Class Routine</span>
-                    </a>
-                </li> --}}
 
                 <li class="sidebar-item {{ (request()->is('admin/syllabus')) ? 'active' : '' }}}">
                     <a href="{{ url('/admin/syllabus')}}" class="sidebar-link">
@@ -133,12 +124,6 @@
                         <span class="hide-menu">Session Manager</span>
                     </a>
                 </li>
-                {{-- <li class="sidebar-item">
-                    <a href="" class="sidebar-link  {{ (request()->is('admin/library')) ? 'active' : '' }}">
-                        <i class="mdi mdi-note-outline"></i>
-                        <span class="hide-menu">Addon Manager</span>
-                    </a>
-                </li> --}}
 
                 <li class="sidebar-item">
                     <a href="{{ url('/admin/notice/')}}" class="sidebar-link  {{ (request()->is('admin/notice')) ? 'active' : '' }}">
@@ -163,15 +148,15 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{url('/admin/about_developer')}}" class="sidebar-link">
+                    <a href="{{url('/admin/web_settings')}}" class="sidebar-link">
                         <i class="fas fa-piggy-bank"></i>
-                        <span class="hide-menu">About Developer</span>
+                        <span class="hide-menu">WebSite Settings</span>
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a href="{{url('/admin/web_settings')}}" class="sidebar-link">
+                    <a href="{{url('/admin/about_developer')}}" class="sidebar-link">
                         <i class="fas fa-piggy-bank"></i>
-                        <span class="hide-menu">web_settings</span>
+                        <span class="hide-menu">About Developer</span>
                     </a>
                 </li>
             </ul>

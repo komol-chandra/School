@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-   return view('dashboard');
+    return view('dashboard');
 })->name('dashboard');
 
 Route::get('/admin', 'MainController@index');
@@ -53,6 +53,17 @@ Route::prefix('admin')->group(function () {
         Route::get('web_settings', function () {
             return view('layouts.Settings.web_settings');
         });
+
+        //WebSite Setting
+        // Route::get('web_settings', function () {
+        //     Route::resource('/general_setting', 'GeneralSettingsController');
+        // });
+        Route::resource('/web_settings', 'GeneralSettingsController');
+    });
+});
+Route::prefix('admin/web_settings')->group(function () {
+    Route::middleware('auth')->group(function () {
+        // Route::resource('/general_setting', 'GeneralSettingsController');
 
     });
 });
