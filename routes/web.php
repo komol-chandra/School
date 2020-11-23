@@ -50,7 +50,7 @@ Route::prefix('admin')->group(function () {
         //About Developer
         Route::get('about_developer', function () {
             return view('Backend.Settings.about_developer');
-        });
+        });   
         Route::get('web_settings', function () {
             return view('layouts.Settings.web_settings');
         });
