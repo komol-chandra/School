@@ -55,6 +55,8 @@ Route::prefix('admin')->group(function () {
             return view('layouts.Settings.web_settings');
         });
 
+
+        
         Route::resource('/web_settings', 'GeneralSettingsController');
     });
 });
