@@ -51,9 +51,10 @@ Route::prefix('admin')->group(function () {
         Route::get('about_developer', function () {
             return view('layouts.Settings.about_developer');
         });
-        //General Settings
+        //WebSite Settings
         Route::resource('web_settings', 'GeneralSettingController');
         Route::resource('about_us', 'AboutUsSettingController');
+        Route::resource('terms_and_condition', 'TermsConditionController');
         // Route::get('web_settings', function () {
         //     return view('layouts.Settings.web_settings');
         // });
