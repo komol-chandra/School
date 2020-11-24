@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
             GeneralSettingSeeder::class,
             AboutUsSeeder::class,
             TermsConditionSeeder::class,
+            PrivacyPolicySeeder::class,
         ]);
     }
 }

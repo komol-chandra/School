@@ -55,6 +55,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('web_settings', 'GeneralSettingController');
         Route::resource('about_us', 'AboutUsSettingController');
         Route::resource('terms_and_condition', 'TermsConditionController');
+        Route::resource('privacy_policy', 'PrivacyPolicyController');
+
         // Route::get('web_settings', function () {
         //     return view('layouts.Settings.web_settings');
         // });
