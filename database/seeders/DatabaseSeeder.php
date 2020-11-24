@@ -35,6 +35,7 @@ class DatabaseSeeder extends Seeder
             SchoolSeetingSeeder::class,
             GeneralSettingSeeder::class,
             AboutUsSeeder::class,
+            TermsConditionSeeder::class,
         ]);
     }
 }
