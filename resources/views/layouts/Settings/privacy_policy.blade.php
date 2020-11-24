@@ -36,21 +36,21 @@
     </div>
     <div class="col-lg-10 col-sm-10">
         <div class="card">
-        <form class="form-horizontal" id="GeneralSetForm" action="{{url('admin/terms_and_condition/'. $terms_condition->terms_condition_id)}}" method="post" enctype="multipart/form-data">
+        <form class="form-horizontal" id="GeneralSetForm" action="{{url('admin/privacy_policy/'. $privacy_policy->privacy_policy_id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
             <div class="card-body">
-                <h4 class="card-title">Terms & Condition</h4>
+                <h4 class="card-title">Privacy Policy</h4>
                 <div class="form-group row">
-                    <label for="cono1" class="col-sm-3 text-right control-label col-form-label" name="school_phone">Terms & Condition</label>
+                    <label for="cono1" class="col-sm-3 text-right control-label col-form-label" name="privacy_policy">Privacy Policy</label>
                     <div class="col-sm-9">
-                        <textarea class="form-control" name="terms_condition" id="summernote">{{$terms_condition->terms_condition}}</textarea>
+                        <textarea class="form-control" name="privacy_policy" id="summernote">{{$privacy_policy->privacy_policy}}</textarea>
                     </div>
                 </div>
 
                     <div class="border-top">
                         <div class="card-body text-right mb-3">
-                            <button type="submit" value="submit" class="btn btn-primary">Update Terms & Condition</button>
+                            <button type="submit" value="submit" class="btn btn-primary">Update Privacy Policy</button>
                         </div>
                     </div>
             </div>
@@ -65,7 +65,7 @@
 @section('js')
 <script>
     $('#summernote').summernote({
-    placeholder: 'Terms & Condition',
+    placeholder: 'Privacy Policy',
     tabsize: 2,
     height: 100
     });
