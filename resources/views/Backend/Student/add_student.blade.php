@@ -39,7 +39,7 @@
                             <div class="tab-content" id="nav-tabContent">
                                 {{-- Single Student --}}
                                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                    <form action="{{route('student.store')}}"  method="post" enctype="multipart/form-data" id="student_form">@csrf
+                                    <form action="{{route('student.store')}}" method="post" enctype="multipart/form-data" id="student_form">@csrf
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="card-title mb-3">Personal Info</h4>

@@ -9,6 +9,7 @@ Route::get('/', 'MainController@index');
 Route::get('/ex', 'MainController@ex');
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
+        //Dashboard Elements
         Route::get('/teacherDashboard', 'MainController@teacherDashboard');
         Route::get('/studentDashboard', 'MainController@studentDashboard');
         Route::get('/staffDashboard', 'MainController@staffDashboard');
@@ -25,10 +26,10 @@ Route::prefix('admin')->group(function () {
         Route::resource('/eventCalender', 'EventCalendersController');
         Route::resource('syllabus', 'SyllabusController');
         Route::resource('/staff', 'StaffsController');
-        //Routine
-        Route::resource('/routine', 'RoutineBasesController');
         Route::resource('/notice', 'NoticeController');
         Route::resource('/daily_attendance', 'AttendanceController');
+        //Routine
+        Route::resource('/routine', 'RoutineBasesController');
         Route::get('/routine/sectionData/{id}', 'RoutineBasesController@sectionData');
         Route::get('/routineList', 'RoutineBasesController@routineList');
         //Student
@@ -52,6 +53,7 @@ Route::prefix('admin')->group(function () {
         });
         //General Settings
         Route::resource('web_settings', 'GeneralSettingController');
+        Route::resource('about_us', 'AboutUsSettingController');
         // Route::get('web_settings', function () {
         //     return view('layouts.Settings.web_settings');
         // });

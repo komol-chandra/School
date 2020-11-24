@@ -1,9 +1,16 @@
 @extends('Backend.layouts.app')
 @section('title', ' Event Calender')
-@section('head', 'Event Calender')
+{{-- @section('head', 'Event Calender') --}}
 @section('head_name', 'Event Calender')
 @section('content')
-<button type="button" class="btn btn-info margin-5 text-white" data-toggle="modal" data-target="#add_event">Add new</button><br><br>    
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Event List
+        <button type="button" class="btn btn-outline-primary btn-rounded alignToTitle float-right" data-toggle="modal" data-target="#add_event"><i class="mdi mdi-plus"></i>Add New Event</button>
+        </h4>
+    </div> 
+</div>
 <div class="row">
     <div class="col-lg-12">
 

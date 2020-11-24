@@ -1,7 +1,15 @@
 @extends('Backend.layouts.app')
 @section('title', ' Routine')
-@section('head', 'Routine')
+@section('head_name', 'Add New Routine')
 @section('content')
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Add New Routine
+        <a href="{{route('routine.index')}}" class="btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" ><i class="fas fa-arrow-circle-left mr-2"></i>Go Back to List Page</a>
+        </h4>
+    </div> 
+</div>
 @if(session('msg'))
     <div class="alert with-close alert-info alert-dismissible fade show" role="alert">
         {{(session('msg'))}}
@@ -10,9 +18,6 @@
         </button>
     </div>  
 @endif
-<div class="row">
-    <a class="btn btn-default mb-3" href="{{route('routine.index')}}">List</a>
-</div>
 <form action="{{route('routine.store')}}"  method="post" enctype="multipart/form-data">@csrf
 <div class="card">
     <div class="card-body">

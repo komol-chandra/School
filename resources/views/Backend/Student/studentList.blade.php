@@ -5,7 +5,6 @@
             <th>Profile</th>
             <th>Name</th>
             <th>Roll</th>
-            <!-- <th>Category</th> -->
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -19,7 +18,6 @@
             </td>
             <td>{{$value->student_name}}</td>
             <td>{{$value->student_roll_number}}</td>
-            {{--<td>{{$value->categoryName->category_name}}</td>--}}
             <td>
                 @if($value->status==1)
                 <span class="text-success"> Active</span>
@@ -34,7 +32,7 @@
                 <button class="btn btn-outline-info btn-sm status" id="status" data="{{$value->student_id}}"><i class="fas fa-sync"></i></button>
                 @endif
                 <button class="btn btn-outline-danger btn-sm delete" data="{{$value->student_id}}" data-csrf="{{csrf_token()}}"><i class="fa fa-trash"></i></button>
-                {{-- <a type="button" href="{{route('student.edit',$value->student_id)}}" class="btn btn-outline-info btn-sm edit"><i class="fas fa-edit"></i></a> --}}
+                <a type="button" href="{{route('student.edit',$value->student_id)}}" class="btn btn-outline-info btn-sm edit"><i class="fas fa-edit"></i></a>
 
             </td>
         </tr>
@@ -46,7 +44,6 @@
             <th>Profile</th>
             <th>Name</th>
             <th>Roll</th>
-            <!-- <th>Category</th> -->
             <th>Status</th>
             <th>Action</th>
         </tr>

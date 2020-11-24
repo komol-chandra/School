@@ -1,11 +1,18 @@
 @extends('Backend.layouts.app')
 @section('title', 'Class Room')
-@section('head', 'Class Room')
+{{-- @section('head', 'Class Room') --}}
 @section('head_name', 'Class Room')
 @section('content')
 <div class="card">
     <div class="card-body">
-        <button type="button" class="btn btn-info margin-5 text-white"  style="float:right" data-toggle="modal" data-target="#addModal">Add Class Room</button>
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Class Room  List
+        <button type="button" class="btn btn-outline-primary btn-rounded alignToTitle float-right" data-toggle="modal" data-target="#addModal"><i class="mdi mdi-plus"></i>Add New Class Room</button>
+        </h4>
+    </div> 
+</div>
+<div class="card">
+    <div class="card-body">
         <h5 class="card-title">Basic Datatable</h5>
         <br>
         <div class="table-responsive">

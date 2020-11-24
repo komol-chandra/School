@@ -1,8 +1,15 @@
 @extends('Backend.layouts.app')
 @section('title', ' Section')
-@section('head', 'Section')
+@section('head_name', 'Section')
 @section('content')
-<button type="button" class="btn btn-info margin-5 text-white" data-toggle="modal" data-target="#add_section">Add new</button><br><br>
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Section Name List
+        <button type="button" class="btn btn-outline-primary btn-rounded alignToTitle float-right" data-toggle="modal" data-target="#add_section"><i class="mdi mdi-plus"></i>Add New Class Section</button>
+        </h4>
+    </div> 
+</div>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Basic Datatable</h5>

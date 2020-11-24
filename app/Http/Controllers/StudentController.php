@@ -99,7 +99,7 @@ class StudentController extends Controller
             $student_model = new Student();
             $user = new User();
             $requested_data = $request->all();
-            $requested_data['student_sku_id'] = 'Student_' . time();
+            $requested_data['student_school_id'] = 'School_' . time();
             if ($request->hasFile('student_birth_certificate')) {
                 $requested_data['student_birth_certificate'] = $this->ImageUpload($request, 'student_birth_certificate', 'StudentFiles/student_birth_certificate/', 'student_birth_certificate');
             }
@@ -132,29 +132,26 @@ class StudentController extends Controller
                 $userTwo->profile_photo_path = $this->ImageUpload($request, 'guardian_image', 'User/', 'user_profile');
             }
             $userTwo->save();
-
             return redirect()->route('student.create')->with('msg', 'Data Successfully Inserted');
         }catch (\Exception $e) {
             return redirect()->back()->with("status", "message=" . $e->getMessage());
-
         }
     }
     public function show($id)
     {
-        $stduent_show = Student::findOrFail($id);
-        if ($stduent_show->status == 1) {
-            $stduent_show->update(["status" => 0]);
+        $student = Student::findOrFail($id);
+        if ($student->status == 1) {
+            $student->update(["status" => 0]);
             $status = 201;
         } else {
-            $stduent_show->update(["status" => 1]);
+            $student->update(["status" => 1]);
             $status = 200;
         }
-        return response()->json($stduent_show, $status);
+        return response()->json($student, $status);
     }
     public function edit($id)
     {
         $student = Student::with('className')->findOrFail($id);
-        $categoryName = CategoryNameModel::all();
         $className = ClassName::active()->get();
         $sectionName = SectionName::where('class_name', $student->class_name)->get();
         // $student = Student::findOrFail($id)->with('className')->get()->toArray();
@@ -165,7 +162,6 @@ class StudentController extends Controller
         return view('Backend.Student.edit_student', [
             "student"      => $student,
             "className"    => $className,
-            "categoryName" => $categoryName,
             "sectionName"  => $sectionName,
             "blood"        => $blood,
         ]);

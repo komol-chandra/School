@@ -30,6 +30,9 @@
 <script src="{{asset('Backend_assets/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/libs/chart/turning-series.js')}}"></script>
 <script src="{{asset('Backend_assets/dist/js/pages/chart/chart-page-init.js')}}"></script>
+<!-- Editor -->
+<script src="{{asset('Backend_assets/js/editor.js')}}"></script>
+
     {{-- dashbord chart --}}
 <script src="{{asset('Backend_assets/assets/libs/moment/min/moment.min.js')}}"></script>
 <script src="{{asset('Backend_assets/assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
