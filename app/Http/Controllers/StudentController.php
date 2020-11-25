@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Traits\FileUpload;
 use App\Traits\FileVerifyUpload;
 use File;
+use function PHPSTORM_META\type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -22,7 +23,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $student = Student::all();
+        $student = Student::with('users');
         $blood = BloodModel::all();
         $categoryName = CategoryNameModel::all();
         $className = ClassName::active()->get();
@@ -80,22 +81,27 @@ class StudentController extends Controller
     }
     public function guardianList(Request $request)
     {
-        $student = Student::search($request->search)->orderBy('student_id', 'asc')->paginate(10);
-        $categoryName = CategoryNameModel::all();
+        // $guardian = StudentGuardian::with(['users' => function ($query) {
+        //     return $query->where('type', 3);
+        // }])->get()->toArray();
+        // dd($guardian);
+        $guardian = StudentGuardian::with(['guardianUsers' => function ($query) {
+                return $query->where('type', 3);
+            }])->get();
+        // $student = Student::search($request->search)->orderBy('student_id', 'asc')->paginate(10);
         $className = ClassName::active()->get();
         $sectionName = SectionName::active()->get();
         return view('Backend.Student.guardianList', [
-            "student"      => $student,
-            "className"    => $className,
-            "categoryName" => $categoryName,
-            "sectionName"  => $sectionName,
+            "guardian"    => $guardian,
+            "className"   => $className,
+            "sectionName" => $sectionName,
         ]);
     }
     public function store(StudentRequest $request)
     {
         // dd($request->all());
         //Student
-        try{
+        try {
             $student_model = new Student();
             $user = new User();
             $requested_data = $request->all();
@@ -133,7 +139,7 @@ class StudentController extends Controller
             }
             $userTwo->save();
             return redirect()->route('student.create')->with('msg', 'Data Successfully Inserted');
-        }catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with("status", "message=" . $e->getMessage());
         }
     }
@@ -151,19 +157,28 @@ class StudentController extends Controller
     }
     public function edit($id)
     {
-        $student = Student::with('className')->findOrFail($id);
+        $student = Student::with('className')->with('users')->findOrFail($id);
+        $guardian = StudentGuardian::with(['guardianUsers' => function ($query) {
+            return $query->where('type', 3);
+        }])->get()->toArray();
+        // dd($guardian);
+        // dd($student->users->profile_photo_path);
         $className = ClassName::active()->get();
         $sectionName = SectionName::where('class_name', $student->class_name)->get();
+        // $userTable = User::where()->parentId();
         // $student = Student::findOrFail($id)->with('className')->get()->toArray();
         $blood = BloodModel::all();
+        $UserId = User::get();
         // echo "<pre>";
         // print_r($student);
         // exit();
         return view('Backend.Student.edit_student', [
-            "student"      => $student,
-            "className"    => $className,
-            "sectionName"  => $sectionName,
-            "blood"        => $blood,
+            "student"     => $student,
+            "guardian"     => $guardian,
+            "className"   => $className,
+            "sectionName" => $sectionName,
+            "blood"       => $blood,
+            "userId"      => $UserId,
         ]);
     }
     public function update(StudentUpdateRequest $request, $id)
@@ -171,33 +186,6 @@ class StudentController extends Controller
         //    dd($request->all());
         $student_model = Student::findOrFail($id);
         $student_model->student_admission_number = $request->student_admission_number;
-        $student_model->student_roll_number = $request->student_roll_number;
-        $student_model->class_name = $request->class_name;
-        $student_model->section_name = $request->section_name;
-        $student_model->student_name = $request->student_name;
-        $student_model->student_mothers_name = $request->student_mothers_name;
-        $student_model->student_fathers_name = $request->student_fathers_name;
-        $student_model->student_birthday_date = $request->student_birthday_date;
-        $student_model->student_admition_date = $request->student_admition_date;
-        $student_model->gender_name = $request->gender_name;
-        $student_model->blood_name = $request->blood_name;
-        $student_model->category_name = $request->category_name;
-        $student_model->religion_name = $request->religion_name;
-        $student_model->student_phone = $request->student_phone;
-        $student_model->student_email = $request->student_email;
-        $student_model->student_height = $request->student_height;
-        $student_model->student_weight = $request->student_weight;
-        $student_model->student_current_address = $request->student_current_address;
-        $student_model->student_permanent_address = $request->student_permanent_address;
-        //Guardian
-
-        $student_model->student_guardian_relation = $request->student_guardian_relation;
-        $student_model->student_guardian_name = $request->student_guardian_name;
-        $student_model->student_guardian_phone = $request->student_guardian_phone;
-        $student_model->student_guardian_email = $request->student_guardian_email;
-        $student_model->student_guardian_occupation = $request->student_guardian_occupation;
-        $student_model->student_guardian_address = $request->student_guardian_address;
-
         //Student File
         if ($request->student_image) {
             $studentImage = ("Backend_assets/Files/Student/student_image/{$student_model->student_image}");
@@ -206,52 +194,7 @@ class StudentController extends Controller
             }
             $student_model->student_image = $this->ImageVerifyUpload($request, 'student_image', 'Backend_assets/Files/Student/student_image/', 'student_image');
         }
-        if ($request->student_birth_certificate) {
-            $studentCertificate = ("Backend_assets/Files/Student/student_birth_certificate/{$student_model->student_birth_certificate}");
-            if (File::exists($studentCertificate)) {
-                File::delete($studentCertificate);
-            }
-            $student_model->student_birth_certificate = $this->ImageVerifyUpload($request, 'student_birth_certificate', 'Backend_assets/Files/Student/student_birth_certificate/', 'student_birth_certificate');
-        }
-        if ($request->student_marksheet) {
-            $studentMarksheet = ("Backend_assets/Files/Student/student_marksheet/{$student_model->student_marksheet}");
-            if (File::exists($studentMarksheet)) {
-                File::delete($studentMarksheet);
-            }
-            $student_model->student_marksheet = $this->ImageVerifyUpload($request, 'student_marksheet', 'Backend_assets/Files/Student/student_marksheet/', 'student_marksheet');
 
-        }
-        if ($request->student_testimonial) {
-            $studentTestimonial = ("Backend_assets/Files/Student/student_testimonial/{$student_model->student_testimonial}");
-            if (File::exists($studentTestimonial)) {
-                File::delete($studentTestimonial);
-            }
-            $student_model->student_testimonial = $this->ImageVerifyUpload($request, 'student_testimonial', 'Backend_assets/Files/Student/student_testimonial/', 'student_testimonial');
-        }
-        if ($request->student_registration_card) {
-            $studentRegistration = ("Backend_assets/Files/Student/student_registration_card/{$student_model->student_registration_card}");
-            if (File::exists($studentRegistration)) {
-                File::delete($studentRegistration);
-            }
-            $student_model->student_registration_card = $this->ImageVerifyUpload($request, 'student_registration_card', 'Backend_assets/Files/Student/student_registration_card/', 'student_registration_card');
-        }
-
-        //Guarian File
-        if ($request->student_guardian_image) {
-            $guardianImage = ("Backend_assets/Files/Guardian/student_guardian_image/{$student_model->student_guardian_image}");
-            if (File::exists($guardianImage)) {
-                File::delete($guardianImage);
-            }
-            $student_model->student_guardian_image = $this->ImageVerifyUpload($request, ' student_guardian_image', 'Backend_assets/Files/Guardian/student_guardian_image/', 'student_guardian_image');
-        }
-
-        if ($request->student_guardian_idcard) {
-            $guardianIdcard = ("Backend_assets/Files/Guardian/student_guardian_idcard/{$student_model->student_guardian_idcard}");
-            if (File::exists($guardianIdcard)) {
-                File::delete($guardianIdcard);
-            }
-            $student_model->student_guardian_idcard = $this->ImageVerifyUpload($request, 'student_guardian_idcard', 'Backend_assets/Files/Guardian/student_guardian_idcard/', 'student_guardian_idcard');
-        }
 
         $student_model->save();
         return redirect()->route('student.edit', $id)->with('msg', 'Data Successfully Updated');
@@ -259,34 +202,23 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $student = Student::findOrFail($id);
-        $studentImage = ("Backend_assets/Files/Student/student_image/{$student->student_image}");
-        if (File::exists($studentImage)) {
-            File::delete($studentImage);
+        if (File::exists($student->student_birth_certificate)) {
+            File::delete($student->student_birth_certificate);
         }
-        $studentBirthCertificate = ("Backend_assets/Files/Student/student_birth_certificate/{$student->student_birth_certificate}");
-        if (File::exists($studentBirthCertificate)) {
-            File::delete($studentBirthCertificate);
+        $user = User::where('type', 2)->where('parentId', $id)->first();
+        if ($user) {
+            if (File::exists($user->profile_photo_path)) {
+                File::delete($user->profile_photo_path);
+            }
         }
-        $studentMarksheet = ("Backend_assets/Files/Student/student_marksheet/{$student->student_marksheet}");
-        if (File::exists($studentMarksheet)) {
-            File::delete($studentMarksheet);
+        $user->delete();
+        $userTwo = User::where('type', 3)->where('parentId', $id)->first();
+        if ($userTwo) {
+            if (File::exists($userTwo->profile_photo_path)) {
+                File::delete($userTwo->profile_photo_path);
+            }
         }
-        $studenTestimonial = ("Backend_assets/Files/Student/student_testimonial/{$student->student_testimonial}");
-        if (File::exists($studenTestimonial)) {
-            File::delete($studenTestimonial);
-        }
-        $studentRegistration = ("Backend_assets/Files/Student/student_registration_card/{$student->student_registration_card}");
-        if (File::exists($studentRegistration)) {
-            File::delete($studentRegistration);
-        }
-        $studentGuardianImage = ("Backend_assets/Files/Guardian/student_guardian_image/{$student->student_guardian_image}");
-        if (File::exists($studentGuardianImage)) {
-            File::delete($studentGuardianImage);
-        }
-        $studentGuardianIdcard = ("Backend_assets/Files/Guardian/student_guardian_idcard/{$student->student_guardian_idcard}");
-        if (File::exists($studentGuardianIdcard)) {
-            File::delete($studentGuardianIdcard);
-        }
+        $userTwo->delete();
         $student->delete();
         return response()->json(201);
     }

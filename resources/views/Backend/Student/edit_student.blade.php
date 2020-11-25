@@ -115,7 +115,7 @@
                     </div>
                     <div class="col-lg-3">
                         <label for="student_email">Email</label>
-                        <input value="{{old('student_email') ? old('student_email') : $student->student_email}}" disabled class="form-control" id="student_email">
+                        <input value="{{ $student->users->email}}" disabled class="form-control" id="student_email">
                     </div>
                     <div class="col-lg-6">
                         <label for="student_current_address">Current Address</label>
@@ -129,12 +129,11 @@
                             <label for="studentImage">Student Image</label>
                         </div>
                         <div class="col-sm-12">
-                            @if("/Backend_assets/Files/Student/student_image/{{ $student->student_image }}")
-                                <img style="height: 200px; width: 200px; border-radius: 100px;" name="student_image" id='studentImage' src="/Backend_assets/Files/Student/student_image/{{$student->student_image}}" alt="image" class='img-responsive'><br><br>
-                                @else
-                                <img src="{{asset('/Backend_assets/profile.jpg')}}">
-                                @endif
-                                <input type='file' id="student_image" name="student_image" onchange="readURL(this);" />
+                            <img name="" id='regularLogo'
+                                src="/{{$student->users->profile_photo_path ? $student->users->profile_photo_path  : '/Backend_assets/Backend/images/avater.png'}}"
+                                alt="image" class='img-responsive' style="hight:150px;width:200px">
+                                <br><br>
+                                <input type='file' id="regularLogo" name="profile_photo" onchange="readURL1(this);" />
                                 <span class="text-danger" id="image"></span>
                         </div>
                     </div>
@@ -167,7 +166,7 @@
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label for="student_guardian_email" >Guardian Email</label>
-                        <input value="{{old('student_guardian_email') ? old('student_guardian_email') : $student->student_guardian_email}}" type="text" class="form-control" id="student_guardian_email" disabled>
+                        {{-- <input value="{{old('student_guardian_email') ? old('student_guardian_email') : $guardian->userTwo->email}}" type="text" class="form-control" id="student_guardian_email" disabled> --}}
                     </div>
                     <div class="col-lg-3">
                         <label for="student_guardian_phone">Phone</label>

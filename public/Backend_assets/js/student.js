@@ -49,7 +49,7 @@ $(document).ready(function() {
     // });
 });
 function getSection(){
-    let data = $('#class_name').val();
+    let data = $('#filterClass').val();
     $.ajax({
         url:`/admin/student/sectionData/${data}`,
         type:`get`,
@@ -57,17 +57,19 @@ function getSection(){
         success:function(response){
             $('.sectionOpt').remove();
             response.forEach(function(value,index){
-                
-                $('#section_name').append(`
+                console.log(value);
+                $('#filterSection').append(`
                     <option class="sectionOpt"  value="${value.section_id}" >${value.section_name}</option>
                     `);
             })
+        datalist()
         },
     })
+    
 }
 
 function datalist() {
-    getSection()
+    // getSection()
     let filterClass = $("#filterClass").val();
     let filterSection = $("#filterSection").val();
 
