@@ -51,4 +51,8 @@ class Student extends Model
     {
         return $query->where('student_name', 'LIKE', '%' . $search . '%');
     }
+    public function users()
+    {
+        return $this->hasOne(User::class, 'parentId', 'student_id');
+    }
 }

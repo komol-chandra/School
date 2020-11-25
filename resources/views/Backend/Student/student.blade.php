@@ -14,7 +14,7 @@
         <h4 class="page-title">
         <i class="mdi mdi-calendar-clock title_icon"></i>Student List
         <a href="{{route('student.create')}}" class="btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class="mdi mdi-plus"></i> Add New Student</a>
-        {{-- <a href="{{ url('/admin/guardianList')}}" class=" mr-2 btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class=" fas fa-arrow-circle-left"></i> Gurdian List</a> --}}
+        <a href="{{ url('/admin/guardianList')}}" class=" mr-2 btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class=" fas fa-arrow-circle-left"></i> Gurdian List</a>
         </h4>
     </div> 
 </div>
@@ -27,7 +27,7 @@
                 <h5 class="card-title">Filter Data</h5>
             </div>
             <div class="col-md-4 mb-1">
-                <select name="class_name" class="select2 form-control custom-select" id="filterClass"  onchange="datalist()">
+                <select name="class_name" class="select2 form-control custom-select" id="filterClass"  onchange="getSection()">
                     <option disabled selected hidden>Select Class Name</option>
                     @foreach($className as $vlaue)
                     <option value="{{$vlaue->class_id}}">{{$vlaue->class_name}}</option>
@@ -35,11 +35,8 @@
                 </select>
             </div>
             <div class="col-md-4 mb-1">
-                <select name="class_name" class="select2 form-control custom-select" id="filterSection" onchange="datalist()">
-                    <option disabled selected hidden>Select Section</option>
-                    @foreach($sectionName as $vlaue)
-                    <option  class="sectionOpt" value="{{$vlaue->section_id}}">{{$vlaue->section_name}}</option>
-                    @endforeach
+                <select name="section_name" id="filterSection" class="select2 form-control custom-select" onchange="datalist()">
+                    <option  selected disabled hidden>Select</option>
                 </select>
             </div>
         </div>
@@ -48,8 +45,5 @@
 </div>
 @endsection
 @section('js')
-<script>
-    
-</script>
 <script src="{{asset('Backend_assets/js/student.js')}}"></script>
 @endsection

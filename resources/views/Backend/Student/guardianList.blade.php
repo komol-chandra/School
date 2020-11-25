@@ -1,8 +1,16 @@
 @extends('Backend.layouts.app')
 @section('title', ' Guardian List')
-@section('head', 'Guardian List')
+@section('head_name', 'Guardian List')
 @section('content')
-<a class="btn btn-default mb-3" href="{{route('student.index')}}">Student List</a>
+{{-- <a class="btn btn-default mb-3" href="{{route('student.index')}}">Guardian List</a> --}}
+<div class="card">
+    <div class="card-body">
+        <h4 class="page-title">
+        <i class="mdi mdi-calendar-clock title_icon"></i>Guardian List
+        <a href="{{route('student.index')}}" class=" mr-2 btn btn-outline-primary btn-rounded alignToTitle"  style="float: right" > <i class=" fas fa-arrow-circle-left"></i> Student List</a>
+        </h4>
+    </div> 
+</div>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Basic Datatable</h5>
@@ -42,14 +50,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($student as $key =>$value)
+                                    @foreach($guardian as $key =>$value)
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>
-                                            <img src="/Backend_assets/Files/Guardian/student_guardian_image/{{$value->student_guardian_image}}" alt="Profile" class="img-fluid" style="height: 50px; width: 50px; border-radius: 50%">
+                                            <img name="" id='' src="/{{$value->guardianUsers ? $value->guardianUsers->profile_photo_path : "/Backend_assets/profile.jpg"}}" alt="image" class='img-responsive img-fluid' style="height: 50px; width: 50px; border-radius: 50%">
                                         </td>
                                         <td>{{$value->student_guardian_name}}</td>
-                                        <td>{{$value->student_guardian_email}}</td>
+                                        <td>{{$value->guardianUsers->email}}</td>
                                         <td>{{$value->student_guardian_phone}}</td>
                                         <td>{{$value->student_guardian_occupation}}</td>
                                         <td>
