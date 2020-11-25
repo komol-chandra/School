@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            
+
             DepartmentSeeder::class,
             ClassSeeder::class,
             SectionSeeder::class,
@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             AboutUsSeeder::class,
             TermsConditionSeeder::class,
             PrivacyPolicySeeder::class,
+            HomePageSliderSeeder::class,
         ]);
     }
 }
