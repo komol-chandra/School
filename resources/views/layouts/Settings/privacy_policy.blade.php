@@ -28,7 +28,7 @@
                 <a href="{{ url('/admin/terms_and_condition')}}" class="btn  btn-secondary  btn-rounded btn-block alignToTitle {{ (request()->is('admin/terms_and_condition')) ? 'active' : '' }}"  style="float: right" > <i class="mdi mdi-plus"></i>Terms and Conditions</a>
                 <a href="{{ url('/admin/privacy_policy')}}" class="btn  btn-secondary  btn-rounded btn-block alignToTitle {{ (request()->is('admin/privacy_policy')) ? 'active' : '' }}"  style="float: right" > <i class="mdi mdi-plus"></i>Privacy Policy</a>
                 <a href="{{ url('/admin/teacher')}}" class="btn  btn-secondary  btn-rounded btn-block alignToTitle {{ (request()->is('admin/teacher')) ? 'active' : '' }}"  style="float: right" > <i class="mdi mdi-plus"></i>Gallery</a>
-                <a href="{{ url('/admin/teacher')}}" class="btn  btn-secondary  btn-rounded btn-block alignToTitle {{ (request()->is('admin/teacher')) ? 'active' : '' }}"  style="float: right" > <i class="mdi mdi-plus"></i>Home Page Slider</a>
+                <a href="{{ url('/admin/home_page_slider')}}" class="btn  btn-secondary  btn-rounded btn-block alignToTitle {{ (request()->is('admin/home_page_slider')) ? 'active' : '' }}"  style="float: right" > <i class="mdi mdi-plus"></i>Home Page Slider</a>
                 <a href="{{url('/admin/web_settings')}}" class="btn  btn-secondary  btn-rounded btn-block alignToTitle {{ (request()->is('admin/web_settings')) ? 'active' : '' }}"  style="float: right" > <i class="mdi mdi-plus"></i>General Settings</a>
 
             </div>
