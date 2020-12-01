@@ -147,7 +147,7 @@
                                                             <label for="previmage">Student Image</label>
                                                         </div>
                                                         <div class="col-sm-12">
-                                                            <img style="height: 200px; width: 200px; border-radius: 100px;" name="student_image" id='studentImg' src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'><br><br>
+                                                            <img style="height: 200px; width: 200px; border-radius: 100px;" id='studentImg' src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'><br><br>
                                                                 <input type='file' id="studentImg" name="profile_photo" onchange="readURL(this);" />
                                                                 <span class="text-danger" id="studentImg"></span>
                                                         </div>

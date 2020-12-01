@@ -18,7 +18,7 @@
                 <h5 class="card-title">Filter Data</h5>
             </div>
             <div class="col-md-4 col-sm-4 mb-1">
-                <select name="class_name" class="select2 form-control custom-select" id="filterClass" onchange="datalist()">
+                <select name="class_name" class="select2 form-control custom-select" id="filterClass" onchange="getSection()">
                     <option disabled selected hidden>Select Class Name</option>
                     @foreach($className as $vlaue)
                     <option value="{{$vlaue->class_id}}">{{$vlaue->class_name}}</option>
@@ -26,11 +26,8 @@
                 </select>
             </div>
             <div class="col-md-4 col-sm-4 mb-1">
-                <select name="class_name" class="select2 form-control custom-select" id="filterSection" onchange="datalist()">
+                <select name="section_name" class="select2 form-control custom-select" id="filterSection" onchange="datalist()">
                     <option disabled selected hidden>Select Section</option>
-                    @foreach($sectionName as $vlaue)
-                    <option value="{{$vlaue->section_id}}">{{$vlaue->section_name}}</option>
-                    @endforeach
                 </select>
             </div>
         </div>
@@ -39,5 +36,5 @@
 </div>
 @endsection
 @section('js')
-<script src="{{asset('Backend_assets/js/routine.js')}}"></script>
+<script src="{{asset('Backend_assets/js/dynamic_routine.js')}}"></script>
 @endsection

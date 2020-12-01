@@ -19,6 +19,8 @@ class CreateRoutineEachsTable extends Migration
             $table->foreign('base_id')->references('base_id')->on('routine_bases');
             $table->unsignedBigInteger('day_name');
             $table->foreign('day_name')->references('day_id')->on('days');
+            $table->unsignedBigInteger('period_name');
+            $table->foreign('period_name')->references('period_id')->on('periods');
             $table->unsignedBigInteger('teacher_name');
             $table->foreign('teacher_name')->references('teacher_id')->on('teachers');
             $table->unsignedBigInteger('subject_name');

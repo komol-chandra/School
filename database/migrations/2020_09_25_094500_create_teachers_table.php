@@ -16,7 +16,6 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->bigIncrements('teacher_id');
             $table->string('teacher_name');
-            $table->string('teacher_email');
             $table->string('teacher_password');
             $table->unsignedBigInteger('teacher_designation_name');
             $table->foreign('teacher_designation_name')->references('teacher_designation_id')->on('teacher_designations')->onDelete('cascade');
@@ -33,7 +32,6 @@ class CreateTeachersTable extends Migration
             $table->string('teacher_linkedin')->nullable();
             $table->string('teacher_address',1000)->nullable();
             $table->string('teacher_about',500)->nullable();
-            $table->string('teacher_image',1000)->nullable();
             $table->integer('status')->default(1);
             $table->timestamps();
         });

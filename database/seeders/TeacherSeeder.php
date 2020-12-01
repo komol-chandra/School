@@ -16,8 +16,6 @@ class TeacherSeeder extends Seeder
     {
         DB::table('teachers')->insert([
             'teacher_name'             => 'Mr. rohim',
-            'teacher_email'            => 'rohim@info.com',
-            'teacher_password'         => '00000000',
             'teacher_designation_name' => '3',
             'department_name'          => '3',
             'teacher_phone'            => '01812345678',
@@ -32,7 +30,6 @@ class TeacherSeeder extends Seeder
         ]);
         DB::table('teachers')->insert([
             'teacher_name'             => 'Mr. korim',
-            'teacher_email'            => 'korim@info.com',
             'teacher_password'         => '00000000',
             'teacher_designation_name' => '4',
             'department_name'          => '4',

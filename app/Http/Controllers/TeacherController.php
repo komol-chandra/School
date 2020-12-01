@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\Teacher;
 use File;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Department;
 use App\Models\BloodModel;
 use App\Models\GenderModel;
@@ -9,12 +10,13 @@ use App\Models\TeacherDesignationModel;
 use Illuminate\Http\Request;
 use App\Http\Requests\TeacherRequest;
 use App\Http\Requests\TeacherUpdateRequest;
+use App\Models\User;
 use JsValidator;
-use App\Traits\FileVerifyUpload;
+use App\Traits\FileUpload;
 
 class TeacherController extends Controller
 {
-    use FileVerifyUpload;
+    use FileUpload;
     public function index()
     {
         $teacher = Teacher::get();
@@ -45,6 +47,7 @@ class TeacherController extends Controller
     }
     public function teacherList(Request $request){
         $teacher = Teacher::search($request->search)->orderBy('teacher_id', 'asc')->paginate(10);
+        // dd($teacher);
         $department = Department::get();
         $designation = TeacherDesignationModel::get();
         $blood = BloodModel::get();
@@ -60,21 +63,19 @@ class TeacherController extends Controller
     public function store(TeacherRequest $request)
     {
         $teacher = new Teacher();
-        $teacher->teacher_name=$request->teacher_name;
-        $teacher->teacher_email=$request->teacher_email;
-        $teacher->teacher_password=$request->teacher_password;
-        $teacher->teacher_designation_name=$request->teacher_designation_name;
-        $teacher->department_name=$request->department_name;
-        $teacher->teacher_phone=$request->teacher_phone;
-        $teacher->gender_name=$request->gender_name;
-        $teacher->blood_name=$request->blood_name;
-        $teacher->teacher_facebook=$request->teacher_facebook;
-        $teacher->teacher_twitter=$request->teacher_twitter;
-        $teacher->teacher_linkedin=$request->teacher_linkedin;
-        $teacher->teacher_address=$request->teacher_address;
-        $teacher->teacher_about=$request->teacher_about;
-        $teacher->teacher_image=$this->ImageVerifyUpload($request,'teacher_image','Backend_assets/Files/Teacher','teacher_image');
-        $teacher->save();
+        $user = new User();
+        $data = $request->all();
+        $teacher->fill($data)->save();
+        $user->name = $request->teacher_user_name;
+        $user->email=$request->teacher_email;
+        $user->password=Hash::make($request->teacher_password);
+        $user->type = 4 ;
+        $user->parentId = $teacher->teacher_id;
+        $user->name = $teacher->teacher_name;
+        if($request->hasFile('teacher_image')){
+            $user->profile_photo_path = $this->ImageUpload($request, 'teacher_image', 'User/', 'user_profile');
+        }
+        $user->save();
         return redirect()->route('teacher.create')->with('msg','Data Successfully Inserted');
     }
     public function show($id)
@@ -92,6 +93,7 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $teacher = Teacher::findOrFail($id);
+        // dd($teacher);
         $department = Department::get();
         $designation = TeacherDesignationModel::get();
         $blood = BloodModel::get();
@@ -104,38 +106,32 @@ class TeacherController extends Controller
             "teacher"=>$teacher,
         ]); 
     }
-    public function update(TeacherUpdateRequest $request ,$id)
+    public function update(TeacherRequest $request ,$id)
     {
         $teacher =Teacher::findOrFail($id);
-        $teacher->teacher_name=$request->teacher_name;
-        $teacher->teacher_designation_name=$request->teacher_designation_name;
-        $teacher->department_name=$request->department_name;
-        $teacher->teacher_phone=$request->teacher_phone;
-        $teacher->gender_name=$request->gender_name;
-        $teacher->blood_name=$request->blood_name;
-        $teacher->teacher_facebook=$request->teacher_facebook;
-        $teacher->teacher_twitter=$request->teacher_twitter;
-        $teacher->teacher_linkedin=$request->teacher_linkedin;
-        $teacher->teacher_address=$request->teacher_address;
-        $teacher->teacher_about=$request->teacher_about;
-        if ($request->teacher_image) {
-            $teacherImage=("Backend_assets/Files/Teacher/{$teacher->teacher_image}");
-            if (File::exists($teacherImage)) {
-                File::delete($teacherImage);
+        $data = $request->all();
+        $user = User::where('type','4')->where('parentId',$id)->first();
+        if ($request->hasFile('teacher_image')) {
+            if (File::exists($user->profile_photo_path)) {
+                File::delete($user->profile_photo_path);
             }
-            $teacher->teacher_image=$this->ImageVerifyUpload($request,'teacher_image','Backend_assets/Files/Teacher','teacher_image');
+            $user->profile_photo_path = $this->ImageUpload($request, 'teacher_image', 'User/', 'user_profile');
         }
-        
-        $teacher->save();  
+        $user->name = $request->teacher_name;
+        $user->save();
+        $teacher->fill($data)->save();  
         return redirect()->route('teacher.edit',$id)->with('msg','Data Successfully Updated');
     }
     public function destroy($id)
     {
         $teacher = Teacher::findOrFail($id);
-        $teacherImage=("Backend_assets/Files/Teacher/{$teacher->teacher_image}");
-            if (File::exists($teacherImage)) {
-                File::delete($teacherImage);
+        $user = User::where('type','4')->where('parentId',$id)->first();
+        if ($user) {
+            if (File::exists($user->profile_photo_path)) {
+                File::delete($user->profile_photo_path);
             }
+        }
+        $user->delete();
         $teacher->delete();
         return response()->json($teacher, 200);
     }

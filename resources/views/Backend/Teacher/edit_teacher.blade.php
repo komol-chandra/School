@@ -36,17 +36,9 @@
                         <div class="form-group row">
                             <label for="teacher_email" class="col-sm-3 text-right control-label col-form-label" >Email<span style="color:red;">*</span></label>
                             <div class="col-sm-9">
-                                <input disabled="disabled" type="email" value="{{old('teacher_email') ? old('teacher_email') : $teacher->teacher_email}}" name="teacher_email" class="form-control" id="teacher_email">
+                                <input disabled="disabled" type="email" value="{{old('teacher_email') ? old('teacher_email') : $teacher->users->email}}"  class="form-control" id="teacher_email">
                             </div>
                         </div>
-                    {{--     
-                        <div class="form-group row">
-                            <label for="teacher_password" class="col-sm-3 text-right control-label col-form-label">Password<span style="color:red;">*</span></label>
-                            <div class="col-sm-9">
-                                <input type="password" value="{{old('teacher_password') ? old('teacher_password') : ''}}" name="teacher_password" class="form-control" id="teacher_password" placeholder="Password Here">
-                            </div>
-                        </div>
-                    --}}
                         <div class="form-group row">
                             <label for="teacher_designation_name" class="col-sm-3 text-right control-label col-form-label">Designation</label>
                             <div class="col-sm-9">
@@ -131,16 +123,11 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                        <label for="teacher_image" class="col-sm-3 control-label text-right"> Image:</label>
+                        <label for="teacherUpdate" class="col-sm-3 control-label text-right"> Image:</label>
                         <div class="col-sm-9">
-                            <div class="form-group">
-                            @if("/Backend_assets/Files/Teacher/{{ $teacher->teacher_image }}")
-                            <img style="height: 200px; width: 200px; border-radius: 100px;" name="teacher_image" id='previmage1' src="/Backend_assets/Files/Teacher/{{$teacher->teacher_image}}" alt="image" class='img-responsive'><br><br>
-                            @else
-                            <img src="{{asset('Backend_assets/profile.jpg')}}">
-                            @endif
-                            <input type='file' id="teacher_image" name="teacher_image" onchange="readURL1(this);" />
-                            <span class="text-danger" id="image"></span>
+                            <img src="/{{ $teacher->users->profile_photo_path ? $teacher->users->profile_photo_path:'Backend_assets/profile.jpg' }}" alt="Profile" id="teacherUpdate" class="img-fluid" style="height: 200px; width: 200px; border-radius: 50%">
+                            <input type='file' id="teacherUpdate" name="teacher_image" onchange="readURL1(this);" />
+                            <span class="text-danger" id="teacherUpdate"></span>
                         </div>
                     </div>
                     </div>

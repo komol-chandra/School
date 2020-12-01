@@ -32,6 +32,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="teacher_user_name" class="col-sm-3 text-right control-label col-form-label">User Name<span style="color:red;">*</span></label>
+                            <div class="col-sm-9">
+                                <input type="text" value="{{old('teacher_user_name') ? old('teacher_user_name') : ''}}" name="teacher_user_name" class="form-control" id="teacher_user_name">
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="teacher_email" class="col-sm-3 text-right control-label col-form-label">Email<span style="color:red;">*</span></label>
                             <div class="col-sm-9">
                                 <input type="email" value="{{old('teacher_email') ? old('teacher_email') : ''}}" name="teacher_email" class="form-control" id="teacher_email">

@@ -71,11 +71,6 @@ $(document).ready(function(){
 
 });
 
-
-$("#email").click(function() {
-    $("#email").prop("readonly", true);
-});
-
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -88,16 +83,11 @@ function readURL(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
-
-$("#email").click(function() {
-    $("#email").prop("readonly", true);
-});
-
 function readURL1(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
-            $('#previmage1')
+            $('#teacherUpdate')
                 .attr('src', e.target.result)
                 .width(200)
                 .height(200);

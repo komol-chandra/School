@@ -27,6 +27,7 @@ class RoutineBasesRequest extends FormRequest
             'class_name' => 'required',
             'section_name' => 'required',
             'day_name' => 'required',
+            'period_name' => 'required',
             'teacher_name' => 'required',
             'subject_name' => 'required',
             'classroom_name' => 'required',
