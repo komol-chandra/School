@@ -5,6 +5,7 @@
             <th>Profile</th>
             <th>Name</th>
             <th>Roll</th>
+            <th>Email</th>
             <th>Status</th>
             <th>Action</th>
         </tr>
@@ -14,7 +15,7 @@
         <tr>
             <td>{{$key+1}}</td>
             <td>
-                <img name="" id='' src="/{{$value->users ? $value->users->profile_photo_path : "Backend_assets/profile.jpg"}}" alt="image" class='img-responsive' style="height: 50px; width: 50px; border-radius: 50%">
+                <img name="" id='' src="/{{$value->users->profile_photo_path ? $value->users->profile_photo_path  : 'Backend_assets/profile.jpg'}}" alt="image" class='img-responsive' style="height: 50px; width: 50px; border-radius: 50%">
             </td>
             <td>{{$value->student_name}}</td>
             <td>{{$value->student_roll_number}}</td>
@@ -45,6 +46,7 @@
             <th>Profile</th>
             <th>Name</th>
             <th>Roll</th>
+            <th>Email</th>
             <th>Status</th>
             <th>Action</th>
         </tr>

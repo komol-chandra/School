@@ -12,7 +12,6 @@ $(document).ready(function() {
                 console.log(response);
                 toastr.success("Subject added successfully", "Success!");
                 $("#addModal").modal("hide");
-                loaddata();
                 $("#subject_save").trigger("reset");
             },
             error: function(error) {

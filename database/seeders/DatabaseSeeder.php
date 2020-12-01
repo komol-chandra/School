@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             StaffDepartmentSeeder::class,
             DaysSeeder::class,
             EventSeeder::class,
-            TeacherSeeder::class,
+            // TeacherSeeder::class,
             StaffSeeder::class,
             SubjectSeeder::class,
             UserSeeder::class,
@@ -38,6 +38,7 @@ class DatabaseSeeder extends Seeder
             TermsConditionSeeder::class,
             PrivacyPolicySeeder::class,
             HomePageSliderSeeder::class,
+            PeriodSeeder::class,
         ]);
     }
 }

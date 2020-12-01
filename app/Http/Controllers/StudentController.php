@@ -183,21 +183,21 @@ class StudentController extends Controller
     }
     public function update(StudentUpdateRequest $request, $id)
     {
-        //    dd($request->all());
-        $student_model = Student::findOrFail($id);
-        $student_model->student_admission_number = $request->student_admission_number;
-        //Student File
-        if ($request->student_image) {
-            $studentImage = ("Backend_assets/Files/Student/student_image/{$student_model->student_image}");
-            if (File::exists($studentImage)) {
-                File::delete($studentImage);
-            }
-            $student_model->student_image = $this->ImageVerifyUpload($request, 'student_image', 'Backend_assets/Files/Student/student_image/', 'student_image');
-        }
+        // //    dd($request->all());
+        // $student_model = Student::findOrFail($id);
+        // $student_model->student_admission_number = $request->student_admission_number;
+        // //Student File
+        // if ($request->student_image) {
+        //     $studentImage = ("Backend_assets/Files/Student/student_image/{$student_model->student_image}");
+        //     if (File::exists($studentImage)) {
+        //         File::delete($studentImage);
+        //     }
+        //     $student_model->student_image = $this->ImageVerifyUpload($request, 'student_image', 'Backend_assets/Files/Student/student_image/', 'student_image');
+        // }
 
 
-        $student_model->save();
-        return redirect()->route('student.edit', $id)->with('msg', 'Data Successfully Updated');
+        // $student_model->save();
+        // return redirect()->route('student.edit', $id)->with('msg', 'Data Successfully Updated');
     }
     public function destroy($id)
     {

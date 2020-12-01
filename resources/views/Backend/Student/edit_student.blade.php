@@ -1,6 +1,6 @@
 @extends('Backend.layouts.app')   
 @section('title', 'Edit Student')
-@section('head', 'Edit Student')
+@section('head_name', 'Edit Student')
 @section('content')
 <div class="card">
     <div class="card-body">
@@ -129,12 +129,22 @@
                             <label for="studentImage">Student Image</label>
                         </div>
                         <div class="col-sm-12">
-                            <img name="" id='regularLogo'
-                                src="/{{$student->users->profile_photo_path ? $student->users->profile_photo_path  : '/Backend_assets/Backend/images/avater.png'}}"
-                                alt="image" class='img-responsive' style="hight:150px;width:200px">
+                            <img name="" id='studentImg'
+                                src="/{{$student->users->profile_photo_path ? $student->users->profile_photo_path  : 'Backend_assets/profile.jpg'}}"
+                                alt="image" class='img-responsive' style="hight:200px;width:200px">
                                 <br><br>
-                                <input type='file' id="regularLogo" name="profile_photo" onchange="readURL1(this);" />
-                                <span class="text-danger" id="image"></span>
+                                <input type='file' id="studentImg" name="profile_photo" onchange="readURL(this);" />
+                                <span class="text-danger" id="studentImg"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mt-1">
+                        <div class="col-sm-12">
+                            <label for="guardianIdcard">Id Card or Birth Certificate</label>
+                        </div>
+                        <div class="col-sm-12">
+                            <img style="height: 200px; width: 200px;"  id='studentBirthCardImg' src="/{{ $student->student_birth_certificate ? $student->student_birth_certificate :('Backend_assets/profile.jpg') }}" alt="image" class='img-responsive'><br><br>
+                            <input type='file' id="studentBirthCardImg" name="student_birth_certificate" onchange="readURL1(this);" />
+                            <span class="text-danger" id="studentBirthCardImg"></span>
                         </div>
                     </div>
                 </div>
@@ -147,35 +157,35 @@
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label for="student_guardian_relation" >Relation With Student</label>
-                        <input value="{{old('student_guardian_relation') ? old('student_guardian_relation') : $student->student_guardian_relation}}" type="text" class="form-control" name="student_guardian_relation" id="student_guardian_relation">
+                        <input value="{{old('student_guardian_relation') ? old('student_guardian_relation') : $guardian[0]['student_guardian_relation']}}" type="text" class="form-control" name="student_guardian_relation" id="student_guardian_relation">
                     </div>
                     <div class="col-lg-3">
                         <label for="student_guardian_name" >Name<span style="color:red;">*</span></label>
-                        <input value="{{old('student_guardian_name') ? old('student_guardian_name') : $student->student_guardian_name}}" type="text" class="form-control" name="student_guardian_name" id="student_guardian_name">
+                        <input value="{{old('student_guardian_name') ? old('student_guardian_name') : $guardian[0]['student_guardian_name']}}" type="text" class="form-control" name="student_guardian_name" id="student_guardian_name">
                     </div>
                     <div class="col-lg-3">
                         <label for="student_guardian_phone">Phone</label>
-                        <input value="{{old('student_guardian_phone') ? old('student_guardian_phone') : $student->student_guardian_phone}}" type="text" name="student_guardian_phone" class="form-control" id="student_guardian_phone">
+                        <input value="{{old('student_guardian_phone') ? old('student_guardian_phone') : $guardian[0]['student_guardian_phone']}}" type="text" name="student_guardian_phone" class="form-control" id="student_guardian_phone">
                     </div>
                     <div class="col-lg-3">
                         <label for="student_guardian_relation" >Guardian Occupation</label>
-                        <input value="{{old('student_guardian_occupation') ? old('student_guardian_occupation') : $student->student_guardian_occupation}}" type="text" class="form-control" name="student_guardian_occupation" id="student_guardian_occupation">
+                        <input value="{{old('student_guardian_occupation') ? old('student_guardian_occupation') : $guardian[0]['student_guardian_occupation']}}" type="text" class="form-control" name="student_guardian_occupation" id="student_guardian_occupation">
                     </div>
                 </div>
     
                 <div class="row mb-3">
                     <div class="col-lg-3">
                         <label for="student_guardian_email" >Guardian Email</label>
-                        {{-- <input value="{{old('student_guardian_email') ? old('student_guardian_email') : $guardian->userTwo->email}}" type="text" class="form-control" id="student_guardian_email" disabled> --}}
+                        <input value="{{old('student_guardian_email') ? old('student_guardian_email') : $guardian[0]['guardian_users']['email']}}" type="text" class="form-control" id="student_guardian_email" disabled>
                     </div>
                     <div class="col-lg-3">
                         <label for="student_guardian_phone">Phone</label>
-                        <input value="{{old('student_guardian_phone') ? old('student_guardian_phone') : $student->student_guardian_phone}}" type="text" name="student_guardian_phone" class="form-control" id="student_guardian_phone">
+                        <input value="{{old('student_guardian_phone') ? old('student_guardian_phone') : $guardian[0]['student_guardian_phone']}}" type="text" name="student_guardian_phone" class="form-control" id="student_guardian_phone">
                         
                     </div>
                     <div class="col-lg-6">
                         <label for="student_guardian_phone">Address</label>
-                        <input value="{{old('student_guardian_address') ? old('student_guardian_address') : $student->student_guardian_address}}" type="text" class="form-control" name="student_guardian_address" id="student_guardian_address">
+                        <input value="{{old('student_guardian_address') ? old('student_guardian_address') : $guardian[0]['student_guardian_address']}}" type="text" class="form-control" name="student_guardian_address" id="student_guardian_address">
                     </div>
                 </div>
     
@@ -185,29 +195,19 @@
                             <label for="guardianImage">Guardian Image:</label>
                         </div>
                         <div class="col-sm-12">
-                        @if("/Backend_assets/Files/Guardian/student_guardian_image/{{ $student->student_guardian_image }}")
-                        <img style="height: 200px; width: 200px; border-radius: 100px;" name="student_guardian_image" id='guardianImage' src="/Backend_assets/Files/Guardian/student_guardian_image/{{ $student->student_guardian_image }}" alt="image" class='img-responsive'>
-                        @else
-                        <img src="{{asset('Backend_assets/profile.jpg')}}">
-                        @endif
-                        <br><br>
-                        <input type='file' id="student_guardian_image" name="student_guardian_image" onchange="readURL1(this);" />
-                        <span class="text-danger" id="image"></span>    
-                        </div> 
+                            <img style="height: 200px; width: 200px;"  id='guardianImg' src="{{asset('/Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'><br><br>
+                            <input type='file' id="guardianImg" name="guardian_image" onchange="readURL2(this);" />
+                                <span class="text-danger" id="guardianImg"></span>   
+                        </div>  
                     </div>
                     <div class="col-lg-6">
                         <div class="col-sm-12">
                             <label for="guardianIdcard">Id Card or Birth Certificate</label>
                         </div>
                         <div class="col-sm-12">
-                        @if("/Backend_assets/Files/Guardian/student_guardian_idcard/{{ $student->student_guardian_idcard }}")
-                        <img style="height: 350px; width: 450px;" name="student_guardian_idcard" id='guardianIdcard' src="/Backend_assets/Files/Guardian/student_guardian_idcard/{{ $student->student_guardian_idcard }}" alt="image" class='img-responsive'>
-                        @else
-                        <img src="{{asset('Backend_assets/profile.jpg')}}">
-                        @endif
-                        <br><br>
-                        <input type='file' id="student_guardian_idcard" name="student_guardian_idcard" onchange="readURL2(this);" />
-                        <span class="text-danger" id="image"></span>
+                            <img style="height: 200px; width: 200px;"  id='guardianIdImg' src="/{{$guardian[0]['student_guardian_idcard'] ? $guardian[0]['student_guardian_idcard'] :('Backend_assets/profile.jpg')}}" alt="image" class='img-responsive'><br><br>
+                            <input type='file' id="guardianIdImg" name="student_guardian_idcard" onchange="readURL3(this);" />
+                            <span class="text-danger" id="guardianIdImg"></span>
                         </div>
                     </div>
                 </div>
@@ -242,7 +242,7 @@
         })
     }
 </script>
-<script src="{{asset('Backend_assets/js/studentImageEdit.js')}}"></script>
+<script src="{{asset('Backend_assets/js/student_edit_image.js')}}"></script>
 <script src="{{asset('Backend_assets/js/student.js')}}"></script>
 {!! JsValidator::formRequest('App\Http\Requests\StudentRequest', '#edit_student'); !!}
 @endsection

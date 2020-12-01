@@ -6,6 +6,7 @@ use App\Http\Requests\RoutineBasesRequest;
 use App\Models\ClassName;
 use App\Models\ClassRoom;
 use App\Models\Days;
+use App\Models\Period;
 use App\Models\routine_bases;
 use App\Models\routine_eachs;
 use App\Models\SectionName;
@@ -30,6 +31,7 @@ class RoutineBasesController extends Controller
         $data['sections'] = SectionName::active()->get();
         $data['teachers'] = Teacher::active()->get();
         $data['days'] = Days::get();
+        $data['periods'] = Period::get();
         $data['subjects'] = SubjectModel::get();
         $data['classRooms'] = ClassRoom::active()->get();
         return view('Backend.Routine.routineCreate', $data);
@@ -51,12 +53,14 @@ class RoutineBasesController extends Controller
                 $query->where('section_name', $request->filterSection);
             }
         })->get();
+        $eachData = routine_eachs::get();
         $className = ClassName::active()->get();
         $sectionName = SectionName::active()->get();
         return view('Backend.Routine.routineList', [
             'className'   => $className,
             'sectionName' => $sectionName,
             'data'        => $data,
+            'eachData'    => $eachData,
         ]);
     }
     public function store(RoutineBasesRequest $request)
@@ -69,6 +73,7 @@ class RoutineBasesController extends Controller
                 $data[] = [
                     'base_id'        => $base_model->base_id,
                     'day_name'       => $value,
+                    'period_name'    => $request->period_name[$key],
                     'teacher_name'   => $request->teacher_name[$key],
                     'subject_name'   => $request->subject_name[$key],
                     'classroom_name' => $request->classroom_name[$key],

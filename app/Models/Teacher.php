@@ -10,7 +10,20 @@ class Teacher extends Model
     use HasFactory;
     protected $table = "teachers";
     protected $primaryKey = "teacher_id";
-    protected $fillable = ["teacher_name","teacher_email","teacher_password","teacher_designation_name","department_name","teacher_phone","gender_name","blood_name","teacher_facebook","teacher_twitter","teacher_linkedin","teacher_address","teacher_about","teacher_image","status"];
+    protected $fillable = [
+        "teacher_name",
+        "teacher_password",
+        "teacher_designation_name",
+        "department_name",
+        "teacher_phone",
+        "gender_name",
+        "blood_name",
+        "teacher_facebook",
+        "teacher_twitter",
+        "teacher_linkedin",
+        "teacher_address",
+        "teacher_about",
+        "status"];
     public function Designation(){
     	return $this->belongsTo("App\Models\TeacherDesignationModel","teacher_designation_name");
     }
@@ -24,5 +37,8 @@ class Teacher extends Model
     public function scopeSearch($query, $search)
     {
         return $query->where('teacher_name', 'LIKE', '%' . $search . '%');
+    }
+    public function users(){
+        return $this->hasOne(User::class,'parentId','teacher_id');
     }
 }

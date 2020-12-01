@@ -1,5 +1,5 @@
 <?php
-  
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -24,15 +24,23 @@ class TeacherRequest extends FormRequest
     public function rules()
     {
         return [
-            "teacher_name"=>'required',
-            "teacher_email"=>'required',
-            "teacher_password"=>'required|min:8',
-            "teacher_phone"=>'required',
-            "teacher_designation_name"=>'required',
-            "department_name"=>'required',
-            "gender_name"=>'required',
-            "teacher_image"=>'mimes:png,jpg,jpeg',
+            "teacher_name"             => 'required',
+            "teacher_phone"            => 'required',
+            "teacher_designation_name" => 'required',
+            "department_name"          => 'required',
+            "gender_name"              => 'required',
+            "teacher_image"            => 'mimes:png,jpg,jpeg',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            "teacher_name"             => 'teacher name required',
+            "teacher_phone"            => 'teacher phone required',
+            "teacher_designation_name" => 'teacher designation name required',
+            "department_name"          => 'department required',
+            "gender_name"              => 'gender required',
+            'teacher_image.mimes'      => 'this photo need png, jpg, jpeg extension',
         ];
     }
 }
- 
