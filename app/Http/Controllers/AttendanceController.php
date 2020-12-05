@@ -8,6 +8,7 @@ use App\Models\SectionName;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Requests\AttendanceRequest;
+use Illuminate\Support\Carbon;
 class AttendanceController extends Controller
 {
     /**
@@ -48,12 +49,33 @@ class AttendanceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(AttendanceRequest $request)
-    {
-        $library_model = new Attendance;
-        $library_model->fill($request->all())->save();
+    {   
+      
+        $attendance = new Attendance;
+        
+        $attendanceDate = Carbon::parse($request->attendance_date);
+        $className = $request->class_name;
+        $sectionName = $request->section_name;
+        $studentName = $request->student_name;
+        $attendanceStatus = $request->attendance_status;
+
+        for($count = 0; $count < count($attendanceStatus); $count++)
+        {
+         $data = array(
+          'attendance_date' => $attendanceDate,
+          'class_name'  => $className,
+          'section_name'  => $sectionName,
+          'student_name'  => $studentName[$count],
+          'attendance_status'  => $attendanceStatus[$count],
+         );
+         $attendance_details[] = $data;
+
+        }
+
+        $attendance->insert($attendance_details);
         $response = [
             "status" => 200,
-            "data" => $library_model
+            "data" => $attendance
         ];
         return response()->json($response, 200);
     }
