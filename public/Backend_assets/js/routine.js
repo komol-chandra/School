@@ -1,5 +1,4 @@
-$(document).ready(function(){
-});
+$(document).ready(function() {});
 function datalist() {
     let filterClass = $("#filterClass").val();
     let filterSection = $("#filterSection").val();
