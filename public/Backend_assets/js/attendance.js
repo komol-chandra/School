@@ -20,6 +20,22 @@ $(document).ready(function() {
         });
     });
 });
+function getSection() {
+    let data = $("#class_name").val();
+    $.ajax({
+        url: `/admin/student/sectionData/${data}`,
+        type: `get`,
+        dataType: `json`,
+        success: function(response) {
+            $(".sectionOpt").remove();
+            response.forEach(function(value, index) {
+                $("#section_name").append(`
+                    <option class="sectionOpt"  value="${value.section_id}" >${value.section_name}</option>
+                    `);
+            });
+        }
+    });
+}
 function loaddata() {
     let className = $("#class_name").val();
     let sectionName = $("#section_name").val();
