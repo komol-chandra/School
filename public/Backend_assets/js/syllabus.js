@@ -26,10 +26,29 @@ $(document).ready(function() {
             }
         });
     });
+    getSection();
 });
+function getSection() {
+    let data = $("#filter_class").val();
+    console.log(data);
+    $.ajax({
+        url: `/admin/student/sectionData/${data}`,
+        type: `get`,
+        dataType: `json`,
+        success: function(response) {
+            $(".sectionOpt").remove();
+            response.forEach(function(value, index) {
+                $("#section_name").append(`
+                    <option class="sectionOpt"  value="${value.section_id}" >${value.section_name}</option>
+                    `);
+            });
+        }
+    });
+}
+
 function loaddata() {
     let className = $("#filter_class").val();
-    let sectionName = $("#filter_section").val();
+    let sectionName = $("#section_name").val();
 
     let page_link = `/admin/syllabus/create?className=${
         className ? className : ""

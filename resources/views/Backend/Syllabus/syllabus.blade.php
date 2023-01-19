@@ -24,7 +24,7 @@
                             <div class="row mt-3">
                                 <div class="col-md-1"></div>
                                 <div class="col-md-4">
-                                    <select id="filter_class" class="select2 form-control custom-select" onchange="loaddata()">
+                                    <select id="filter_class" class="select2 form-control custom-select" onchange="getSection()">
                                         <option disabled selected hidden >Select A Class</option>
                                         @foreach($class as $value)
                                             <option value="{{$value->class_id}}" >{{$value->class_name}}</option>
@@ -32,16 +32,10 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <select id="filter_section" class="select2 form-control custom-select" onchange="loaddata()">
-                                        <option disabled selected hidden >Select A Section</option>
-                                        @foreach($section as $value)
-                                            <option value="{{$value->section_id}}" >{{$value->section_name}}</option>
-                                        @endforeach
+                                    <select name="section_name" id="section_name" onchange="loaddata()" class="select2 form-control custom-select">
+                                        <option value="" selected disabled hidden>Select</option>
                                     </select>
                                 </div>
-                                {{-- <div class="col-md-2">
-                                    <button class="btn btn-block btn-secondary" onclick="loaddata()" >Filter</button>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
